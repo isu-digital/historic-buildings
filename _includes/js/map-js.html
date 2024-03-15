@@ -12,6 +12,13 @@
 <script src="{{ '/assets/lib/leaflet/leaflet.fusesearch.js' | relative_url }}"></script>{% endif %}
 {% if site.data.theme.map-cluster == true %}<script src="{{ '/assets/lib/leaflet/leaflet.markercluster.js' | relative_url }}"></script>{% endif %}
 {% if site.data.theme.map-search == true and site.data.theme.map-cluster == true %}<script src="{{ '/assets/lib/leaflet/leaflet.markercluster.freezable.js' | relative_url }}"></script>{% endif %}
+<link rel="stylesheet" href="{{ '/assets/lib/opacity/Control.Opacity.css' | relative_url }}" />
+<script src="{{ '/assets/lib/opacity/Control.Opacity.js' | relative_url }}"></script>
+    
+<script src="{{ '/assets/lib/jquery/jquery-1.9.1.js' | relative_url }}"></script>
+<script src="{{ '/assets/lib/jquery/jquery-ui-1.10.3.custom.min.js' | relative_url}}"></script>
+<link rel="stylesheet" href="{{ '/assets/lib/jquery/jquery-ui-1.10.3.custom.min.css' | relative_url}}" />
+<script src="{{ '/assets/public_lands.js' | relative_url}}"></script>
 
 <script>
 (function(){
@@ -55,6 +62,129 @@
         maxZoom: 19,
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     });
+    
+    var imageUrl1 = 'https://iastatedigital.org/objects/iowastateparks/small/26-05-06_extensionla_tube-073-003_sm.jpg';
+    var errorOverlayUrl = 'https://cdn-icons-png.flaticon.com/512/110/110686.png';
+    var altText = 'Image of Newark, N.J. in 1922. Source: The University of Texas at Austin, UT Libraries Map Collection.';
+    var latLngBounds = L.latLngBounds([[44.034435, -89.528238], [40.155359, -97.575150]]);
+
+    var imageOverlay1 = L.imageOverlay(imageUrl1, latLngBounds, {
+        opacity: 0.5,
+        errorOverlayUrl: errorOverlayUrl,
+        alt: altText,
+        interactive: true
+    });
+    var imageUrl2 = 'https://iastatedigital.org/objects/iowastateparks/small/26-05-06_extensionla_c405-d14-f001-003_sm.jpg';
+    var errorOverlayUrl = 'https://cdn-icons-png.flaticon.com/512/110/110686.png';
+    var altText = 'Image of Newark, N.J. in 1922. Source: The University of Texas at Austin, UT Libraries Map Collection.';
+    var latLngBounds = L.latLngBounds([[42.029927, -93.852140], [41.951076, -93.950217]]);
+
+    var imageOverlay2 = L.imageOverlay(imageUrl2, latLngBounds, {
+        opacity: 0.7,
+        errorOverlayUrl: errorOverlayUrl,
+        alt: altText,
+        interactive: true
+    });
+    
+    /* add polygon layer*/
+    var latlngLedges = [[41.997246, -93.892567],[41.997192, -93.888597],[41.997192, -93.888597],[42.008026, -93.883329],[42.001054, -93.883401],[42.000947, -93.878421],[42.002663, -93.878276],[42.002609, -93.873585],[41.986839, -93.873874],[41.986624, -93.883401],[41.979382, -93.889680],[41.979221, -93.898558],[41.997192, -93.892784]];
+    var Ledges = L.polygon(latlngLedges, {color: '#ff7800'});
+
+    /*geoJSON test*/
+    var parkLedges = {
+        "type": "FeatureCollection",
+        "features": [{
+            "type": "Feature",
+            "properties": {},
+            "geometry": {
+            "coordinates": [
+            [
+                [
+                -93.88489422484695,
+                42.01272748252225
+                ],
+                [
+              -93.88519827512577,
+              41.999169268987515
+                ],
+                [
+              -93.89432594812273,
+              41.99917265097346
+                ],
+                [
+              -93.89524621423799,
+              41.99615796852879
+                ],
+                [
+              -93.89169100108619,
+              41.991704551547684
+                ],
+                [
+              -93.89361974572446,
+              41.98717691279941
+                ],
+                [
+              -93.89351741319918,
+              41.98280141753659
+                ],
+                [
+              -93.89767972453309,
+              41.97812253130655
+                ],
+                [
+              -93.88540005472724,
+              41.9776910967833
+                ],
+                [
+              -93.88337563107847,
+              41.98636453511864
+                ],
+                [
+              -93.87396051956254,
+              41.98674605835026
+                ],
+                [
+              -93.8689935412247,
+              42.0034571064607
+                ],
+                [
+              -93.87769540034246,
+              42.00406696482494
+                ],
+                [
+              -93.87709899846334,
+              42.0127125117495
+                ],
+                [
+              -93.88489422484695,
+              42.01272748252225
+                ]   
+            ]
+            ],
+            "type": "Polygon"
+            }
+            }
+        ]
+    }
+    
+    var parkStyle = {
+        "color": "#ff7800",
+        "weight":3,
+        "opacity": 0.7
+    };
+    
+    
+    /* add opacity controls */
+    var higherOpacity = new L.Control.higherOpacity();
+    map.addControl(higherOpacity);
+    var lowerOpacity = new L.Control.lowerOpacity();
+    map.addControl(lowerOpacity);
+    var opacitySlider = new L.Control.opacitySlider();
+    map.addControl(opacitySlider);
+
+    /* layer opacity slider */
+    opacitySlider.setOpacityLayer(imageOverlay1);
+
     /* add base map switcher */
     var baseMaps = {
         "Esri World StreetMap": Esri_WorldStreetMap,
@@ -62,7 +192,20 @@
         "Esri Imagery": Esri_WorldImagery,
         "Open Street Map": OpenStreetMap_Mapnik
     };
-    L.control.layers(baseMaps).addTo(map);
+    /*add overlay layers */
+    var Ledges2 = L.geoJson(parkLedges, {
+        style: parkStyle
+        });
+    var currentParks = L.geoJson(stateparks, {
+        style: parkStyle
+        });
+    var overlays = {
+        "Historic Iowa Map - 1934": imageOverlay1,
+        "Historic Ledges State Park": imageOverlay2,
+        "Current Public Lands": currentParks
+    };
+   
+    L.control.layers(baseMaps,overlays).addTo(map);
     /* load base map */
     {{ site.data.theme.map-base | default: 'Esri_WorldStreetMap' }}.addTo(map);
 
