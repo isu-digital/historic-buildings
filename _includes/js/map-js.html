@@ -86,11 +86,11 @@
         interactive: true
     });
     
-    /* add polygon layer*/
+    /* add polygon layer
     var latlngLedges = [[41.997246, -93.892567],[41.997192, -93.888597],[41.997192, -93.888597],[42.008026, -93.883329],[42.001054, -93.883401],[42.000947, -93.878421],[42.002663, -93.878276],[42.002609, -93.873585],[41.986839, -93.873874],[41.986624, -93.883401],[41.979382, -93.889680],[41.979221, -93.898558],[41.997192, -93.892784]];
-    var Ledges = L.polygon(latlngLedges, {color: '#ff7800'});
+    var Ledges = L.polygon(latlngLedges, {color: '#ff7800'}); */
 
-    /*geoJSON test*/
+    /*geoJSON test
     var parkLedges = {
         "type": "FeatureCollection",
         "features": [{
@@ -166,7 +166,7 @@
             }
         ]
     }
-    
+    */
     var parkStyle = {
         "color": "#ff7800",
         "weight":3,
@@ -193,9 +193,10 @@
         "Open Street Map": OpenStreetMap_Mapnik
     };
     /*add overlay layers */
-    var Ledges2 = L.geoJson(parkLedges, {
+    
+    /*var Ledges2 = L.geoJson(parkLedges, {
         style: parkStyle
-        });
+        });*/
     var currentParks = L.geoJson(stateparks, {
         style: parkStyle
         });
