@@ -18,7 +18,7 @@
 <script src="{{ '/assets/lib/jquery/jquery-1.9.1.js' | relative_url }}"></script>
 <script src="{{ '/assets/lib/jquery/jquery-ui-1.10.3.custom.min.js' | relative_url}}"></script>
 <link rel="stylesheet" href="{{ '/assets/lib/jquery/jquery-ui-1.10.3.custom.min.css' | relative_url}}" />
-<script src="{{ '/assets/public_lands.js' | relative_url}}"></script>
+<script src="{{ '/assets/hist-buildings.js' | relative_url}}"></script>
 
 <script>
 (function(){
@@ -197,13 +197,14 @@
     /*var Ledges2 = L.geoJson(parkLedges, {
         style: parkStyle
         });*/
-    var currentParks = L.geoJson(stateparks, {
+    var buildings = L.geoJson(histbuildings, /*{
         style: parkStyle
-        });
-    var overlays = {
+        }*/{onEachFeature: function (feature, layer) {layer.bindPopup("Building Name: " + feature.properties.Name + '<br>' + " Date Built: " + feature.properties["Date Built"]);}});
+    
+        var overlays = {
         "Historic Iowa Map - 1934": imageOverlay1,
         "Historic Ledges State Park": imageOverlay2,
-        "Current Public Lands": currentParks
+        "Historic ISU Buildings": buildings
     };
    
     L.control.layers(baseMaps,overlays).addTo(map);
