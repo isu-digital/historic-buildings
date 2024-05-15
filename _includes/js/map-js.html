@@ -20,6 +20,7 @@
 <link rel="stylesheet" href="{{ '/assets/lib/jquery/jquery-ui-1.10.3.custom.min.css' | relative_url}}" />
 <script src="{{ '/assets/hist-buildings.js' | relative_url}}"></script>
 
+
 <script>
 (function(){
     /* add collection map data */
@@ -92,18 +93,18 @@
         "opacity": 0.7
     };
     
-    /* add opacity controls */
+    /* add opacity controls 
     var higherOpacity = new L.Control.higherOpacity();
     map.addControl(higherOpacity);
     var lowerOpacity = new L.Control.lowerOpacity();
     map.addControl(lowerOpacity);
     var opacitySlider = new L.Control.opacitySlider();
-    map.addControl(opacitySlider);
+    map.addControl(opacitySlider);*/
 
    
 
-    /*layer opacity slider*/
-    opacitySlider.setOpacityLayer(imageOverlay1);
+    /*layer opacity slider
+    opacitySlider.setOpacityLayer(imageOverlay1);*/
 
 
 
@@ -121,7 +122,7 @@
 
 
 
-    /* add base map switcher */
+    /* add base maps */
     var baseMaps = {
         "Esri World StreetMap": Esri_WorldStreetMap,
         "Esri National Geo": Esri_NatGeoWorldMap,
@@ -134,7 +135,7 @@
         style: parkStyle
         }*/{onEachFeature: function (feature, layer) {layer.bindPopup("Building Name: " + feature.properties.Name + '<br>' + " Date Built: " + feature.properties["Date Built"]);}});
     
-        var overlays = {
+    var overlays = {
         "Iowa State College, 1883": imageOverlay1,
         "Iowa State College, 1875": imageOverlay2,
         "Historic ISU Buildings": buildings
