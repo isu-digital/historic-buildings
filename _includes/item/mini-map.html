@@ -21,7 +21,7 @@
 <link rel="stylesheet" href="{{ '/assets/lib/leaflet/leaflet.fullscreen.css' | relative_url }}">
 <script src="{{ '/assets/lib/leaflet/leaflet.js' | relative_url }}"></script>
 <script src="{{ '/assets/lib/leaflet/Leaflet.fullscreen.min.js' | relative_url }}"></script>
-
+<script src="{{ '/assets/hist-buildings.js' | relative_url}}"></script>
 <script>
     // initial start point
     var mapCenter = [{{ page.latitude }}, {{ page.longitude }}];
@@ -40,13 +40,27 @@
     var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
         attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
     });
+ /*add overlay layers */
+    
+ var buildings = L.geoJson(histbuildings, {
+        onEachFeature: function (feature, layer) {
+            layer.bindPopup("Building Name: " + feature.properties.Name + '<br>' + " Date Built: " + feature.properties["Date Built"]);
+        }
+    }).addTo(map); 
+
+    
+    var overlays = {
+        "Historic ISU Buildings": buildings
+    };
+
     /* add base map switcher */
     var baseMaps = {
         "Esri World StreetMap": Esri_WorldStreetMap,
         "Esri National Geo": Esri_NatGeoWorldMap,
         "Esri Imagery": Esri_WorldImagery
     };
-    L.control.layers(baseMaps).addTo(map);
+
+    L.control.layers(baseMaps,overlays, { collapsed: true }).addTo(map);
     /* load base map */
     Esri_WorldImagery.addTo(map);
     /* add fullscreen control */ 
