@@ -60,7 +60,7 @@
         "Esri Imagery": Esri_WorldImagery
     };
 
-    L.control.layers(baseMaps,overlays, { collapsed: true }).addTo(map);
+    L.control.layers(baseMaps,overlays).addTo(map);
     /* load base map */
     Esri_WorldImagery.addTo(map);
     /* add fullscreen control */ 

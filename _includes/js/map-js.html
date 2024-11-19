@@ -141,7 +141,7 @@
         "Historic ISU Buildings": buildings
     };
    
-    L.control.layers(baseMaps,overlays).addTo(map);
+    L.control.layers(baseMaps,overlays, { collapsed: false }).addTo(map);
     /* load base map */
     {{ site.data.theme.map-base | default: 'Esri_WorldStreetMap' }}.addTo(map);
 
