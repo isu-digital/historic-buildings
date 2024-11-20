@@ -23,7 +23,7 @@ title: History of the Buildings of Iowa State University
 tagline: A digital exploration of historic ISU
 # description appears in meta tags and other locations
 # this description might appear in search result lists, keep around 160 characters max
-description: "CollectionBuilder-CSV is a template for creating digital collection exhibits using static web technology."
+description: "This site explores the history of the buildings of Iowa State University through historic photographs, maps, and modern GIS data."
 # keywords, a short list of subjects describing the collection, separated by semicolon, to appear in rich markup
 keywords: iowa;iowa state university;historic buildings
 # creator of the digital collection, to appear in meta tags; we typically use our GitHub usernames but feel free to just use your name
