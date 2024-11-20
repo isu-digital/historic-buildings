@@ -7,6 +7,11 @@ subject,Subjects,true,,DCTERMS.subject,keywords
 location,Location,,,,contentLocation
 latitude,Latitude,,,,
 longitude,Longitude,,,,
+year_started,Year Built,,,,
+year_gone,Year Removed,,,,
+valuation,Building Cost,,,,
+architect,Architect,true,,,
+contractor,Contractor,true,,,
 source,Source,,,,
 identifier,Source Identifier,,,,
 type,Type,,,DCTERMS.type,
