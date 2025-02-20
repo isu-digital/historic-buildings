@@ -7,6 +7,13 @@ permalink: /subjects.html
 cloud-fields: site.data.theme.subjects-fields
 ---
 
+## Visualizations
+
+{% include index/time.html %}
+{% include index/featured-terms.html field="architect" title="Top Architects" btn-color="primary" %}
+{% include index/featured-terms.html field="location" title="Locations" btn-color="outline-secondary" %}
+{% include index/objects.html %}
+
 ## Browse Architects
 
 Use this word cloud visualization to browse architects of the buildings on ISU campus.
