@@ -5,8 +5,13 @@
   </head>
   <body class="d-flex flex-column h-100">
     <div id="skip-to-content"><a href="#maincontent">Skip to main content</a></div>
+    {% if page.layout == "custom-home-infographic" %}
+    {% include collection-nav.html %}
+    {% include collection-banner.html %}
+    {% else %}
     {% include collection-banner.html %}
     {% include collection-nav.html %}
+    {% endif %}
     <main id="maincontent" role="main" class="flex-shrink-0">
       {{ content }}
     </main>

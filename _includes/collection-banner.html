@@ -1,7 +1,7 @@
-{% if page.layout == "home-infographic" and site.data.theme.featured-image %}
+{% if page.layout == "custom-home-infographic" and site.data.theme.featured-image %}
 <style>
 #home-banner {
-    background-image: url('{{ site.data.featured_item.src | relative_url }}');
+    background-image: linear-gradient(to top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 50%), url('{{ site.data.featured_item.src | relative_url }}');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: {{ site.data.theme.home-banner-image-position | default: 'center' }};
