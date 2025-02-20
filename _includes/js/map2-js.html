@@ -65,7 +65,7 @@
     });
     
     var parkStyle = {
-        "color": "#ff7800",
+        "color": "#d9230f",
         "weight":3,
         "opacity": 0.7
     };
@@ -79,7 +79,7 @@
     };
     /*add overlay layers */
     
-    var buildings = L.geoJson(histbuildings, {
+    var buildings = L.geoJson(histbuildings, {style:parkStyle,
         onEachFeature: function (feature, layer) {
             layer.bindPopup("Building Name: " + feature.properties.Name + '<br>' + " Date Built: " + feature.properties["Date Built"]);
         }

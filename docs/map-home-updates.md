@@ -7,4 +7,6 @@ Add site description and a "featured building" card to home page with buttons li
 Test out a collapsed menu button rather than nav bar
 
 Fade nav bar on homepage into banner image and make transparent
+fix collapsed navbar for mobile on homepage (no transparent background)
 Move Title bar to box in upper lef corner or somehow overlay differently
+custom map icons using plugin - possibly Leaflet.ExtraMarkers
