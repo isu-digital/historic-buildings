@@ -7,12 +7,14 @@ permalink: /subjects.html
 cloud-fields: site.data.theme.subjects-fields
 ---
 
-## Visualizations
+# Visualizations
 
-{% include index/time.html %}
-{% include index/featured-terms.html field="architect" title="Top Architects" btn-color="primary" %}
-{% include index/featured-terms.html field="location" title="Locations" btn-color="outline-secondary" %}
-{% include index/objects.html %}
+
+## Browse Locations
+
+Use this word cloud visualization to browse locations. Word size is determined by frequency and all words link to a corresponding collection search.
+
+{% include feature/cloud.html fields="location" min=1 %}
 
 ## Browse Architects
 
