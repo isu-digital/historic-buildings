@@ -79,19 +79,41 @@
     };
     /*add overlay layers */
     
-    var buildings = L.geoJson(histbuildings, {style:parkStyle,
+    var buildings = L.geoJson(histbuildings, {
         onEachFeature: function (feature, layer) {
             layer.bindPopup("Building Name: " + feature.properties.Name + '<br>' + " Date Built: " + feature.properties["Date Built"]);
         }
     }).addTo(map);
+
+    var imageUrl2 = 'objects/day-1898.jpg';
+    var errorOverlayUrl = 'https://cdn-icons-png.flaticon.com/512/110/110686.png';
+    var altText = 'Historic Map of Iowa State University from 1898';
+    var latLngBounds = L.latLngBounds([[42.032092,-93.637067], [42.022175,-93.654810]]);
+
+    var imageOverlay2 = L.imageOverlay(imageUrl2, latLngBounds, {
+        opacity: 0.7,
+        errorOverlayUrl: errorOverlayUrl,
+        alt: altText,
+        interactive: true
+    }).addTo(map);
+
     
-   var overlays = {
-        "Historic ISU Buildings": buildings
-    };
+    /*add opacity controls*/
+    var higherOpacity = new L.Control.higherOpacity();
+    map.addControl(higherOpacity);
+    var lowerOpacity = new L.Control.lowerOpacity();
+    map.addControl(lowerOpacity);
+    var opacitySlider = new L.Control.opacitySlider();
+    map.addControl(opacitySlider);
+
    
-    L.control.layers(baseMaps, overlays, { collapsed: true }).addTo(map);
+
+    /*layer opacity slider*/
+    opacitySlider.setOpacityLayer(imageOverlay2);
+
+    
     /* load base map */
-    Esri_WorldImagery.addTo(map);
+    Esri_WorldStreetMap.addTo(map);
 
     {% if site.data.theme.map-search == true %}
     /* add search, https://github.com/naomap/leaflet-fusesearch */
@@ -209,6 +231,14 @@
         });
         {% endif %}
     }
+   
+    var overlays = {
+        "ISU Building Footprints 1859-1900": buildings,
+        "Iowa State College, 1898": imageOverlay2,
+        "ISU Buildings 1859-1900": mapFeatures
+    };
+
+    L.control.layers(baseMaps, overlays, { collapsed: true }).addTo(map);
 
 })();
 
