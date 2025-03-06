@@ -3,6 +3,8 @@
 layout: page
 custom-foot: js/timeline-js.html
 ---
+{{ content }}
+
 {%- assign field = site.data.theme.timeline-field | default: "date" -%}
 {% if site.data.theme.timeline-child-objects == true %}
 {%- assign items = site.data[site.metadata] | where_exp: 'item','item.objectid' -%}
@@ -33,7 +35,7 @@ custom-foot: js/timeline-js.html
 </div>
 {%- endif -%}
 
-{{ content }}
+
 
 <h3><a href="#y{{ uniqueYears | first }}">{{ uniqueYears | first }}</a> to <a href="#y{{ uniqueYears | last }}">{{ uniqueYears | last }}</a></h3>
 

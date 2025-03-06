@@ -4,7 +4,7 @@
 # current using relative_url due to jekyll bug, should be absolute_url in production!
 # to just feature parent objects of compound objects, you will want to change the where_exp below to "where_exp: 'item','item.parentid == nil'"
 ---
-{%- assign items = site.data[site.metadata] | where_exp: 'item','item.objectid' | where_exp: 'item', 'item.date' -%}
+{%- assign items = site.data['historic-buildings-timeline'] | where_exp: 'item','item.parentid == nil' | where_exp: 'item', 'item.start_date' -%}
 {
     "title": {
         "media": {
@@ -13,8 +13,8 @@
           "credit": {{ site.title | jsonify }}
         },
         "text": {
-          "headline": {{ site.title | append: ' Timeline' | jsonify }},
-          "text": {{ site.description | jsonify }}
+          "headline": "Chronology of Iowa State University Buildings",
+          "text": "A timeline of buildings on the Iowa State University campus, from the founding of the university in 1858 to the present day. Click on the image to learn more about the featured building."
         }
     },
     "events": [
@@ -25,11 +25,18 @@
           "link": "{{ '/items/' | relative_url }}{% if item.parentid %}{{ item.parentid }}.html#{{ item.objectid }}{% else %}{{ item.objectid }}.html{% endif %}"
         },
         "start_date": { 
-          {% if item.date contains '-' %}{% assign dates = item.date | strip | split: '-' %}
+          {% if item.start_date contains '-' %}{% assign dates = item.start_date | strip | split: '-' %}
           "month": "{{ dates[1] }}",
           "day": "{{ dates[2] }}",
-          "year": "{{ dates[0] }}"{% elsif item.date contains '/' %}"year": "{{ item.date | strip | split: '/' | last }}"{% else %}
-          "year": "{{ item.date }}"{% endif %}
+          "year": "{{ dates[0] }}"{% elsif item.start_date contains '/' %}"year": "{{ item.date | strip | split: '/' | last }}"{% else %}
+          "year": "{{ item.start_date }}"{% endif %}
+        },
+        "end_date": { 
+          {% if item.end_date contains '-' %}{% assign dates = item.end_date | strip | split: '-' %}
+          "month": "{{ dates[1] }}",
+          "day": "{{ dates[2] }}",
+          "year": "{{ dates[0] }}"{% elsif item.end_date contains '/' %}"year": "{{ item.date | strip | split: '/' | last }}"{% else %}
+          "year": "{{ item.end_date }}"{% endif %}
         },
         "text": {
           "headline": {{ item.title | jsonify }}{% if item.description %},
