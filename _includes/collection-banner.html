@@ -6,7 +6,7 @@
     background-position: {{ site.data.theme.home-banner-image-position | default: 'center' }};
 }
 #home-title-box {
-    padding-top: {{ site.data.theme.home-title-y-padding | default: '6em' }};
+    padding-top: {{ site.data.theme.home-title-y-padding | default: '5em' }};
     padding-bottom: {{ site.data.theme.home-title-y-padding | default: '20em' }};
     padding-left: 5em;
     font-family: Roboto, serif;
@@ -28,6 +28,10 @@
     padding-left: 5em;
     font-family: Roboto, serif;
 }
+.site-title {
+    font-family: Roboto, serif;
+    font-size: 5rem;
+}
 
 </style>
 {% if page.layout == "custom-home-infographic" and site.data.theme.featured-image %}
@@ -38,7 +42,7 @@
             <a class="d-none d-md-block" href="{{ site.organization-link }}" target="_blank" rel="noopener">
                 <img id="home-banner-logo" src="{{ site.organization-logo-nav | relative_url }}" alt="{{ site.organization-name | escape }} home" >
             </a>{% endif %}
-            <h1 class="display-4">{{ site.title }}</h1>
+            <h1 class="display-4 site-title">{{ site.title }}</h1>
             {% if site.tagline %}<p class="mb-0">{{ site.tagline }}</p>{% endif %}
         </div>
         {% unless site.data.theme.featured-image contains '/' %}

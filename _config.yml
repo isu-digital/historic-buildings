@@ -18,14 +18,14 @@ source-code: https://github.com/CollectionBuilder/collectionbuilder-csv
 # SITE SETTINGS
 #
 # title of site appears in banner
-title: History of the Buildings of Iowa State University
+title: Campus Cornerstones
 # tagline, a short phrase that will appear throughout the site in the top banner
-tagline: A digital exploration of historic ISU
+tagline: A mapped history of Iowa State University
 # description appears in meta tags and other locations
 # this description might appear in search result lists, keep around 160 characters max
-description: "Initiated in 2024 and currently a work in progress, this site explores the history of the buildings of Iowa State University through historic photographs, maps, and modern GIS data."
+description: "Initiated in 2024 and currently a work in progress, this site explores the history of the buildings of Iowa State University through historical photographs, maps, and modern GIS data."
 # keywords, a short list of subjects describing the collection, separated by semicolon, to appear in rich markup
-keywords: iowa;iowa state university;historic buildings
+keywords: iowa;iowa state university;historical buildings
 # creator of the digital collection, to appear in meta tags; we typically use our GitHub usernames but feel free to just use your name
 author: emanderson811
 
