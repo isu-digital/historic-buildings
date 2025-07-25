@@ -83,7 +83,7 @@
         onEachFeature: function (feature, layer) {
             layer.bindPopup("Building Name: " + feature.properties.Name + '<br>' + " Date Built: " + feature.properties["Date Built"]);
         }
-    }).addTo(map);
+    });
 
     var imageUrl2 = 'objects/day-1898.jpg';
     var errorOverlayUrl = 'https://cdn-icons-png.flaticon.com/512/110/110686.png';
