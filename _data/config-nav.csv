@@ -1,8 +1,12 @@
 display_name,stub,dropdown_parent
 Home,/,
-Browse,/browse.html,
-Visualizations,/subjects.html,
-Map,/map.html,
+Buildings,/buildings.html,
+Maps,,
+Historical Maps,/maps.html,Maps
+GIS,/gis.html,Maps
 Timeline,/timeline.html,
 Data,/data.html,
-About,/about.html,
+Word Clouds,/word-clouds.html,
+About,,
+About Project,/about.html,About
+About GIS,/about-gis.html,About
