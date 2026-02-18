@@ -19,6 +19,9 @@
 <script src="{{ '/assets/lib/jquery/jquery-ui-1.10.3.custom.min.js' | relative_url}}"></script>
 <link rel="stylesheet" href="{{ '/assets/lib/jquery/jquery-ui-1.10.3.custom.min.css' | relative_url}}" />
 <script src="{{ '/assets/hist-buildings.js' | relative_url}}"></script>
+<script src="{{ '/assets/lib/leaflet-geotiff/geotiff.bundle.min.js' | relative_url }}"></script>
+<script src="{{ '/assets/lib/leaflet-geotiff/leaflet-geotiff.js' | relative_url }}"></script>
+<script src="{{ '/assets/lib/leaflet-geotiff/leaflet-geotiff-rgb.js' | relative_url }}"></script>
 
 
 <script>
@@ -92,6 +95,21 @@
         "weight":3,
         "opacity": 0.7
     };
+
+    const rgbRenderer = L.LeafletGeotiff.rgb();
+
+// Set up options for the layer
+    const tiffOptions = {
+        renderer: rgbRenderer,
+        opacity: 0.7,
+        rBand: 0, // adjust as needed
+        gBand: 0, // adjust as needed
+        bBand: 0,  // adjust as needed
+    // Optionally specify bands if your TIFF is not standard RGB
+    // rBand: 0, gBand: 1, bBand: 2,
+    };
+
+    var geoTiffLayer = L.leafletGeotiff('assets/day_1875-web.tif', tiffOptions).addTo(map);
     
     /* add opacity controls 
     var higherOpacity = new L.Control.higherOpacity();
