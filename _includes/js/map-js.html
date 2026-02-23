@@ -67,7 +67,7 @@
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     });
     
-    var imageUrl1 = 'objects/GENL_26_1883.jpg';
+    /* var imageUrl1 = 'objects/GENL_26_1883.jpg';
     var errorOverlayUrl = 'https://cdn-icons-png.flaticon.com/512/110/110686.png';
     var altText = 'Historic Map of Iowa State University from 1883';
     var latLngBounds = L.latLngBounds([[42.0352583,-93.6289306], [42.020825, -93.6557806]]);
@@ -78,7 +78,7 @@
         alt: altText,
         interactive: true
     });
-    var imageUrl2 = 'objects/day-1875.jpg';
+   var imageUrl2 = 'objects/day-1875.jpg';
     var errorOverlayUrl = 'https://cdn-icons-png.flaticon.com/512/110/110686.png';
     var altText = 'Historic Map of Iowa State University from 1875';
     var latLngBounds = L.latLngBounds([[42.032092,-93.637067], [42.022175,-93.654810]]);
@@ -89,16 +89,36 @@
         alt: altText,
         interactive: true
     });
-    
+    */
     var parkStyle = {
         "color": "#ff7800",
         "weight":3,
         "opacity": 0.7
     };
 
-    const rgbRenderer = L.LeafletGeotiff.rgb();
 
-// Set up options for the layer
+    const tilesBase = "{{ '/assets/tiles/1875/' | relative_url }}"; // resolves to /historic-buildings/assets/tiles/1875/
+    
+
+    // your EPSG:3857 meter coords converted to lat/lng
+    const sw = L.CRS.EPSG3857.unproject(L.point(-10425620.244789753, 5164290.700429559));
+    const ne = L.CRS.EPSG3857.unproject(L.point(-10423612.939286085, 5165803.027624668));
+    const historicBounds = L.latLngBounds(sw, ne);
+
+    const historic1875 = L.tileLayer(tilesBase + "{z}/{x}/{y}.png", {
+    minZoom: 14,
+    maxZoom: 19,
+    bounds: historicBounds,
+    noWrap: true,
+    opacity: 0.7
+    });
+
+   historic1875.addTo(map);
+   map.fitBounds(historicBounds);
+
+ /*   const rgbRenderer = L.LeafletGeotiff.rgb();
+
+ Set up options for the layer
     const tiffOptions = {
         renderer: rgbRenderer,
         opacity: 0.7,
@@ -126,17 +146,17 @@
 
 
 
-    /* Update the opacity of imageOverlay1 when the first slider is moved */
+    /* Update the opacity of imageOverlay1 when the first slider is moved 
     document.getElementById('slider1').addEventListener('input', function() {
         var opacity = this.value;
         imageOverlay1.setOpacity(opacity);
     });
 
-    /* Update the opacity of imageOverlay2 when the second slider is moved */
+    /* Update the opacity of imageOverlay2 when the second slider is moved 
     document.getElementById('slider2').addEventListener('input', function() {
         var opacity = this.value;
         imageOverlay2.setOpacity(opacity);
-    });
+    }); */
 
 
 
@@ -152,9 +172,8 @@
         }*/{onEachFeature: function (feature, layer) {layer.bindPopup("Building Name: " + feature.properties.Name + '<br>' + " Date Built: " + feature.properties["Date Built"]);}});
     
     var overlays = {
-        "Iowa State College, 1883": imageOverlay1,
-        "Iowa State College, 1875": imageOverlay2,
-        "ISU Building Footprints 1859-1900": buildings
+        "ISU Building Footprints 1859-1900": buildings,
+        "1875 Day Map Tiles": historic1875,
     };
    
     L.control.layers(baseMaps,overlays, { collapsed: false }).addTo(map);
