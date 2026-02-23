@@ -67,29 +67,6 @@
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     });
     
-    /* var imageUrl1 = 'objects/GENL_26_1883.jpg';
-    var errorOverlayUrl = 'https://cdn-icons-png.flaticon.com/512/110/110686.png';
-    var altText = 'Historic Map of Iowa State University from 1883';
-    var latLngBounds = L.latLngBounds([[42.0352583,-93.6289306], [42.020825, -93.6557806]]);
-
-    var imageOverlay1 = L.imageOverlay(imageUrl1, latLngBounds, {
-        opacity: 0.5,
-        errorOverlayUrl: errorOverlayUrl,
-        alt: altText,
-        interactive: true
-    });
-   var imageUrl2 = 'objects/day-1875.jpg';
-    var errorOverlayUrl = 'https://cdn-icons-png.flaticon.com/512/110/110686.png';
-    var altText = 'Historic Map of Iowa State University from 1875';
-    var latLngBounds = L.latLngBounds([[42.032092,-93.637067], [42.022175,-93.654810]]);
-
-    var imageOverlay2 = L.imageOverlay(imageUrl2, latLngBounds, {
-        opacity: 0.7,
-        errorOverlayUrl: errorOverlayUrl,
-        alt: altText,
-        interactive: true
-    });
-    */
     var parkStyle = {
         "color": "#ff7800",
         "weight":3,
@@ -115,50 +92,8 @@
 
    historic1875.addTo(map);
    map.fitBounds(historicBounds);
-
- /*   const rgbRenderer = L.LeafletGeotiff.rgb();
-
- Set up options for the layer
-    const tiffOptions = {
-        renderer: rgbRenderer,
-        opacity: 0.7,
-        rBand: 0, // adjust as needed
-        gBand: 0, // adjust as needed
-        bBand: 0,  // adjust as needed
-    // Optionally specify bands if your TIFF is not standard RGB
-    // rBand: 0, gBand: 1, bBand: 2,
-    };
-
-    var geoTiffLayer = L.leafletGeotiff('assets/day_1875-web.tif', tiffOptions).addTo(map);
-    
-    /* add opacity controls 
-    var higherOpacity = new L.Control.higherOpacity();
-    map.addControl(higherOpacity);
-    var lowerOpacity = new L.Control.lowerOpacity();
-    map.addControl(lowerOpacity);
-    var opacitySlider = new L.Control.opacitySlider();
-    map.addControl(opacitySlider);*/
-
+  
    
-
-    /*layer opacity slider
-    opacitySlider.setOpacityLayer(imageOverlay1);*/
-
-
-
-    /* Update the opacity of imageOverlay1 when the first slider is moved 
-    document.getElementById('slider1').addEventListener('input', function() {
-        var opacity = this.value;
-        imageOverlay1.setOpacity(opacity);
-    });
-
-    /* Update the opacity of imageOverlay2 when the second slider is moved 
-    document.getElementById('slider2').addEventListener('input', function() {
-        var opacity = this.value;
-        imageOverlay2.setOpacity(opacity);
-    }); */
-
-
 
     /* add base maps */
     var baseMaps = {
