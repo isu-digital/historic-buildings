@@ -14,4 +14,12 @@ Beginning in 2023, this project proposed researching how an open source geograph
 
 This project is a work in progress, and is led by [Kevin Kane, director emeritus](https://faculty.sites.iastate.edu/kkane/){:target="_blank" rel="noopener"} of the Iowa State University GIS Support and Research Facility, and [Erin Ridnour, digital scholarship librarian](https://www.lib.iastate.edu/people/erin-ridnour){:target="_blank" rel="noopener"} at Iowa State University Library.
 
+## Project Contributors
+
+**Wael Alhaj**, GIS Analyst, ISU GIS Facility
+
+**Michaela Beck**, GIS Student Assistant, ISU GIS Facility
+
+**Mary Witkowski**, Digital Scholarship Student Assistant, ISU Library
+
 
