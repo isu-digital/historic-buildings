@@ -1,8 +1,10 @@
 display_name,stub,dropdown_parent
 Home,/,
-Browse,/browse.html,
-Visualizations,/subjects.html,
-Map,/map.html,
+Buildings,/browse.html,
+Maps,,,
+Interactive Map,/map.html,Maps
+Historical Maps,/historical-maps.html,Maps
 Timeline,/timeline.html,
+Visualizations,/subjects.html,
 Data,/data.html,
 About,/about.html,
