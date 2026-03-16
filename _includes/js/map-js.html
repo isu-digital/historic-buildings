@@ -13,14 +13,6 @@
 {% if site.data.theme.map-cluster == true %}<script src="{{ '/assets/lib/leaflet/leaflet.markercluster.js' | relative_url }}"></script>{% endif %}
 {% if site.data.theme.map-search == true and site.data.theme.map-cluster == true %}<script src="{{ '/assets/lib/leaflet/leaflet.markercluster.freezable.js' | relative_url }}"></script>{% endif %}
 
-<!-- Remove_These_Lines />-->
-<!--<link rel="stylesheet" href="{{ '/assets/lib/opacity/Control.Opacity.css' | relative_url }}" />
-<script src="{{ '/assets/lib/opacity/Control.Opacity.js' | relative_url }}"></script>
-    
-<script src="{{ '/assets/lib/jquery/jquery-1.9.1.js' | relative_url }}"></script>
-<script src="{{ '/assets/lib/jquery/jquery-ui-1.10.3.custom.min.js' | relative_url}}"></script>
-<link rel="stylesheet" href="{{ '/assets/lib/jquery/jquery-ui-1.10.3.custom.min.css' | relative_url}}" />-->
-
 <script src="{{ '/assets/HistBuildings-1900.js' | relative_url}}"></script>
 
 
@@ -96,37 +88,6 @@
         "opacity": 0.7
     };
     
-    
-    /* <!-- Remove_These_Lines />-->
-    
-    add opacity controls 
-    var higherOpacity = new L.Control.higherOpacity();
-    map.addControl(higherOpacity);
-    var lowerOpacity = new L.Control.lowerOpacity();
-    map.addControl(lowerOpacity);
-    var opacitySlider = new L.Control.opacitySlider();
-    map.addControl(opacitySlider);*/
-
-   
-
-    /*layer opacity slider
-    opacitySlider.setOpacityLayer(imageOverlay1);*/
-
-
- /* <!-- Remove_These_Lines />--> */
-    /* Update the opacity of imageOverlay1 when the first slider is moved */
-   /* document.getElementById('slider1').addEventListener('input', function() {
-        var opacity = this.value;
-        imageOverlay1.setOpacity(opacity);
-    }); */
-
-    /* Update the opacity of imageOverlay2 when the second slider is moved */
-   /* document.getElementById('slider2').addEventListener('input', function() {
-        var opacity = this.value;
-        imageOverlay2.setOpacity(opacity);
-    }); */
-
-
 
     /* add base maps */
     var baseMaps = {
@@ -209,8 +170,7 @@
         
         
     
-   /* <!-- Remove_These_Lines />--> */
-    /*L.control.layers(baseMaps,overlays, { collapsed: false }).addTo(map); */
+  
     /* load base map */
      
     /* <!-- Add_These_Lines />--> */
