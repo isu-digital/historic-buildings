@@ -6,6 +6,6 @@
 {%- endcomment -%}
 <ol class="breadcrumb">
     <li class="breadcrumb-item"><a class="text-dark" href="{{ '/' | relative_url }}">Home</a></li>
-    <li class="breadcrumb-item"><a class="text-dark" href="{{ '/browse.html' | relative_url }}">Items</a></li>
+    <li class="breadcrumb-item">{% if page.url contains "historical-maps" %}<a class="text-dark" href="{{ '/historical-maps.html' | relative_url }}">Historical Maps</a>{% else %}<a class="text-dark" href="{{ '/browse.html' | relative_url }}">Buildings</a>{% endif %}</li>
     <li class="breadcrumb-item active text-dark" aria-current="page">{{ page.title | truncatewords: 10 }}</li>
 </ol>

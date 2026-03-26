@@ -14,16 +14,8 @@
 <script src="{{ '/assets/lib/leaflet/leaflet.fusesearch.js' | relative_url }}"></script>{% endif %}
 {% if site.data.theme.map-cluster == true %}<script src="{{ '/assets/lib/leaflet/leaflet.markercluster.js' | relative_url }}"></script>{% endif %}
 {% if site.data.theme.map-search == true and site.data.theme.map-cluster == true %}<script src="{{ '/assets/lib/leaflet/leaflet.markercluster.freezable.js' | relative_url }}"></script>{% endif %}
-<link rel="stylesheet" href="{{ '/assets/lib/opacity/Control.Opacity.css' | relative_url }}" />
-<script src="{{ '/assets/lib/opacity/Control.Opacity.js' | relative_url }}"></script>
-    
-<script src="{{ '/assets/lib/jquery/jquery-1.9.1.js' | relative_url }}"></script>
-<script src="{{ '/assets/lib/jquery/jquery-ui-1.10.3.custom.min.js' | relative_url}}"></script>
-<link rel="stylesheet" href="{{ '/assets/lib/jquery/jquery-ui-1.10.3.custom.min.css' | relative_url}}" />
+
 <script src="{{ '/assets/HistBuildings-1900.js' | relative_url}}"></script>
-<script src="{{ '/assets/lib/leaflet-geotiff/geotiff.bundle.min.js' | relative_url }}"></script>
-<script src="{{ '/assets/lib/leaflet-geotiff/leaflet-geotiff.js' | relative_url }}"></script>
-<script src="{{ '/assets/lib/leaflet-geotiff/leaflet-geotiff-rgb.js' | relative_url }}"></script>
 
 
 <script>
@@ -161,7 +153,84 @@
     };
 
     L.control.groupedLayers(baseMaps, groupedOverlays, { collapsed: false }).addTo(map);
+        
+    /* <!-- Add_These_Lines />--> */
+    function attachOpacitySlider(layersControl, labelText, layer, initialOpacity, sliderLabelText) {
+        var container = layersControl.getContainer();
+        var labels = container.querySelectorAll('.leaflet-control-layers-overlays label');
+        var targetLabelEl = null;
+        var targetInputEl = null;
+
+        labels.forEach(function(lbl) {
+            var inputEl = lbl.querySelector('input.leaflet-control-layers-selector');
+            var text = lbl.textContent.trim();
+            if (inputEl && text.includes(labelText)) {
+                targetLabelEl = lbl;
+                targetInputEl = inputEl;
+            }
+        });
+
+        if (!targetLabelEl || !targetInputEl) {
+            console.warn("Could not find overlay label:", labelText);
+            return;
+        }
+
+        var sliderWrap = document.createElement('div');
+        sliderWrap.className = 'opacity-slider-wrap';
+        sliderWrap.style.display = targetInputEl.checked ? 'block' : 'none';
+        sliderWrap.style.margin = '4px 0 8px 24px';
+
+        var labelDiv = document.createElement('div');
+        labelDiv.textContent = sliderLabelText;
+        labelDiv.style.fontSize = '12px';
+
+        var slider = document.createElement('input');
+        slider.type = 'range';
+        slider.min = '0';
+        slider.max = '1';
+        slider.step = '0.05';
+        slider.value = (typeof initialOpacity === 'number') ? initialOpacity : (layer.options.opacity || 1);
+        slider.style.width = '140px';
+
+        sliderWrap.appendChild(labelDiv);
+        sliderWrap.appendChild(slider);
+        targetLabelEl.insertAdjacentElement('afterend', sliderWrap);
+
+        slider.addEventListener('input', function () {
+            var v = parseFloat(this.value);
+            if (typeof layer.setOpacity === 'function') {
+                layer.setOpacity(v);
+            }
+        });
+
+        targetInputEl.addEventListener('change', function () {
+            sliderWrap.style.display = this.checked ? 'block' : 'none';
+        });
+
+        map.on('overlayadd', function (e) {
+            if (e.layer === layer) sliderWrap.style.display = 'block';
+        });
+
+        map.on('overlayremove', function (e) {
+            if (e.layer === layer) sliderWrap.style.display = 'none';
+        });
+    }    
+        
+        
+    
+  
     /* load base map */
+     
+    /* <!-- Add_These_Lines />--> */
+    var layersControl = L.control.layers(baseMaps, overlays, { collapsed: false }).addTo(map);
+        
+    /* <!-- Add_These_Lines />--> */
+    setTimeout(function() {
+        attachOpacitySlider(layersControl, 'Iowa State College, 1883', imageOverlay1, imageOverlay1.options.opacity, '1883 Map Opacity');
+        attachOpacitySlider(layersControl, 'Iowa State College, 1875', imageOverlay2, imageOverlay2.options.opacity, '1875 Map Opacity');
+    }, 100);
+        
+        
     {{ site.data.theme.map-base | default: 'Esri_WorldStreetMap' }}.addTo(map);
 
     {% if site.data.theme.map-search == true %}
