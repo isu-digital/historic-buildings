@@ -1,7 +1,7 @@
 ---
-title: Browse
+title: Buildings
 layout: browse
-permalink: /browse.html
+permalink: /buildings.html
 ---
 
 ## Browse Buildings
