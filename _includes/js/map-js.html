@@ -8,6 +8,8 @@
 <!-- load leaflet dependencies -->
 <script src="{{ '/assets/lib/leaflet/leaflet.js' | relative_url }}"></script>
 <script src="{{ '/assets/lib/leaflet/Leaflet.fullscreen.min.js' | relative_url }}"></script>
+<link rel="stylesheet" href="{{ '/assets/lib/leaflet/leaflet.groupedlayercontrol.min.css' | relative_url }}" />
+<script src="{{ '/assets/lib/leaflet/leaflet.groupedlayercontrol.min.js' | relative_url }}"></script>
 {% if site.data.theme.map-search == true %}<script src="{{ '/assets/lib/leaflet/fuse.min.js' | relative_url }}"></script>
 <script src="{{ '/assets/lib/leaflet/leaflet.fusesearch.js' | relative_url }}"></script>{% endif %}
 {% if site.data.theme.map-cluster == true %}<script src="{{ '/assets/lib/leaflet/leaflet.markercluster.js' | relative_url }}"></script>{% endif %}
@@ -59,6 +61,7 @@
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     });
     
+    
     var imageUrl1 = 'objects/GENL_26_1883.jpg';
     var errorOverlayUrl = 'https://cdn-icons-png.flaticon.com/512/110/110686.png';
     var altText = 'Historic Map of Iowa State University from 1883';
@@ -88,6 +91,24 @@
         "opacity": 0.7
     };
     
+const tilesBase = "{{ '/assets/tiles/1875/' | relative_url }}"; // resolves to /historic-buildings/assets/tiles/1875/
+    
+
+    // your EPSG:3857 meter coords converted to lat/lng
+    const sw = L.CRS.EPSG3857.unproject(L.point(-10425620.244789753, 5164290.700429559));
+    const ne = L.CRS.EPSG3857.unproject(L.point(-10423612.939286085, 5165803.027624668));
+    const historicBounds = L.latLngBounds(sw, ne);
+
+    const historic1875 = L.tileLayer(tilesBase + "{z}/{x}/{y}.png", {
+    minZoom: 14,
+    maxZoom: 19,
+    bounds: historicBounds,
+    noWrap: true,
+    opacity: 0.7
+    });
+
+   map.fitBounds(historicBounds);
+
 
     /* add base maps */
     var baseMaps = {
@@ -96,39 +117,92 @@
     };
     /*add overlay layers */
     
-    var buildings = L.geoJson(histbuildings, /*{
-        style: parkStyle
-        }*/{onEachFeature: function (feature, layer) {layer.bindPopup("Building Name: " + feature.properties.Name + '<br>' + " Date Built: " + feature.properties["Date Built"]);}});
+    // Helper to filter features by date range
+    function filterByDate(features, minYear, maxYear) {
+        return features.filter(f => {
+            const year = f.properties["Date Built"];
+            return year >= minYear && year <= maxYear;
+        });
+    }
+
+    // Style functions for each range
+    function style1859_1870() { return { color: "#e41a1c", weight: 2, opacity: 0.8, fillOpacity: 0.5 }; }
+    function style1871_1880() { return { color: "#377eb8", weight: 2, opacity: 0.8, fillOpacity: 0.5 }; }
+    function style1881_1900() { return { color: "#4daf4a", weight: 2, opacity: 0.8, fillOpacity: 0.5 }; }
+
+    // Create layers for each date range
+    var buildings_1859_1870 = L.geoJson({
+        type: "FeatureCollection",
+        features: filterByDate(histbuildings.features, 1859, 1870)
+    }, {
+        style: style1859_1870,
+        onEachFeature: function (feature, layer) {
+            layer.bindPopup("Building Name: " + feature.properties.Name + '<br>' + " Date Built: " + feature.properties["Date Built"]);
+        }
+    });
+
+    var buildings_1871_1880 = L.geoJson({
+        type: "FeatureCollection",
+        features: filterByDate(histbuildings.features, 1871, 1880)
+    }, {
+        style: style1871_1880,
+        onEachFeature: function (feature, layer) {
+            layer.bindPopup("Building Name: " + feature.properties.Name + '<br>' + " Date Built: " + feature.properties["Date Built"]);
+        }
+    });
+
+    var buildings_1881_1900 = L.geoJson({
+        type: "FeatureCollection",
+        features: filterByDate(histbuildings.features, 1881, 1900)
+    }, {
+        style: style1881_1900,
+        onEachFeature: function (feature, layer) {
+            layer.bindPopup("Building Name: " + feature.properties.Name + '<br>' + " Date Built: " + feature.properties["Date Built"]);
+        }
+    });
     
-    var overlays = {
-        "Iowa State College, 1883": imageOverlay1,
-        "Iowa State College, 1875": imageOverlay2,
-        "ISU Building Footprints 1859-1900": buildings
+    // Grouped layer control structure
+    var groupedOverlays = {
+        "Building Footprints": {
+            "Buildings 1859–1870 (red)": buildings_1859_1870,
+            "Buildings 1871–1880 (blue)": buildings_1871_1880,
+            "Buildings 1881–1900 (green)": buildings_1881_1900
+        },
+        "Historical Maps": {
+            "1875 Day Map": historic1875,
+            "1883 Map": imageOverlay1,
+        }
     };
         
     /* <!-- Add_These_Lines />--> */
-    function attachOpacitySlider(layersControl, labelText, layer, initialOpacity, sliderLabelText) {
+    function attachOpacitySlider(layersControl, layer, initialOpacity, sliderLabelText) {
         var container = layersControl.getContainer();
-        var labels = container.querySelectorAll('.leaflet-control-layers-overlays label');
-        var targetLabelEl = null;
+        var layerId = L.stamp(layer);
         var targetInputEl = null;
+        var overlayInputs = container.querySelectorAll('.leaflet-control-layers-overlays input.leaflet-control-layers-selector');
+        var existingSlider = container.querySelector('.opacity-slider-wrap[data-layer-id="' + layerId + '"]');
+        var targetLabelEl = targetInputEl ? targetInputEl.closest('label') : null;
 
-        labels.forEach(function(lbl) {
-            var inputEl = lbl.querySelector('input.leaflet-control-layers-selector');
-            var text = lbl.textContent.trim();
-            if (inputEl && text.includes(labelText)) {
-                targetLabelEl = lbl;
+        overlayInputs.forEach(function(inputEl) {
+            if (String(inputEl.layerId) === String(layerId)) {
                 targetInputEl = inputEl;
             }
         });
 
+        if (existingSlider) {
+            existingSlider.remove();
+        }
+
+        targetLabelEl = targetInputEl ? targetInputEl.closest('label') : null;
+
         if (!targetLabelEl || !targetInputEl) {
-            console.warn("Could not find overlay label:", labelText);
+            console.warn("Could not find overlay input for layer:", sliderLabelText);
             return;
         }
 
         var sliderWrap = document.createElement('div');
         sliderWrap.className = 'opacity-slider-wrap';
+        sliderWrap.setAttribute('data-layer-id', layerId);
         sliderWrap.style.display = targetInputEl.checked ? 'block' : 'none';
         sliderWrap.style.margin = '4px 0 8px 24px';
 
@@ -144,6 +218,10 @@
         slider.value = (typeof initialOpacity === 'number') ? initialOpacity : (layer.options.opacity || 1);
         slider.style.width = '140px';
 
+        L.DomEvent.disableClickPropagation(sliderWrap);
+        L.DomEvent.disableScrollPropagation(sliderWrap);
+        L.DomEvent.on(sliderWrap, 'mousedown touchstart pointerdown dblclick click', L.DomEvent.stopPropagation);
+
         sliderWrap.appendChild(labelDiv);
         sliderWrap.appendChild(slider);
         targetLabelEl.insertAdjacentElement('afterend', sliderWrap);
@@ -158,29 +236,29 @@
         targetInputEl.addEventListener('change', function () {
             sliderWrap.style.display = this.checked ? 'block' : 'none';
         });
+    }
 
-        map.on('overlayadd', function (e) {
-            if (e.layer === layer) sliderWrap.style.display = 'block';
-        });
-
-        map.on('overlayremove', function (e) {
-            if (e.layer === layer) sliderWrap.style.display = 'none';
-        });
-    }    
+    function renderOpacitySliders() {
+        attachOpacitySlider(layersControl, historic1875, historic1875.options.opacity, '1875 Map Opacity');
+        attachOpacitySlider(layersControl, imageOverlay1, imageOverlay1.options.opacity, '1883 Map Opacity');
+    }
         
-        
+     var layersControl = L.control.groupedLayers(baseMaps, groupedOverlays, { collapsed: false }).addTo(map);    
     
   
     /* load base map */
      
-    /* <!-- Add_These_Lines />--> */
-    var layersControl = L.control.layers(baseMaps, overlays, { collapsed: false }).addTo(map);
+    /* <!-- Add_These_Lines />--> 
+    var layersControl = L.control.layers(baseMaps, overlays, { collapsed: false }).addTo(map);*/
         
     /* <!-- Add_These_Lines />--> */
     setTimeout(function() {
-        attachOpacitySlider(layersControl, 'Iowa State College, 1883', imageOverlay1, imageOverlay1.options.opacity, '1883 Map Opacity');
-        attachOpacitySlider(layersControl, 'Iowa State College, 1875', imageOverlay2, imageOverlay2.options.opacity, '1875 Map Opacity');
+        renderOpacitySliders();
     }, 100);
+
+    map.on('overlayadd overlayremove', function () {
+        setTimeout(renderOpacitySliders, 0);
+    });
         
         
     {{ site.data.theme.map-base | default: 'Esri_WorldStreetMap' }}.addTo(map);
