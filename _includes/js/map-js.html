@@ -91,23 +91,38 @@
         "opacity": 0.7
     };
     
-const tilesBase = "{{ '/assets/tiles/1875/' | relative_url }}"; // resolves to /historic-buildings/assets/tiles/1875/
-    
 
     // your EPSG:3857 meter coords converted to lat/lng
     const sw = L.CRS.EPSG3857.unproject(L.point(-10425620.244789753, 5164290.700429559));
     const ne = L.CRS.EPSG3857.unproject(L.point(-10423612.939286085, 5165803.027624668));
     const historicBounds = L.latLngBounds(sw, ne);
 
-    const historic1875 = L.tileLayer(tilesBase + "{z}/{x}/{y}.png", {
-    minZoom: 14,
-    maxZoom: 19,
-    bounds: historicBounds,
-    noWrap: true,
-    opacity: 0.7
-    });
+    const historicLayers = {
+        1875: L.tileLayer("{{ '/assets/tiles/1875/' | relative_url }}" + "{z}/{x}/{y}.png", {
+            minZoom: 14,
+            maxZoom: 19,
+            bounds: historicBounds,
+            noWrap: true,
+            opacity: 0.7
+        }),
+        1898: L.tileLayer("{{ '/assets/tiles/1898/' | relative_url }}" + "{z}/{x}/{y}.png", {
+            minZoom: 14,
+            maxZoom: 19,
+            bounds: historicBounds,
+            noWrap: true,
+            opacity: 0.7
+        }),
+        1915: L.tileLayer("{{ '/assets/tiles/1915/' | relative_url }}" + "{z}/{x}/{y}.png", {
+            minZoom: 14,
+            maxZoom: 19,
+            bounds: historicBounds,
+            noWrap: true,
+            opacity: 0.7
+        })
+    };
 
-   map.fitBounds(historicBounds);
+
+    map.fitBounds(historicBounds);
 
 
     /* add base maps */
@@ -123,7 +138,7 @@ const tilesBase = "{{ '/assets/tiles/1875/' | relative_url }}"; // resolves to /
             const year = f.properties["Date Built"];
             return year >= minYear && year <= maxYear;
         });
-    }
+    };
 
     // Style functions for each range
     function style1859_1870() { return { color: "#e41a1c", weight: 2, opacity: 0.8, fillOpacity: 0.5 }; }
@@ -161,89 +176,7 @@ const tilesBase = "{{ '/assets/tiles/1875/' | relative_url }}"; // resolves to /
         }
     });
     
-    // Grouped layer control structure
-    var groupedOverlays = {
-        "Building Footprints": {
-            "Buildings 1859–1870 (red)": buildings_1859_1870,
-            "Buildings 1871–1880 (blue)": buildings_1871_1880,
-            "Buildings 1881–1900 (green)": buildings_1881_1900
-        },
-        "Historical Maps": {
-            "1875 Day Map": historic1875,
-            "1883 Map": imageOverlay1,
-        }
-    };
         
-    /* <!-- Add_These_Lines />--> */
-    function attachOpacitySlider(layersControl, layer, initialOpacity, sliderLabelText) {
-        var container = layersControl.getContainer();
-        var layerId = L.stamp(layer);
-        var targetInputEl = null;
-        var overlayInputs = container.querySelectorAll('.leaflet-control-layers-overlays input.leaflet-control-layers-selector');
-        var existingSlider = container.querySelector('.opacity-slider-wrap[data-layer-id="' + layerId + '"]');
-        var targetLabelEl = targetInputEl ? targetInputEl.closest('label') : null;
-
-        overlayInputs.forEach(function(inputEl) {
-            if (String(inputEl.layerId) === String(layerId)) {
-                targetInputEl = inputEl;
-            }
-        });
-
-        if (existingSlider) {
-            existingSlider.remove();
-        }
-
-        targetLabelEl = targetInputEl ? targetInputEl.closest('label') : null;
-
-        if (!targetLabelEl || !targetInputEl) {
-            console.warn("Could not find overlay input for layer:", sliderLabelText);
-            return;
-        }
-
-        var sliderWrap = document.createElement('div');
-        sliderWrap.className = 'opacity-slider-wrap';
-        sliderWrap.setAttribute('data-layer-id', layerId);
-        sliderWrap.style.display = targetInputEl.checked ? 'block' : 'none';
-        sliderWrap.style.margin = '4px 0 8px 24px';
-
-        var labelDiv = document.createElement('div');
-        labelDiv.textContent = sliderLabelText;
-        labelDiv.style.fontSize = '12px';
-
-        var slider = document.createElement('input');
-        slider.type = 'range';
-        slider.min = '0';
-        slider.max = '1';
-        slider.step = '0.05';
-        slider.value = (typeof initialOpacity === 'number') ? initialOpacity : (layer.options.opacity || 1);
-        slider.style.width = '140px';
-
-        L.DomEvent.disableClickPropagation(sliderWrap);
-        L.DomEvent.disableScrollPropagation(sliderWrap);
-        L.DomEvent.on(sliderWrap, 'mousedown touchstart pointerdown dblclick click', L.DomEvent.stopPropagation);
-
-        sliderWrap.appendChild(labelDiv);
-        sliderWrap.appendChild(slider);
-        targetLabelEl.insertAdjacentElement('afterend', sliderWrap);
-
-        slider.addEventListener('input', function () {
-            var v = parseFloat(this.value);
-            if (typeof layer.setOpacity === 'function') {
-                layer.setOpacity(v);
-            }
-        });
-
-        targetInputEl.addEventListener('change', function () {
-            sliderWrap.style.display = this.checked ? 'block' : 'none';
-        });
-    }
-
-    function renderOpacitySliders() {
-        attachOpacitySlider(layersControl, historic1875, historic1875.options.opacity, '1875 Map Opacity');
-        attachOpacitySlider(layersControl, imageOverlay1, imageOverlay1.options.opacity, '1883 Map Opacity');
-    }
-        
-     var layersControl = L.control.groupedLayers(baseMaps, groupedOverlays, { collapsed: false }).addTo(map);    
     
   
     /* load base map */
@@ -379,6 +312,99 @@ const tilesBase = "{{ '/assets/tiles/1875/' | relative_url }}"; // resolves to /
         });
         {% endif %}
     }
+
+    // Grouped layer control structure
+    var groupedOverlays = {
+        "Map Pins": {
+            "ISU Buildings 1859-1900": mapFeatures
+        },
+        "Building Footprints": {
+            "Buildings 1859–1870 (red)": buildings_1859_1870,
+            "Buildings 1871–1880 (blue)": buildings_1871_1880,
+            "Buildings 1881–1900 (green)": buildings_1881_1900
+        },
+        "H. Summerfield Day Maps": {
+            "1875 Day Map": historicLayers[1875],
+            "1898 Day Map": historicLayers[1898],
+            "1915 Day Map": historicLayers[1915]
+        },
+        "Other Historical Maps": {
+            "1883 Map": imageOverlay1
+        }
+    };
+        
+    /* <!-- Add_These_Lines />--> */
+    function attachOpacitySlider(layersControl, layer, initialOpacity, sliderLabelText) {
+        var container = layersControl.getContainer();
+        var layerId = L.stamp(layer);
+        var targetInputEl = null;
+        var overlayInputs = container.querySelectorAll('.leaflet-control-layers-overlays input.leaflet-control-layers-selector');
+        var existingSlider = container.querySelector('.opacity-slider-wrap[data-layer-id="' + layerId + '"]');
+        var targetLabelEl = targetInputEl ? targetInputEl.closest('label') : null;
+
+        overlayInputs.forEach(function(inputEl) {
+            if (String(inputEl.layerId) === String(layerId)) {
+                targetInputEl = inputEl;
+            }
+        });
+
+        if (existingSlider) {
+            existingSlider.remove();
+        }
+
+        targetLabelEl = targetInputEl ? targetInputEl.closest('label') : null;
+
+        if (!targetLabelEl || !targetInputEl) {
+            console.warn("Could not find overlay input for layer:", sliderLabelText);
+            return;
+        }
+
+        var sliderWrap = document.createElement('div');
+        sliderWrap.className = 'opacity-slider-wrap';
+        sliderWrap.setAttribute('data-layer-id', layerId);
+        sliderWrap.style.display = targetInputEl.checked ? 'block' : 'none';
+        sliderWrap.style.margin = '4px 0 8px 24px';
+
+        var labelDiv = document.createElement('div');
+        labelDiv.textContent = sliderLabelText;
+        labelDiv.style.fontSize = '12px';
+
+        var slider = document.createElement('input');
+        slider.type = 'range';
+        slider.min = '0';
+        slider.max = '1';
+        slider.step = '0.05';
+        slider.value = (typeof initialOpacity === 'number') ? initialOpacity : (layer.options.opacity || 1);
+        slider.style.width = '140px';
+
+        L.DomEvent.disableClickPropagation(sliderWrap);
+        L.DomEvent.disableScrollPropagation(sliderWrap);
+        L.DomEvent.on(sliderWrap, 'mousedown touchstart pointerdown dblclick click', L.DomEvent.stopPropagation);
+
+        sliderWrap.appendChild(labelDiv);
+        sliderWrap.appendChild(slider);
+        targetLabelEl.insertAdjacentElement('afterend', sliderWrap);
+
+        slider.addEventListener('input', function () {
+            var v = parseFloat(this.value);
+            if (typeof layer.setOpacity === 'function') {
+                layer.setOpacity(v);
+            }
+        });
+
+        targetInputEl.addEventListener('change', function () {
+            sliderWrap.style.display = this.checked ? 'block' : 'none';
+        });
+    };
+
+    function renderOpacitySliders() {
+        attachOpacitySlider(layersControl, historicLayers[1875], historicLayers[1875].options.opacity, '1875 Map Opacity');
+        attachOpacitySlider(layersControl, historicLayers[1915], historicLayers[1915].options.opacity, '1915 Map Opacity');
+        attachOpacitySlider(layersControl, historicLayers[1898], historicLayers[1898].options.opacity, '1898 Map Opacity');
+        attachOpacitySlider(layersControl, imageOverlay1, imageOverlay1.options.opacity, '1883 Map Opacity');
+    };
+        
+     var layersControl = L.control.groupedLayers(baseMaps, groupedOverlays, { collapsed: false }).addTo(map);
 
 })();
 
