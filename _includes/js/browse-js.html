@@ -131,8 +131,8 @@ function shuffle(array) {
 
 /* init browse page */
 
-/* randomize items once at page load */
-shuffle(items);
+/* default to title sort on page load */
+sorting(items, "title");
 
 /* set some elements */ 
 var loadingIcon = document.querySelector("#loadingIcon");
