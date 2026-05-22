@@ -13,7 +13,15 @@
 {% if site.data.theme.map-cluster == true %}<script src="{{ '/assets/lib/leaflet/leaflet.markercluster.js' | relative_url }}"></script>{% endif %}
 {% if site.data.theme.map-search == true and site.data.theme.map-cluster == true %}<script src="{{ '/assets/lib/leaflet/leaflet.markercluster.freezable.js' | relative_url }}"></script>{% endif %}
 
-<script src="{{ '/assets/HistBuildings-1900.js' | relative_url}}"></script>
+<!-- Remove_These_Lines />-->
+<!--<link rel="stylesheet" href="{{ '/assets/lib/opacity/Control.Opacity.css' | relative_url }}" />
+<script src="{{ '/assets/lib/opacity/Control.Opacity.js' | relative_url }}"></script>
+    
+<script src="{{ '/assets/lib/jquery/jquery-1.9.1.js' | relative_url }}"></script>
+<script src="{{ '/assets/lib/jquery/jquery-ui-1.10.3.custom.min.js' | relative_url}}"></script>
+<link rel="stylesheet" href="{{ '/assets/lib/jquery/jquery-ui-1.10.3.custom.min.css' | relative_url}}" />-->
+
+<script src="{{ '/assets/hist-buildings.js' | relative_url}}"></script>
 
 
 <script>
@@ -49,13 +57,13 @@
     });
     var Esri_NatGeoWorldMap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}', {
         attribution: 'Tiles &copy; Esri &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC',
-        maxZoom: 16
+        maxZoom: 28
     });
     var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
         attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
     });
     var OpenStreetMap_Mapnik = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
+        maxZoom: 28,
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     });
     
@@ -87,7 +95,67 @@
         "weight":3,
         "opacity": 0.7
     };
+
+    // H. Summerfield Day tiled historical map layers from the updated-tile-layers branch.
+    const sw = L.CRS.EPSG3857.unproject(L.point(-10425620.244789753, 5164290.700429559));
+    const ne = L.CRS.EPSG3857.unproject(L.point(-10423612.939286085, 5165803.027624668));
+    const historicBounds = L.latLngBounds(sw, ne);
+
+    const historicLayers = {
+        1875: L.tileLayer("{{ '/assets/tiles/1875/' | relative_url }}" + "{z}/{x}/{y}.png", {
+            minZoom: 14,
+            maxZoom: 19,
+            bounds: historicBounds,
+            noWrap: true,
+            opacity: 0.7
+        }),
+        1898: L.tileLayer("{{ '/assets/tiles/1898/' | relative_url }}" + "{z}/{x}/{y}.png", {
+            minZoom: 14,
+            maxZoom: 19,
+            bounds: historicBounds,
+            noWrap: true,
+            opacity: 0.7
+        }),
+        1915: L.tileLayer("{{ '/assets/tiles/1915/' | relative_url }}" + "{z}/{x}/{y}.png", {
+            minZoom: 14,
+            maxZoom: 19,
+            bounds: historicBounds,
+            noWrap: true,
+            opacity: 0.7
+        })
+    };
     
+    
+    /* <!-- Remove_These_Lines />-->
+    
+    add opacity controls 
+    var higherOpacity = new L.Control.higherOpacity();
+    map.addControl(higherOpacity);
+    var lowerOpacity = new L.Control.lowerOpacity();
+    map.addControl(lowerOpacity);
+    var opacitySlider = new L.Control.opacitySlider();
+    map.addControl(opacitySlider);*/
+
+   
+
+    /*layer opacity slider
+    opacitySlider.setOpacityLayer(imageOverlay1);*/
+
+
+ /* <!-- Remove_These_Lines />--> */
+    /* Update the opacity of imageOverlay1 when the first slider is moved */
+   /* document.getElementById('slider1').addEventListener('input', function() {
+        var opacity = this.value;
+        imageOverlay1.setOpacity(opacity);
+    }); */
+
+    /* Update the opacity of imageOverlay2 when the second slider is moved */
+   /* document.getElementById('slider2').addEventListener('input', function() {
+        var opacity = this.value;
+        imageOverlay2.setOpacity(opacity);
+    }); */
+
+
 
     /* add base maps */
     var baseMaps = {
@@ -96,15 +164,272 @@
     };
     /*add overlay layers */
     
-    var buildings = L.geoJson(histbuildings, /*{
-        style: parkStyle
-        }*/{onEachFeature: function (feature, layer) {layer.bindPopup("Building Name: " + feature.properties.Name + '<br>' + " Date Built: " + feature.properties["Date Built"]);}});
+    var buildingLayersByYear = {};
+var allBuildingYears = [];
+
+        
+function getBuildingStyle(feature, selectedYear) {
+    var dateBuilt = parseInt(feature.properties["Date Built"]);
+    var endDate = parseInt(feature.properties.End);
+
+    var stillExists = isNaN(endDate) || endDate === 0 || endDate === 9999;
+
+    var isActive =
+        dateBuilt <= selectedYear &&
+        (stillExists || endDate >= selectedYear);
+
+    if (isActive) {
+        return {
+            color: "#0078d7",
+            weight: 2,
+            fillColor: "#0078d7",
+            fillOpacity: 0.45,
+            opacity: 1
+        };
+    }
+
+    return {
+        color: "#0078d7",
+        weight: 1,
+        fillColor: "#0078d7",
+        fillOpacity: 0.04,
+        opacity: 0.30
+    };
+}
+        
+var buildings = L.geoJson(histbuildings, {style: function(feature) {
+    return getBuildingStyle(feature, 1850);
+},
+    filter: function(feature) {
+        return true;
+    },
+    onEachFeature: function (feature, layer) {
+        var buildingName = feature.properties.Name;
+        var dateBuilt = feature.properties["Date Built"];
+
+        var endDate = feature.properties.End;
+        var endText = (endDate == 9999 || endDate === "9999") ? "Still exists" : endDate;
+
+layer.bindPopup(
+    "Building Name: " + buildingName + 
+    '<br>' + 
+    "Date Built: " + dateBuilt +
+    '<br>' +
+    "Removed: " + endText
+);
+
+        var year = parseInt(dateBuilt);
+
+        if (!isNaN(year)) {
+            if (!buildingLayersByYear[year]) {
+                buildingLayersByYear[year] = [];
+                allBuildingYears.push(year);
+            }
+            buildingLayersByYear[year].push(layer);
+        }
+    }
+});
+
+allBuildingYears = allBuildingYears.sort(function(a, b) {
+    return a - b;
+});
+    
+    var buildingCountsByYear = {};
+var maxBuildingCount = 0;
+
+histbuildings.features.forEach(function(feature) {
+    var year = parseInt(feature.properties["Date Built"]);
+
+    if (!isNaN(year)) {
+        if (!buildingCountsByYear[year]) {
+            buildingCountsByYear[year] = 0;
+        }
+
+        buildingCountsByYear[year]++;
+
+        if (buildingCountsByYear[year] > maxBuildingCount) {
+            maxBuildingCount = buildingCountsByYear[year];
+        }
+    }
+});
     
     var overlays = {
         "Iowa State College, 1883": imageOverlay1,
         "Iowa State College, 1875": imageOverlay2,
+        "1875 Day Map": historicLayers[1875],
+        "1898 Day Map": historicLayers[1898],
+        "1915 Day Map": historicLayers[1915],
         "ISU Building Footprints 1859-1900": buildings
     };
+        
+    var buildingSliderControl = L.control({ position: 'bottomleft' });
+
+setTimeout(function() {
+    var style = document.createElement('style');
+
+    style.innerHTML = `
+    .leaflet-bottom.leaflet-left {
+        width: calc(100% - 20px);
+        pointer-events: none;
+    }
+
+    .leaflet-bottom.leaflet-left .leaflet-control {
+        width: 100%;
+        margin-left: 10px;
+        margin-bottom: 10px;
+        pointer-events: auto;
+    }
+
+    .building-year-slider-control {
+    background: rgba(255,255,255,0.62);
+    backdrop-filter: blur(5px);
+    padding: 10px 18px;
+    border-radius: 12px;
+    box-shadow: 0 3px 14px rgba(0,0,0,0.18);
+    width: calc(100vw - 110px);
+    font-size: 13px;
+    opacity: 0.55;
+    transition: opacity 0.25s ease, background 0.25s ease;
+}
+
+.building-year-slider-control:hover,
+.building-year-slider-control:focus-within {
+    background: rgba(255,255,255,0.92);
+    opacity: 1;
+}
+
+.year-axis-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #333;
+    margin-top: 4px;
+}
+
+    .building-year-header {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        margin-bottom: 8px;
+        white-space: nowrap;
+    }
+
+    .single-year-slider {
+        width: 100%;
+    }
+
+    .single-year-slider input[type="range"] {
+        width: 100%;
+        cursor: pointer;
+    }
+
+    .year-axis-labels {
+        display: flex;
+        justify-content: space-between;
+        font-size: 12px;
+        color: #333;
+        margin-top: 2px;
+    }
+    `;
+
+    document.head.appendChild(style);
+}, 50);
+
+buildingSliderControl.onAdd = function(map) {
+    var div = L.DomUtil.create('div', 'building-year-slider-control leaflet-control');
+
+    var minYear = 1850;
+    var maxYear = 2026;
+
+    div.innerHTML = `
+        <div class="building-year-header">
+            <strong>Building Year:</strong>
+            <strong id="selectedBuildingYear">${minYear}</strong>
+        </div>
+
+        <div class="single-year-slider">
+            <input
+                type="range"
+                id="buildingYearSlider"
+                min="${minYear}"
+                max="${maxYear}"
+                value="${minYear}"
+                step="1">
+
+            <div class="year-axis-labels">
+    <span>1850</span>
+    <span>1860</span>
+    <span>1870</span>
+    <span>1880</span>
+    <span>1890</span>
+    <span>1900</span>
+    <span>1910</span>
+    <span>1920</span>
+    <span>1930</span>
+    <span>1940</span>
+    <span>1950</span>
+    <span>1960</span>
+    <span>1970</span>
+    <span>1980</span>
+    <span>1990</span>
+    <span>2000</span>
+    <span>2010</span>
+    <span>2020</span>
+    <span>2026</span>
+</div>
+        </div>
+    `;
+
+    L.DomEvent.disableClickPropagation(div);
+    L.DomEvent.disableScrollPropagation(div);
+
+    return div;
+};
+
+function getBuildingsExistingInYear(selectedYear) {
+    return histbuildings.features.filter(function(feature) {
+        var dateBuilt = parseInt(feature.properties["Date Built"]);
+        var endDate = parseInt(feature.properties.End);
+
+        if (isNaN(dateBuilt)) return false;
+
+        var stillExists = isNaN(endDate) || endDate === 0 || endDate === 9999;
+
+        return dateBuilt <= selectedYear && (stillExists || endDate >= selectedYear);
+    });
+}
+
+function showBuildingsExistingInYear(selectedYear) {
+    buildings.eachLayer(function(layer) {
+        layer.setStyle(getBuildingStyle(layer.feature, selectedYear));
+    });
+}
+
+function addBuildingSliderControl() {
+    if (!map.hasLayer(buildings)) return;
+
+    buildingSliderControl.addTo(map);
+
+    setTimeout(function() {
+        var yearSlider = document.getElementById('buildingYearSlider');
+        var yearLabel = document.getElementById('selectedBuildingYear');
+
+        if (!yearSlider || !yearLabel) {
+            console.warn("Building year slider elements not found.");
+            return;
+        }
+
+        function updateYear() {
+            var selectedYear = parseInt(yearSlider.value);
+            yearLabel.textContent = selectedYear;
+            showBuildingsExistingInYear(selectedYear);
+        }
+
+        yearSlider.addEventListener('input', updateYear);
+
+        updateYear();
+    }, 100);
+}  
         
     /* <!-- Add_These_Lines />--> */
     function attachOpacitySlider(layersControl, labelText, layer, initialOpacity, sliderLabelText) {
@@ -170,16 +495,39 @@
         
         
     
-  
+   /* <!-- Remove_These_Lines />--> */
+    /*L.control.layers(baseMaps,overlays, { collapsed: false }).addTo(map); */
     /* load base map */
      
     /* <!-- Add_These_Lines />--> */
     var layersControl = L.control.layers(baseMaps, overlays, { collapsed: false }).addTo(map);
         
+    map.on('overlayadd', function(e) {
+    if (e.layer === buildings) {
+        addBuildingSliderControl();
+    }
+});
+
+map.on('overlayremove', function(e) {
+    if (e.layer === buildings) {
+        map.removeControl(buildingSliderControl);
+        buildings.eachLayer(function(layer) {
+    layer.setStyle(getBuildingStyle(layer.feature, 1850));
+});
+    }
+});
+
+if (map.hasLayer(buildings)) {
+    addBuildingSliderControl();
+}
+        
     /* <!-- Add_These_Lines />--> */
     setTimeout(function() {
         attachOpacitySlider(layersControl, 'Iowa State College, 1883', imageOverlay1, imageOverlay1.options.opacity, '1883 Map Opacity');
         attachOpacitySlider(layersControl, 'Iowa State College, 1875', imageOverlay2, imageOverlay2.options.opacity, '1875 Map Opacity');
+        attachOpacitySlider(layersControl, '1875 Day Map', historicLayers[1875], historicLayers[1875].options.opacity, '1875 Day Map Opacity');
+        attachOpacitySlider(layersControl, '1898 Day Map', historicLayers[1898], historicLayers[1898].options.opacity, '1898 Day Map Opacity');
+        attachOpacitySlider(layersControl, '1915 Day Map', historicLayers[1915], historicLayers[1915].options.opacity, '1915 Day Map Opacity');
     }, 100);
         
         
@@ -258,10 +606,22 @@
         layer.bindPopup(popupTemplate);
     }
     function objectMarkers(feature,latlng) {
-        var marker = L.marker(latlng, {alt: feature.properties.title});
-        {% if site.data.theme.map-cluster == true %}markers.addLayer(marker);{% endif %}
-        return marker;
-    }
+
+    var blueIcon = L.icon({
+        iconUrl: '{{ "/assets/img/blue-pin.png" | relative_url }}',
+        iconSize: [40, 40],
+        iconAnchor: [20, 40],
+        popupAnchor: [0, -35]
+    });
+
+    var marker = L.marker(latlng, {
+        icon: blueIcon,
+        alt: feature.properties.title
+    });
+
+    {% if site.data.theme.map-cluster == true %}markers.addLayer(marker);{% endif %}
+    return marker;
+}
 
     /* add objects from geoJson features */
     var mapFeatures = L.geoJson(geodata, {

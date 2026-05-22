@@ -6,7 +6,7 @@ layout: item/building-page-custom
 gallery: true
 custom-foot: js/modal-hash-js.html
 ---
-{% assign children = site.data[site.metadata] | where_exp: 'item','item.parentid == page.objectid' %}
+{% assign children = site.data[site.metadata] | where_exp: 'item','item.buildings_present contains page.title' %}
 
 <div class="mb-4 ">
     

@@ -34,11 +34,11 @@ author: emanderson811
 #
 # Set the metadata for your collection (the name of the CSV file in your _data directory that describes the objects in your collection) 
 # Use the filename of your CSV **without** the ".csv" extension! E.g. _data/demo-metadata.csv --> "demo-metadata"
-metadata: campus-cornerstones 
+metadata: campus-cornerstones-0426
 # page generation settings [optional!]
 # [optional: only used if you need to tweak CB defaults or generate from more than one data file]
 page_gen:
-  - data: 'campus-cornerstones'
+  - data: 'campus-cornerstones-0426'
     template: 'item'
     name: 'objectid'
     dir: 'items'
