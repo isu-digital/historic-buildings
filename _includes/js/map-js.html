@@ -166,19 +166,24 @@
     
     var buildingLayersByYear = {};
 var allBuildingYears = [];
-
+var movementLineLayer = L.layerGroup().addTo(map);
         
 function getBuildingStyle(feature, selectedYear) {
+
     var dateBuilt = parseInt(feature.properties["Date Built"]);
     var endDate = parseInt(feature.properties.End);
 
-    var stillExists = isNaN(endDate) || endDate === 0 || endDate === 9999;
+    var stillExists =
+        isNaN(endDate) ||
+        endDate === 0 ||
+        endDate === 9999;
 
-    var isActive =
+    var isVisible =
         dateBuilt <= selectedYear &&
         (stillExists || endDate >= selectedYear);
 
-    if (isActive) {
+    // Active building
+    if (isVisible) {
         return {
             color: "#0078d7",
             weight: 2,
@@ -188,16 +193,18 @@ function getBuildingStyle(feature, selectedYear) {
         };
     }
 
-    return {
-        color: "#0078d7",
-        weight: 1,
-        fillColor: "#0078d7",
-        fillOpacity: 0.04,
-        opacity: 0.30
-    };
+    // Ghost building
+return {
+    color: "#0078d7",
+    weight: 1,
+    fillColor: "#0078d7",
+    fillOpacity: 0.04,
+    opacity: 0.50
+};
 }
         
-var buildings = L.geoJson(histbuildings, {style: function(feature) {
+var buildings = L.geoJson(histbuildings, {
+    style: function(feature) {
     return getBuildingStyle(feature, 1850);
 },
     filter: function(feature) {
@@ -208,7 +215,9 @@ var buildings = L.geoJson(histbuildings, {style: function(feature) {
         var dateBuilt = feature.properties["Date Built"];
 
         var endDate = feature.properties.End;
-        var endText = (endDate == 9999 || endDate === "9999") ? "Still exists" : endDate;
+        var endText = (endDate == 0 || endDate === "0" || endDate == 9999 || endDate === "9999") 
+    ? "Still exists" 
+    : endDate;
 
 layer.bindPopup(
     "Building Name: " + buildingName + 
@@ -217,6 +226,10 @@ layer.bindPopup(
     '<br>' +
     "Removed: " + endText
 );
+
+layer.on('click', function() {
+    showBuildingMovementLines(feature);
+}); 
 
         var year = parseInt(dateBuilt);
 
@@ -229,6 +242,109 @@ layer.bindPopup(
         }
     }
 });
+        
+function parseMovedBuildingName(name) {
+    var match = name.match(/^(.*?)\s*\[(\d+)\/(\d+)\]\s*$/);
+
+    if (!match) return null;
+
+    return {
+        baseName: match[1].trim(),
+        order: parseInt(match[2]),
+        total: parseInt(match[3])
+    };
+}
+
+function getFeatureCenter(feature) {
+    return L.geoJson(feature).getBounds().getCenter();
+}
+
+function getMovedBuildingGroup(clickedFeature) {
+    var clickedName = clickedFeature.properties.Name;
+    var parsed = parseMovedBuildingName(clickedName);
+
+    if (!parsed) return [];
+
+    var group = histbuildings.features.filter(function(feature) {
+        var name = feature.properties.Name;
+        var p = parseMovedBuildingName(name);
+
+        return p &&
+            p.baseName === parsed.baseName &&
+            p.total === parsed.total;
+    });
+
+    group.sort(function(a, b) {
+        return parseMovedBuildingName(a.properties.Name).order -
+               parseMovedBuildingName(b.properties.Name).order;
+    });
+
+    return group;
+}
+
+function makeCurvedLinePoints(start, end) {
+    var points = [];
+
+    var lat1 = start.lat;
+    var lng1 = start.lng;
+    var lat2 = end.lat;
+    var lng2 = end.lng;
+
+    var midLat = (lat1 + lat2) / 2;
+    var midLng = (lng1 + lng2) / 2;
+
+    var controlLat = midLat + 0.0015;
+    var controlLng = midLng;
+
+    for (var t = 0; t <= 1; t += 0.03) {
+        var lat =
+            Math.pow(1 - t, 2) * lat1 +
+            2 * (1 - t) * t * controlLat +
+            Math.pow(t, 2) * lat2;
+
+        var lng =
+            Math.pow(1 - t, 2) * lng1 +
+            2 * (1 - t) * t * controlLng +
+            Math.pow(t, 2) * lng2;
+
+        points.push([lat, lng]);
+    }
+
+    return points;
+}
+
+function showBuildingMovementLines(clickedFeature) {
+    movementLineLayer.clearLayers();
+
+    var group = getMovedBuildingGroup(clickedFeature);
+
+    if (group.length < 2) return;
+
+    for (var i = 0; i < group.length - 1; i++) {
+        var currentParsed = parseMovedBuildingName(group[i].properties.Name);
+        var nextParsed = parseMovedBuildingName(group[i + 1].properties.Name);
+
+        if (!currentParsed || !nextParsed) continue;
+
+        // Do not jump over missing locations.
+        if (nextParsed.order !== currentParsed.order + 1) continue;
+
+        var start = getFeatureCenter(group[i]);
+        var end = getFeatureCenter(group[i + 1]);
+
+        var curvedPoints = makeCurvedLinePoints(start, end);
+
+        var line = L.polyline(curvedPoints, {
+            color: "#0078d7",
+            weight: 3,
+            opacity: 0.9,
+            dashArray: "8, 10",
+            className: "animated-move-line"
+        });
+
+        movementLineLayer.addLayer(line);
+    }
+}
 
 allBuildingYears = allBuildingYears.sort(function(a, b) {
     return a - b;
@@ -330,6 +446,16 @@ setTimeout(function() {
         color: #333;
         margin-top: 2px;
     }
+     .animated-move-line {
+    stroke-dasharray: 8 10;
+    animation: dashMove 1.2s linear infinite;
+}
+
+@keyframes dashMove {
+    to {
+        stroke-dashoffset: -36;
+    }
+}
     `;
 
     document.head.appendChild(style);
@@ -400,8 +526,17 @@ function getBuildingsExistingInYear(selectedYear) {
 }
 
 function showBuildingsExistingInYear(selectedYear) {
+
+    movementLineLayer.clearLayers();
+
     buildings.eachLayer(function(layer) {
-        layer.setStyle(getBuildingStyle(layer.feature, selectedYear));
+
+        var feature = layer.feature;
+
+        layer.setStyle(
+            getBuildingStyle(feature, selectedYear)
+        );
+
     });
 }
 
@@ -511,9 +646,8 @@ function addBuildingSliderControl() {
 map.on('overlayremove', function(e) {
     if (e.layer === buildings) {
         map.removeControl(buildingSliderControl);
-        buildings.eachLayer(function(layer) {
-    layer.setStyle(getBuildingStyle(layer.feature, 1850));
-});
+        buildings.clearLayers();
+        movementLineLayer.clearLayers();
     }
 });
 
