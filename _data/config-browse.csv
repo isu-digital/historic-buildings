@@ -2,7 +2,7 @@ field,display_name,btn,hidden,sort_name
 date,Date,,,Date
 creator,Creator,,,
 subject,,true
-location,,true
 year_started,Year Built,,,Year Built
-architect,Architect,true,,
+architect,Architect,true,,Architect
+contractor,Contractor,true,,Contractor
 identifier,,,true,
