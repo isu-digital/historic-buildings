@@ -1,15 +1,12 @@
 field,display_name,browse_link,external_link,dc_map,schema_map
 title,Building Name,,,DCTERMS.title,headline
+alternate_names,Alternate Names,,,,
 creator,Creator,,,DCTERMS.creator,creator
 date,Date Created,,,DCTERMS.date,dateCreated
 description,Historical Note,,,DCTERMS.description,description
 subject,Subjects,,,DCTERMS.subject,keywords
-location,Location,,,,contentLocation
-latitude,Latitude,,,,
-longitude,Longitude,,,,
 year_started,Year Built,,,,
 year_gone,Year Removed,,,,
-valuation,Building Cost,,,,
 architect,Architect,true,,,
 contractor,Contractor,true,,,
 source,Source,,,,
