@@ -5,7 +5,7 @@ permalink: /about.html
 # include CollectionBuilder info at bottom
 credits: false
 # featured-image value can be one objectid for a photo object in this collection, a relative path to an image in this project, or a full url to any image. If left blank, no featured image will appear at top of About page.
-about-featured-image: /objects/hub_001.jpg
+about-featured-image: /objects/4-8-dinkey-hub-1906.jpg
 # set background-position for featured image, "center", "top", "bottom"
 position: center
 # major heading to display over featured image
@@ -35,6 +35,18 @@ This project is a work in progress, and is led by [Kevin Kane, director emeritus
 **Michaela Beck**, GIS Student Assistant, ISU GIS Facility
 
 **Mary Witkowski**, Digital Scholarship Student Assistant, ISU Library
+
+**Special thanks** to everyone involved in the digital projects workflow from Iowa State University Library's Special Collections and University Archives, Preservation, Metadata Services, and Digital Scholarship and Initiatives departments for their work in digitizing maps and photographs for inclusion in this project. 
+
+## Related Digital Collections and Projects
+
+[The Day Edition](https://emanderson811.github.io/day-edition/){:target="_blank" rel="noopener"}, An annotated digital edition of H. Summerfield Day's *The Iowa State University Campus and Its Buildings*
+
+[Iowa State University Photographs](https://digitalcollections.lib.iastate.edu/universityphotographs/){:target="_blank" rel="noopener"}, digital collection
+
+[Iowa State University Historical Maps](https://digitalcollections.lib.iastate.edu/historicalmaps/){:target="_blank" rel="noopener"}, digital collection
+
+[From Prairie Sod to Campus Cornerstones: Building Our Campus History](https://historicexhibits.lib.iastate.edu/buildings/), legacy digital exhibit
 
 ---
 
