@@ -4,7 +4,6 @@ creator,Creator,,,DCTERMS.creator,creator
 date,Date Created,,,DCTERMS.date,dateCreated
 description,Description,,,DCTERMS.description,description
 subject,Subjects,,,DCTERMS.subject,keywords
-location,Location,,,,contentLocation
 latitude,Latitude,,,,
 longitude,Longitude,,,,
 year_started,Year Built,,,,
@@ -13,7 +12,4 @@ valuation,Building Cost,,,,
 architect,Architect,true,,,
 contractor,Contractor,true,,,
 source,Source,,,,
-identifier,Source Identifier,,,,
-type,Type,,,DCTERMS.type,
-format,Format,,,,encodingFormat
 rightsstatement,,,,DCTERMS.rights,license
