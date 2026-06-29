@@ -12,6 +12,7 @@
 <script src="{{ '/assets/lib/leaflet/leaflet.groupedlayercontrol.min.js' | relative_url }}"></script>
 {% if site.data.theme.map-search == true %}<script src="{{ '/assets/lib/leaflet/fuse.min.js' | relative_url }}"></script>
 <script src="{{ '/assets/lib/leaflet/leaflet.fusesearch.js' | relative_url }}"></script>{% endif %}
+<script src="https://unpkg.com/esri-leaflet/dist/esri-leaflet.js"></script>
 {% if site.data.theme.map-cluster == true %}<script src="{{ '/assets/lib/leaflet/leaflet.markercluster.js' | relative_url }}"></script>{% endif %}
 {% if site.data.theme.map-search == true and site.data.theme.map-cluster == true %}<script src="{{ '/assets/lib/leaflet/leaflet.markercluster.freezable.js' | relative_url }}"></script>{% endif %}
 
@@ -45,6 +46,12 @@
     /* init map, set center and zoom */
     var map = L.map('map').setView(mapCenter, mapZoom);
 
+    // Keep the live orthophoto beneath the historic raster overlays.
+    map.createPane('orthoPane');
+    map.getPane('orthoPane').style.zIndex = 250;
+    map.createPane('historicPane');
+    map.getPane('historicPane').style.zIndex = 300;
+
     /* add map layer options */
     var Esri_WorldStreetMap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
         attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012'
@@ -60,6 +67,12 @@
         maxZoom: 19,
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     });
+    var orthserver_naip_2025 = L.esri.imageMapLayer({
+        url: 'https://ortho.gis.iastate.edu/arcgis/rest/services/ortho/naip_2025_nc/ImageServer',
+        attribution: 'Imagery &copy; <a href="https://www.fsa.usda.gov/programs-and-services/aerial-photography/imagery-programs/naip-imagery/">USDA NAIP</a> contributors',
+        opacity: 1,
+        pane: 'orthoPane'
+    });
     
     
     var imageUrl1 = 'objects/GENL_26_1883.jpg';
@@ -71,7 +84,8 @@
         opacity: 0.5,
         errorOverlayUrl: errorOverlayUrl,
         alt: altText,
-        interactive: true
+        interactive: true,
+        pane: 'historicPane'
     });
     var imageUrl2 = 'objects/day-1875.jpg';
     var errorOverlayUrl = 'https://cdn-icons-png.flaticon.com/512/110/110686.png';
@@ -82,7 +96,8 @@
         opacity: 0.7,
         errorOverlayUrl: errorOverlayUrl,
         alt: altText,
-        interactive: true
+        interactive: true,
+        pane: 'historicPane'
     });
     
     var parkStyle = {
@@ -103,21 +118,24 @@
             maxZoom: 19,
             bounds: historicBounds,
             noWrap: true,
-            opacity: 0.7
+            opacity: 0.7,
+            pane: 'historicPane'
         }),
         1898: L.tileLayer("{{ '/assets/tiles/1898/' | relative_url }}" + "{z}/{x}/{y}.png", {
             minZoom: 14,
             maxZoom: 19,
             bounds: historicBounds,
             noWrap: true,
-            opacity: 0.7
+            opacity: 0.7,
+            pane: 'historicPane'
         }),
         1915: L.tileLayer("{{ '/assets/tiles/1915/' | relative_url }}" + "{z}/{x}/{y}.png", {
             minZoom: 14,
             maxZoom: 19,
             bounds: historicBounds,
             noWrap: true,
-            opacity: 0.7
+            opacity: 0.7,
+            pane: 'historicPane'
         })
     };
 
@@ -128,7 +146,7 @@
     /* add base maps */
     var baseMaps = {
         "Esri World StreetMap": Esri_WorldStreetMap,
-        "Esri Imagery": Esri_WorldImagery
+        "Orthophotography (NAIP 2025)": orthserver_naip_2025
     };
     /*add overlay layers */
     
