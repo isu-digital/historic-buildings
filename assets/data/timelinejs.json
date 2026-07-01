@@ -38,6 +38,7 @@
           "year": "{{ dates[0] }}"{% elsif item.end_date contains '/' %}"year": "{{ item.date | strip | split: '/' | last }}"{% else %}
           "year": "{{ item.end_date }}"{% endif %}
         },
+        "display_date": "{{ item.display_date }}",
         "text": {
           "headline": {{ item.title | jsonify }}{% if item.description %},
           "text": {{ item.description | jsonify }}{% endif %}
