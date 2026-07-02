@@ -29,6 +29,7 @@ gallery: true
                     <div class="feature-building">
                         {% if page.image_thumb or page.image_small %}
                             {% include item/item-thumb.html %}
+                            {% include feature/button.html text="View all Photographs" link="#photographs-containing" color="primary" centered="true"%}
                         {% endif %}
                     </div>
                     {% include item/mini-map.html map-zoom="18" %}
@@ -40,7 +41,7 @@ gallery: true
         </div>
 
         <div class="col-12 col-md-10">
-            <div class="my-4 h5 small">Photographs Containing {{page.title}}: {% if page.display_template == "compound_object" or page.display_template == "multiple" %}{% assign children = site.data[site.metadata] | where_exp: 'item','item.buildings_present contains page.title' %} ({{ children | size }} Items){% endif %}</div>
+            <div id="photographs-containing" class="my-4 h5 small">Photographs Containing {{page.title}}: {% if page.display_template == "compound_object" or page.display_template == "multiple" %}{% assign children = site.data[site.metadata] | where_exp: 'item','item.buildings_present contains page.title' %} ({{ children | size }} Items){% endif %}</div>
             {{ content }}
 
         </div>
