@@ -20,6 +20,7 @@
 {% if page.layout == 'data' %}<link rel="stylesheet" type="text/css" href="{{ '/assets/lib/datatables/datatables.min.css' | relative_url }}">{%- endif -%}
 {% if page.layout == 'map' or page.layout == 'custom-home-infographic' %}<link rel="stylesheet" href="{{ '/assets/lib/leaflet/leaflet.css' | relative_url }}">
 <link rel="stylesheet" href="{{ '/assets/lib/leaflet/leaflet.fullscreen.css' | relative_url }}">
+<script src="https://unpkg.com/esri-leaflet/dist/esri-leaflet.js"></script>
 {% if site.data.theme.map-search == true %}<link rel="stylesheet" href="{{ '/assets/lib/leaflet/leaflet.fusesearch.css' | relative_url }}">{%- endif -%}
 {% if site.data.theme.map-cluster == true %}<link rel="stylesheet" href="{{ '/assets/lib/leaflet/MarkerCluster.css' | relative_url }}">
 <link rel="stylesheet" href="{{ '/assets/lib/leaflet/MarkerCluster.Default.css' | relative_url }}">{% endif %}{%- endif -%}

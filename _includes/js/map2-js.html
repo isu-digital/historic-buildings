@@ -14,7 +14,7 @@
 {% if site.data.theme.map-search == true and site.data.theme.map-cluster == true %}<script src="{{ '/assets/lib/leaflet/leaflet.markercluster.freezable.js' | relative_url }}"></script>{% endif %}
 <link rel="stylesheet" href="{{ '/assets/lib/opacity/Control.Opacity.css' | relative_url }}" />
 <script src="{{ '/assets/lib/opacity/Control.Opacity.js' | relative_url }}"></script>
-    
+<script src="https://unpkg.com/esri-leaflet/dist/esri-leaflet.js"></script>
 <script src="{{ '/assets/lib/jquery/jquery-1.9.1.js' | relative_url }}"></script>
 <script src="{{ '/assets/lib/jquery/jquery-ui-1.10.3.custom.min.js' | relative_url}}"></script>
 <link rel="stylesheet" href="{{ '/assets/lib/jquery/jquery-ui-1.10.3.custom.min.css' | relative_url}}" />
@@ -48,6 +48,12 @@
     /* init map, set center and zoom */
     var map = L.map('map2').setView(mapCenter, mapZoom);
 
+    // Keep the live orthophoto beneath the historic raster overlays.
+    map.createPane('orthoPane');
+    map.getPane('orthoPane').style.zIndex = 250;
+    map.createPane('historicPane');
+    map.getPane('historicPane').style.zIndex = 300;
+
     /* add map layer options */
     var Esri_WorldStreetMap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
         attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012'
@@ -63,6 +69,12 @@
         maxZoom: 19,
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     });
+    var orthserver_naip_2025 = L.esri.imageMapLayer({
+        url: 'https://ortho.gis.iastate.edu/arcgis/rest/services/ortho/naip_2025_nc/ImageServer',
+        attribution: 'Imagery &copy; <a href="https://www.fsa.usda.gov/programs-and-services/aerial-photography/imagery-programs/naip-imagery/">USDA NAIP</a> contributors',
+        opacity: 1,
+        pane: 'orthoPane'
+    });
     
     var parkStyle = {
         "color": "#d9230f",
@@ -72,10 +84,8 @@
 
     /* add base maps */
     var baseMaps = {
-        "Esri World StreetMap": Esri_WorldStreetMap,
-        "Esri National Geo": Esri_NatGeoWorldMap,
-        "Esri Imagery": Esri_WorldImagery,
-        "Open Street Map": OpenStreetMap_Mapnik
+        "Open Street Map": OpenStreetMap_Mapnik,
+        "Orthophotography (NAIP 2025)": orthserver_naip_2025
     };
     /*add overlay layers */
     
@@ -95,7 +105,8 @@
         maxZoom: 19,
         bounds: historicBounds,
         noWrap: true,
-        opacity: 0.7
+        opacity: 0.7,
+        pane: 'historicPane'
     }).addTo(map);
 
     map.fitBounds(historicBounds);
@@ -115,7 +126,7 @@
 
     
     /* load base map */
-    Esri_WorldStreetMap.addTo(map);
+    OpenStreetMap_Mapnik.addTo(map);
 
     {% if site.data.theme.map-search == true %}
     /* add search, https://github.com/naomap/leaflet-fusesearch */

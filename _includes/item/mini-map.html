@@ -21,6 +21,7 @@
 <link rel="stylesheet" href="{{ '/assets/lib/leaflet/leaflet.fullscreen.css' | relative_url }}">
 <script src="{{ '/assets/lib/leaflet/leaflet.js' | relative_url }}"></script>
 <script src="{{ '/assets/lib/leaflet/Leaflet.fullscreen.min.js' | relative_url }}"></script>
+<script src="https://unpkg.com/esri-leaflet/dist/esri-leaflet.js"></script>
 <script src="{{ '/assets/HistBuildings-1900.js' | relative_url}}"></script>
 <script>
     // initial start point
@@ -40,6 +41,15 @@
     var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
         attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
     });
+    var OpenStreetMap_Mapnik = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    });
+    var orthserver_naip_2025 = L.esri.imageMapLayer({
+        url: 'https://ortho.gis.iastate.edu/arcgis/rest/services/ortho/naip_2025_nc/ImageServer',
+        attribution: 'Imagery &copy; <a href="https://www.fsa.usda.gov/programs-and-services/aerial-photography/imagery-programs/naip-imagery/">USDA NAIP</a> contributors',
+        opacity: 1
+    });
  /*add overlay layers */
     
  var buildings = L.geoJson(histbuildings, {
@@ -55,14 +65,13 @@
 
     /* add base map switcher */
     var baseMaps = {
-        "Esri World StreetMap": Esri_WorldStreetMap,
-        "Esri National Geo": Esri_NatGeoWorldMap,
-        "Esri Imagery": Esri_WorldImagery
+        "Orthophotography (NAIP 2025)": orthserver_naip_2025,
+        "Open Street Map": OpenStreetMap_Mapnik
     };
 
     L.control.layers(baseMaps,overlays).addTo(map);
     /* load base map */
-    Esri_WorldImagery.addTo(map);
+    orthserver_naip_2025.addTo(map);
     /* add fullscreen control */ 
     map.addControl(new L.Control.Fullscreen());
     {% unless include.map-marker == false %}

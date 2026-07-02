@@ -21,6 +21,7 @@
 <link rel="stylesheet" href="{{ '/assets/lib/leaflet/leaflet.fullscreen.css' | relative_url }}">
 <script src="{{ '/assets/lib/leaflet/leaflet.js' | relative_url }}"></script>
 <script src="{{ '/assets/lib/leaflet/Leaflet.fullscreen.min.js' | relative_url }}"></script>
+<script src="https://unpkg.com/esri-leaflet/dist/esri-leaflet.js"></script>
 <script src="{{ '/assets/HistBuildings-1900.js' | relative_url}}"></script>
 <script>
     // initial start point
@@ -29,6 +30,12 @@
     var mapZoom = {{ include.map-zoom | default: 10 }};
     /* init map, set center and zoom */
     var map = L.map('building-map').setView(mapCenter, mapZoom);
+
+    // Keep the live orthophoto beneath the historic raster overlays.
+    map.createPane('orthoPane');
+    map.getPane('orthoPane').style.zIndex = 250;
+    map.createPane('historicPane');
+    map.getPane('historicPane').style.zIndex = 300;
 
     /* add map layer options */
     var Esri_WorldStreetMap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
@@ -41,6 +48,16 @@
     var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
         attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
     });
+    var OpenStreetMap_Mapnik = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    });
+    var orthserver_naip_2025 = L.esri.imageMapLayer({
+        url: 'https://ortho.gis.iastate.edu/arcgis/rest/services/ortho/naip_2025_nc/ImageServer',
+        attribution: 'Imagery &copy; <a href="https://www.fsa.usda.gov/programs-and-services/aerial-photography/imagery-programs/naip-imagery/">USDA NAIP</a> contributors',
+        opacity: 1,
+        pane: 'orthoPane'
+    });
  
 
     const sw = L.CRS.EPSG3857.unproject(L.point(-10425620.244789753, 5164290.700429559));
@@ -52,7 +69,8 @@
         maxZoom: 19,
         bounds: historicBounds,
         noWrap: true,
-        opacity: 0.7
+        opacity: 0.7,
+        pane: 'historicPane'
     }).addTo(map);
 
   
@@ -62,14 +80,13 @@
 
     /* add base map switcher */
     var baseMaps = {
-        "Esri World StreetMap": Esri_WorldStreetMap,
-        "Esri National Geo": Esri_NatGeoWorldMap,
-        "Esri Imagery": Esri_WorldImagery
+        "Open Street Map": OpenStreetMap_Mapnik,
+        "Orthophotography (NAIP 2025)": orthserver_naip_2025
     };
 
     L.control.layers(baseMaps, overlays).addTo(map);
     /* load base map */
-    Esri_WorldStreetMap.addTo(map);
+    {{ site.data.theme.map-base | default: 'OpenStreetMap_Mapnik' }}.addTo(map);
     /* add fullscreen control */ 
     map.addControl(new L.Control.Fullscreen());
     {% unless include.map-marker == false %}
