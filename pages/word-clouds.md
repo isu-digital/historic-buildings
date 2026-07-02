@@ -10,11 +10,11 @@ cloud-fields: site.data.theme.subjects-fields
 # Word Clouds
 
 
-## Browse Locations
+## Browse Contractors
 
-Use this word cloud visualization to browse locations. Word size is determined by frequency and all words link to a corresponding collection search.
+Use this word cloud visualization to browse the names of building contractors. Word size is determined by frequency and all words link to a corresponding collection search.
 
-{% include feature/cloud.html fields="location" min=1 %}
+{% include feature/cloud.html fields="contractor" min=1 %}
 
 ## Browse Architects
 
