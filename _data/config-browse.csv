@@ -3,6 +3,6 @@ date,Date,,,Date
 creator,Creator,,,
 subject,,true
 location,,true
-year_started,Year Built,,,
+year_started,Year Built,,,Year Built
 architect,Architect,true,,
-identifier,,,true,Identifier
+identifier,,,true,

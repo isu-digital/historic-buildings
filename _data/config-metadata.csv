@@ -1,8 +1,8 @@
 field,display_name,browse_link,external_link,dc_map,schema_map
-title,Title,,,DCTERMS.title,headline
+title,Building Name,,,DCTERMS.title,headline
 creator,Creator,,,DCTERMS.creator,creator
 date,Date Created,,,DCTERMS.date,dateCreated
-description,Description,,,DCTERMS.description,description
+description,Historical Note,,,DCTERMS.description,description
 subject,Subjects,,,DCTERMS.subject,keywords
 location,Location,,,,contentLocation
 latitude,Latitude,,,,

@@ -1,7 +1,7 @@
 {% if site.data.theme.browse-child-objects == true %}
 {%- assign items = site.data[site.metadata] | where_exp: 'item','item.objectid' -%}
 {% else %}
-{%- assign items = site.data[site.metadata] | where_exp: 'item','item.objectid and item.parentid == nil' -%}
+{%- assign items = site.data[site.metadata] | where_exp: 'item','item.objectid contains "profile"' -%}
 {% endif %}
 {%- assign fields = site.data.config-browse -%}
 <script>
@@ -131,8 +131,8 @@ function shuffle(array) {
 
 /* init browse page */
 
-/* randomize items once at page load */
-shuffle(items);
+/* default to title sort on page load */
+sorting(items, "title");
 
 /* set some elements */ 
 var loadingIcon = document.querySelector("#loadingIcon");
