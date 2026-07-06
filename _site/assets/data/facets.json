@@ -1,0 +1,27 @@
+{
+    "facets": [ 
+        {
+            "field": "subject",
+            "terms": { 
+            }
+        },
+        {
+            "field": "creator",
+            "terms": { 
+                "iowa state university": 55,
+                "iowa state university. college of veterinary medicine": 3,
+                "w.f. kilborn & co. (cedar rapids, iowa)": 1,
+                "barry, john w. (john wolfe), 1905-1988": 1,
+                "gardner, elmer s.": 1,
+                "elmer s. gardner": 1
+            }
+        },
+        {
+            "field": "format",
+            "terms": { 
+                "image/jpeg": 138
+            }
+        }
+        
+    ]
+}

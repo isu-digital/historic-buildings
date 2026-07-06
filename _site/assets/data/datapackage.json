@@ -1,0 +1,70 @@
+{
+    "profile": "data-package",
+    "name": "campus-cornerstones-data",
+    "title": "Campus Cornerstones Data",
+    "description": "Metadata and data derived from Campus Cornerstones. Initiated in 2024 and currently a work in progress, this site explores the history of the buildings of Iowa State University through historical photographs, maps, and modern GIS data.",
+    "keywords":  ["iowa","iowa state university","historical buildings"],
+    "homepage": "http://localhost:4000/",
+    "contributors": [
+        {
+            "title": "Digital Scholarship and Initiatives",
+            "path": "digital.lib.iastate.edu",
+            "role": "author"
+        }
+    ],
+    "image": "/objects/old-main_004-crop.jpg",
+    "licenses": [
+        {
+            "name": "CC0-1.0",
+            "title": "CC0 1.0",
+            "path": "https://creativecommons.org/publicdomain/zero/1.0/"
+        }
+    ],
+    "resources": [
+         
+        {
+            "name": "facets-json",
+            "path": "facets.json",
+            "title": "Campus Cornerstones Metadata Facets",
+            "description":"Unique values and counts of metadata facet fields.",
+            "format":"json",
+            "profile": "data-resource"
+        },
+        
+        
+        
+        {
+            "name": "geodata-json",
+            "path": "geodata.json",
+            "title": "Campus Cornerstones geographic metadata",
+            "description": "Geojson data containing all objects with lat-longs and associated descriptive metadata.",
+            "format":"json",
+            "profile": "data-resource"
+        },
+        
+        {
+            "name": "timeline-json",
+            "path": "timelinejs.json",
+            "title": "Campus Cornerstones timeline metadata",
+            "description": "Time-based metadata formatted for TimelineJS or other applications.",
+            "format":"json",
+            "profile": "data-resource"
+        },
+        {
+            "name": "metadata-csv",
+            "path": "metadata.csv",
+            "title": "Campus Cornerstones full metadata in csv",
+            "description": "Complete metadata export for Campus Cornerstones objects.",
+            "format":"csv",
+            "profile":"data-resource"
+        },
+        {
+            "name": "metadata-json",
+            "path": "metadata.json",
+            "title": "Campus Cornerstones full metadata in json",
+            "description": "Complete metadata export for Campus Cornerstones objects.",
+            "format":"json",
+            "profile":"data-resource"
+        }
+    ]
+}

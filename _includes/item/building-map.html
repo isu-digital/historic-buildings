@@ -41,31 +41,24 @@
     var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
         attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
     });
- /*add overlay layers */
-    
- var buildings = L.geoJson(histbuildings, {
-        onEachFeature: function (feature, layer) {
-            layer.bindPopup("Building Name: " + feature.properties.Name + '<br>' + " Date Built: " + feature.properties["Date Built"]);
-        }
-    }); 
+ 
 
-    
-    var overlays = {
-        "ISU Building Footprints 1859-1900": buildings
-    };
+    const sw = L.CRS.EPSG3857.unproject(L.point(-10425620.244789753, 5164290.700429559));
+    const ne = L.CRS.EPSG3857.unproject(L.point(-10423612.939286085, 5165803.027624668));
+    const historicBounds = L.latLngBounds(sw, ne);
 
- var imageUrl2 = '{{ "/objects/day-1898.jpg" | relative_url }}';
-    var errorOverlayUrl = 'https://cdn-icons-png.flaticon.com/512/110/110686.png';
-    var altText = 'Historic Map of Iowa State University from 1898';
-    var latLngBounds = L.latLngBounds([[42.032092,-93.637067], [42.022175,-93.654810]]);
-
-    var imageOverlay2 = L.imageOverlay(imageUrl2, latLngBounds, {
-        opacity: 0.7,
-        errorOverlayUrl: errorOverlayUrl,
-        alt: altText,
-        interactive: true
+    const historic1898 = L.tileLayer("{{ '/assets/tiles/1898/' | relative_url }}" + "{z}/{x}/{y}.png", {
+        minZoom: 14,
+        maxZoom: 19,
+        bounds: historicBounds,
+        noWrap: true,
+        opacity: 0.7
     }).addTo(map);
 
+  
+    var overlays = {
+        "H. Summerfield Day Map, 1898": historic1898
+    };
 
     /* add base map switcher */
     var baseMaps = {
@@ -74,7 +67,7 @@
         "Esri Imagery": Esri_WorldImagery
     };
 
-    L.control.layers(baseMaps,overlays).addTo(map);
+    L.control.layers(baseMaps, overlays).addTo(map);
     /* load base map */
     Esri_WorldStreetMap.addTo(map);
     /* add fullscreen control */ 

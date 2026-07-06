@@ -1,0 +1,1326 @@
+<!doctype html>
+<html lang="en" class="h-100">
+  <head prefix="og: http://ogp.me/ns#">
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Map | Campus Cornerstones</title>
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+<!--
+
+  _____     ____        __  _           ___       _ __   __       
+ / ___/__  / / /__ ____/ /_(_)__  ___  / _ )__ __(_) /__/ /__ ____
+/ /__/ _ \/ / / -_) __/ __/ / _ \/ _ \/ _  / // / / / _  / -_) __/
+\___/\___/_/_/\__/\__/\__/_/\___/_//_/____/\_,_/_/_/\_,_/\__/_/   
+                                                                
+    built with CollectionBuilder-CSV
+    https://github.com/CollectionBuilder/collectionbuilder-csv
+-->
+<meta name="generator" content="collectionbuilder-csv" />
+<meta http-equiv="Content-Language" content="en-us" >
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.1.3/dist/simplex/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="/assets/lib/leaflet/leaflet.css">
+<link rel="stylesheet" href="/assets/lib/leaflet/leaflet.fullscreen.css">
+<link rel="stylesheet" href="/assets/lib/leaflet/leaflet.fusesearch.css"><link rel="stylesheet" href="/assets/css/cb.css" type="text/css">
+<link href="https://fonts.googleapis.com/css2?family=Keania+One&family=Offside&family=Stardos+Stencil:wght@400;700&family=Stick+No+Bills:wght@200..800&display=swap" rel="stylesheet">
+
+
+<!-- Last build date: 2026-07-06 -->
+  </head>
+  <body class="d-flex flex-column h-100">
+    <div id="skip-to-content"><a href="#maincontent">Skip to main content</a></div>
+    <style>
+    .custom-navbar-opacity {
+        background-color: rgba(255, 255, 255, 0.368); /* Set background color with 25% opacity */
+        position: absolute; /* Position the navbar absolutely */
+        width: 100%; /* Ensure the navbar spans the full width */
+        top: 0; /* Align the navbar to the top */
+        z-index: 1000; /* Ensure the navbar is above other elements */
+        border: none; /* Remove the border */
+        box-shadow: none; /* Remove the shadow */
+    }
+
+    @media (max-width: 991.98px) {
+        .custom-navbar-collapse {
+            background-color: rgba(255, 255, 255, 1.00) !important;
+            padding-left: 1em;
+        }
+        .custom-navbar-collapse-other {
+            background-color: rgba(252, 251, 251, 0.5) !important; /* Different background color for other pages */
+            padding-left: 1em;
+        }
+    }
+</style>
+<nav class="navbar navbar-expand-lg navbar-light custom-navbar-opacity"> 
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#page-nav" aria-controls="page-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        
+        
+        <div class="collapse navbar-collapse custom-navbar-collapse" id="page-nav">
+            <ul class="navbar-nav me-auto">
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/buildings.html">Buildings</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link  dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Maps</a>
+                    <div class="dropdown-menu">
+                        
+                        <a class="dropdown-item active" href="/map.html">Interactive Map</a>
+                        
+                        <a class="dropdown-item " href="/historical-maps.html">Historical Maps</a>
+                        
+                    </div>
+                </li>
+                
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/timeline.html">Timeline</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/data.html">Data</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/word-clouds.html">Word Clouds</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link  dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">About</a>
+                    <div class="dropdown-menu">
+                        
+                        <a class="dropdown-item " href="/about.html">About Project</a>
+                        
+                        <a class="dropdown-item " href="/about-gis.html">About GIS</a>
+                        
+                    </div>
+                </li>
+                </ul>
+            
+            <script>
+    function site_search() {
+        var query = document.getElementById("site-search").value;
+        window.open("/search/index.html?q=" + encodeURIComponent(query), "_self" );
+    }
+</script>
+<form class="form-inline my-2 my-lg-0" role="search" id="search" onsubmit="site_search(); return false;">
+    <div class="input-group">
+        <input id="site-search" class="form-control " type="text" placeholder="Search" aria-label="Search box">
+        <button class="btn btn-light" type="submit">
+            <span id="search-icon"><svg viewBox="0 0 1024 974" height="16px" width="20px"><path d="M960 832L710.875 582.875C746.438 524.812 768 457.156 768 384 768 171.96900000000005 596 0 384 0 171.969 0 0 171.96900000000005 0 384c0 212 171.969 384 384 384 73.156 0 140.812-21.562 198.875-57L832 960c17.5 17.5 46.5 17.375 64 0l64-64C977.5 878.5 977.5 849.5 960 832zM384 640c-141.375 0-256-114.625-256-256s114.625-256 256-256 256 114.625 256 256S525.375 640 384 640z"/></svg></span>
+            <span class="visually-hidden">Search</span>
+        </button>
+    </div>
+</form>
+            
+        </div>
+    </div>
+</nav>
+
+    <style>
+#home-banner {
+    background-image: linear-gradient(to top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 50%), url('/objects/old-main_004-crop.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#home-title-box {
+    padding-top: 5em;
+    padding-bottom: 20em;
+    padding-left: 5em;
+    font-family: "Stardos Stencil", system-ui;
+}
+@media (max-width: 568px) {
+    #home-title-box {
+        max-height: 500px;
+        padding-left: 1em;
+    }
+    #home-banner {
+    background-image: linear-gradient(to top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 50%), url('/objects/old-main_004-crop.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    }
+    #title-box-2 {
+    background-color: rgba(255, 255, 255, 0.6); 
+    border-radius: 10px;  
+    }
+    #sub-title {
+    padding-top: 5em;
+    padding-bottom: 3em;
+    padding-left: 1em;
+    font-family: "Stardos Stencil", system-ui;
+    }
+    #sub-title-2 {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 1em;
+    border-radius: 10px;
+    }
+}
+#sub-banner {
+    background-image: linear-gradient(to top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 50%), url('/objects/old-main_004-crop.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+}
+#sub-title {
+    padding-top: 5em;
+    padding-bottom: 3em;
+    padding-left: 5em;
+    font-family: "Stardos Stencil", system-ui;
+}
+
+
+</style>
+<div id="sub-banner" class="container-fluid">
+    <div class="row align-items-center">
+        <div id="sub-title" class="col-12">
+            <div id="sub-title-2">
+                <h1 class="mt-2"><a class="text-dark" href="/" >Campus Cornerstones</a></h1>	 
+                <p>A mapped history of Iowa State University</p>
+            </div>
+        </div>
+        
+    </div>
+</div>
+    <main id="maincontent" role="main" class="flex-shrink-0">
+      <div id="map"></div>
+
+    </main>
+    <footer class="bg-dark pt-4 mt-auto container-fluid">
+
+    <div class="row border-bottom border-white pb-4 mb-2">
+
+        <div class="col-md-7 px-4 mt-3">
+
+            <h2 class="h4"><a href="/" class="text-white">Campus Cornerstones</a></h2>
+            <p class="text-white"><small>Initiated in 2024 and currently a work in progress, this site explores the history of the buildings of Iowa State University through historical photographs, maps, and modern GIS data.</small></p>
+            <nav>
+                <ul id="footer-nav" class="nav nav-pills ">
+                    <li class="nav-item">
+                    
+                        <a class="nav-link text-light" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                    
+                        <a class="nav-link text-light" href="/buildings.html">Buildings</a>
+                    </li>
+                    <li class="nav-item">
+                    
+                        <a class="nav-link text-light active" href="/map.html">Maps</a>
+                    
+                    </li>
+                    <li class="nav-item">
+                    
+                        <a class="nav-link text-light" href="/timeline.html">Timeline</a>
+                    </li>
+                    <li class="nav-item">
+                    
+                        <a class="nav-link text-light" href="/data.html">Data</a>
+                    </li>
+                    <li class="nav-item">
+                    
+                        <a class="nav-link text-light" href="/word-clouds.html">Word Clouds</a>
+                    </li>
+                    <li class="nav-item">
+                    
+                        <a class="nav-link text-light" href="/about.html">About</a>
+                    
+                    </li></ul>
+            </nav>
+
+        </div>
+
+        <div class="col-md-5 mt-3 text-center">
+
+           
+            <p class="text-white text-md-end" id="footer-credits">
+                <small><em>built with</em>
+                    <a href="https://collectionbuilder.github.io/" target="_blank" rel="noopener" title="CollectionBuilder">
+                        <img src="/assets/img/collectionbuilder-logo.png" class="img-fluid" alt="CollectionBuilder" >
+                    </a>
+                </small>
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-12 text-center pt-3 pb-1">
+        <p class="text-white">Last updated 2026</p>
+    </div>
+
+</footer>
+    <!-- Bootstrap bundle JS -->
+<script src="/assets/lib/bootstrap.bundle.min.js"></script>
+<!-- load other js -->
+<script src="/assets/lib/lazysizes.min.js" async></script>
+
+<!-- load leaflet dependencies -->
+<script src="/assets/lib/leaflet/leaflet.js"></script>
+<script src="/assets/lib/leaflet/Leaflet.fullscreen.min.js"></script>
+<script src="/assets/lib/leaflet/fuse.min.js"></script>
+<script src="/assets/lib/leaflet/leaflet.fusesearch.js"></script>
+
+
+
+<!-- Remove_These_Lines />-->
+<!--<link rel="stylesheet" href="/assets/lib/opacity/Control.Opacity.css" />
+<script src="/assets/lib/opacity/Control.Opacity.js"></script>
+    
+<script src="/assets/lib/jquery/jquery-1.9.1.js"></script>
+<script src="/assets/lib/jquery/jquery-ui-1.10.3.custom.min.js"></script>
+<link rel="stylesheet" href="/assets/lib/jquery/jquery-ui-1.10.3.custom.min.css" />-->
+
+<script src="/assets/hist-buildings.js"></script>
+
+
+<script>
+(function(){
+    /* add collection map data */
+    var geodata = { "type": "FeatureCollection", "features": [ 
+    
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[-93.6513788,42.02370168] }, "properties":
+    { 
+        "location":"Marston Cottage; Ames; Iowa","img": "/objects/thumbs/marston_003_th.jpg",
+        "template": "building","title": "Marston Cottage",
+        "id": "buildingprofile0001" 
+    } }, 
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[-93.64547466,42.02455896] }, "properties":
+    { 
+        "location":"South Hall; Ames; Iowa","img": "/objects/thumbs/south-hall_002_th.jpg",
+        "template": "building","title": "South Hall",
+        "id": "buildingprofile0002" 
+    } }, 
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[-93.64800274,42.02474613] }, "properties":
+    { 
+        "location":"Music Hall; Ames; Iowa","img": "/objects/thumbs/music-hall_002_th.jpg",
+        "template": "building","title": "Music Hall",
+        "id": "buildingprofile0003" 
+    } }, 
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[-93.64575704,42.02786119] }, "properties":
+    { 
+        "location":"Mortensen Cottage; Ames; Iowa","img": "/objects/thumbs/mortensen-crop_th.jpg",
+        "template": "building","title": "Mortensen Cottage",
+        "id": "buildingprofile0004" 
+    } }, 
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[-93.64970097,42.02577339] }, "properties":
+    { 
+        "location":"Chemical and Physical Laboratory; Ames; Iowa","img": "/objects/thumbs/chemistry_001_th.jpg",
+        "template": "building","title": "Chemical and Physical Laboratory",
+        "id": "buildingprofile0005" 
+    } }, 
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[-93.64794385,42.02660816] }, "properties":
+    { 
+        "location":"Main Building; Ames; Iowa","img": "https://isuu00001library102stg.blob.core.windows.net/digital-objects/universityphotographs/thumbs/4-8-i_oldmain_275-4-1_th.jpg",
+        "template": "building","title": "Main Building",
+        "id": "buildingprofile0006" 
+    } }, 
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[-93.64316207,42.0283564] }, "properties":
+    { 
+        "location":"Cattle Barn; Ames; Iowa","img": "/objects/thumbs/cattle-barn_001_th.jpg",
+        "template": "building","title": "Cattle Barn",
+        "id": "buildingprofile0007" 
+    } }, 
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[-93.64402082,42.0272607] }, "properties":
+    { 
+        "location":"Farm House; Ames; Iowa","img": "https://isuu00001library102stg.blob.core.windows.net/digital-objects/universityphotographs/thumbs/cornerstones003_001_th.jpg",
+        "template": "building","title": "The Farm House",
+        "id": "buildingprofile0008" 
+    } }, 
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[-93.65033545,42.02523342] }, "properties":
+    { 
+        "location":"Boarding Cottage West; Ames; Iowa","img": "/objects/thumbs/boarding-cottage-west_003_th.jpg",
+        "template": "building","title": "Boarding Cottage West",
+        "id": "buildingprofile0009" 
+    } }, 
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[-93.64183944,42.02828952] }, "properties":
+    { 
+        "location":"Feeding Barn; Ames; Iowa","img": "https://isuu00001library102stg.blob.core.windows.net/digital-objects/universityphotographs/thumbs/cornerstones022_001_th.jpg",
+        "template": "building","title": "Feeding Barn",
+        "id": "buildingprofile0010" 
+    } }, 
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[-93.64860608,42.02825497] }, "properties":
+    { 
+        "location":"First Horticulture Barn; Ames; Iowa",
+        "template": "building","title": "Horticulture Barn (First)",
+        "id": "buildingprofile0011" 
+    } }, 
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[-93.65184337,42.03227139] }, "properties":
+    { 
+        "location":"Eastwood Cottage; Ames; Iowa",
+        "template": "building","title": "Eastwood Cottage",
+        "id": "buildingprofile0012" 
+    } }, 
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[-93.64233119,42.02234994] }, "properties":
+    { 
+        "location":"Pope Cottage; Ames; Iowa","img": "/objects/thumbs/pope-cottage_001_th.jpg",
+        "template": "building","title": "Pope Cottage",
+        "id": "buildingprofile0013" 
+    } }, 
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[-93.64695228,42.02844685] }, "properties":
+    { 
+        "location":"North Hall; Ames; Iowa","img": "https://isuu00001library102stg.blob.core.windows.net/digital-objects/vetmed/thumbs/rs014-001-009b016f001i005_th.jpg",
+        "template": "building","title": "North Hall",
+        "id": "buildingprofile0014" 
+    } }, 
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[-93.64375315,42.0220868] }, "properties":
+    { 
+        "location":"Gables; Ames; Iowa","img": "/objects/thumbs/gables_001_th.jpg",
+        "template": "building","title": "The Gables",
+        "id": "buildingprofile0015" 
+    } }, 
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[-93.64821115,42.02694818] }, "properties":
+    { 
+        "location":"The Hub; Ames; Iowa","img": "/objects/thumbs/hub_002_th.jpg",
+        "template": "building","title": "The Hub",
+        "id": "buildingprofile0016" 
+    } }, 
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[-93.64586695,42.02798589] }, "properties":
+    { 
+        "location":"Botany Hall; Ames; Iowa","img": "https://isuu00001library102stg.blob.core.windows.net/digital-objects/universityphotographs/thumbs/4-8-i_catthall_234-1-6_th.jpg",
+        "template": "building","title": "Botany Hall",
+        "id": "buildingprofile0017" 
+    } }, 
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[-93.64367799,42.02590533] }, "properties":
+    { 
+        "location":"The Second Creamery; Ames; Iowa","img": "https://isuu00001library102stg.blob.core.windows.net/digital-objects/universityphotographs/thumbs/9-13-f_dairy_703-1-2_th.jpg",
+        "template": "building","title": "Creamery (Second)",
+        "id": "buildingprofile0018" 
+    } }, 
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[-93.64443999,42.02857236] }, "properties":
+    { 
+        "location":"Teamster&#39;s Cottage; Ames; Iowa","img": "/objects/thumbs/teamsters-crop_th.jpg",
+        "template": "building","title": "Teamster&#39;s Cottage #2",
+        "id": "buildingprofile0019" 
+    } }, 
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[-93.64812271,42.02741327] }, "properties":
+    { 
+        "location":"Morrill Hall; Ames; Iowa","img": "https://isuu00001library102stg.blob.core.windows.net/digital-objects/universityphotographs/thumbs/04-08-j_campusscenes_0332-06-009_th.jpg",
+        "template": "building","title": "Morrill Hall",
+        "id": "buildingprofile0020" 
+    } }, 
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[-93.64507249,42.02777805] }, "properties":
+    { 
+        "location":"Bevier House; Ames; Iowa","img": "/objects/thumbs/bevier-house_003_th.jpg",
+        "template": "building","title": "Bevier House",
+        "id": "buildingprofile0021" 
+    } }, 
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[-93.64242165,42.02365976] }, "properties":
+    { 
+        "location":"Coburn House; Ames; Iowa","img": "/objects/thumbs/coburn-house_001_th.jpg",
+        "template": "building","title": "Coburn House",
+        "id": "buildingprofile0022" 
+    } }, 
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[-93.64492194,42.02772783] }, "properties":
+    { 
+        "location":"Greenhouse; Ames; Iowa","img": "/objects/thumbs/bevier-greenhouse_001_th.jpg",
+        "template": "building","title": "Greenhouse Attached to Bevier House",
+        "id": "buildingprofile0023" 
+    } }, 
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[-93.64609178,42.02375284] }, "properties":
+    { 
+        "location":"Veterinary Hospital; Ames; Iowa","img": "/objects/thumbs/veterinary-hospital_001_th.jpg",
+        "template": "building","title": "Veterinary Hospital",
+        "id": "buildingprofile0024" 
+    } }, 
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[-93.64662715,42.02444568] }, "properties":
+    { 
+        "location":"Sanitary Building; Ames; Iowa","img": "/objects/thumbs/sanitary-building_002_th.jpg",
+        "template": "building","title": "Sanitary Building",
+        "id": "buildingprofile0025" 
+    } }, 
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[-93.64819394,42.02565338] }, "properties":
+    { 
+        "location":"English Office Building; Ames; Iowa","img": "/objects/thumbs/english-office_001_th.jpg",
+        "template": "building","title": "English Office Building",
+        "id": "buildingprofile0026" 
+    } }, 
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[-93.64918321,42.02863952] }, "properties":
+    { 
+        "location":"Veterinary Barn; Ames; Iowa",
+        "template": "building","title": "Veterinary Barn",
+        "id": "buildingprofile0027" 
+    } }, 
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[-93.64900122,42.02639875] }, "properties":
+    { 
+        "location":"Gymnasium; Ames; Iowa",
+        "template": "building","title": "Gymnasium",
+        "id": "buildingprofile0028" 
+    } }, 
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[-93.64501049,42.025711] }, "properties":
+    { 
+        "location":"Sloss House; Ames; Iowa","img": "/objects/thumbs/sloss-house_001_th.jpg",
+        "template": "building","title": "Sloss House",
+        "id": "buildingprofile0029" 
+    } }, 
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[-93.65078359,42.02568107] }, "properties":
+    { 
+        "location":"Laboratory of Mechanics; Ames; Iowa","img": "/objects/thumbs/lab-mechanics_004_th.jpg",
+        "template": "building","title": "Laboratory of Mechanics",
+        "id": "buildingprofile0030" 
+    } }, 
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[-93.64843503,42.02993877] }, "properties":
+    { 
+        "location":"Grounds Cottage; Ames; Iowa","img": "/objects/thumbs/grounds-cottage_001-crop_th.jpg",
+        "template": "building","title": "Grounds Cottage",
+        "id": "buildingprofile0031" 
+    } }, 
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[-93.64351508,42.02625674] }, "properties":
+    { 
+        "location":"Farm Laborer&#39;s Cottage; Ames; Iowa","img": "/objects/thumbs/farm-laborers-cottage_001_th.jpg",
+        "template": "building","title": "Farm Laborer&#39;s Cottage",
+        "id": "buildingprofile0032" 
+    } }, 
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[-93.64958936,42.02527437] }, "properties":
+    { 
+        "location":"Boarding Cottage East; Ames; Iowa","img": "https://isuu00001library102stg.blob.core.windows.net/digital-objects/universityphotographs/thumbs/04-08-j_campusscenes_0332-04-002_th.jpg",
+        "template": "building","title": "Boarding Cottage East",
+        "id": "buildingprofile0033" 
+    } }, 
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[-93.64821939,42.02824866] }, "properties":
+    { 
+        "location":"Farm Boarding Club; Ames; Iowa","img": "https://isuu00001library102stg.blob.core.windows.net/digital-objects/universityphotographs/thumbs/cornerstones001_001_th.jpg",
+        "template": "building","title": "Farm Boarding Club",
+        "id": "buildingprofile0034" 
+    } }, 
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[-93.64977736,42.0308117] }, "properties":
+    { 
+        "location":"Fair Oaks Mansion; Ames; Iowa",
+        "template": "building","title": "Fair Oaks Mansion",
+        "id": "buildingprofile0035" 
+    } }, 
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[-93.65069259,42.0258543] }, "properties":
+    { 
+        "location":"Power Station; Ames; Iowa","img": "/objects/thumbs/power-station_001_th.jpg",
+        "template": "building","title": "Power Station",
+        "id": "buildingprofile0036" 
+    } }, 
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[-93.64316276,42.02721493] }, "properties":
+    { 
+        "location":"First Creamery; Ames; Iowa",
+        "template": "building","title": "Creamery (First)",
+        "id": "buildingprofile0037" 
+    } }, 
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[-93.64305904,42.02767936] }, "properties":
+    { 
+        "location":"First Horse Barn; Ames; Iowa","img": "https://isuu00001library102stg.blob.core.windows.net/digital-objects/universityphotographs/thumbs/cornerstones027_001_th.jpg",
+        "template": "building","title": "Horse Barn (First)",
+        "id": "buildingprofile0038" 
+    } }, 
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[-93.65082908,42.02575099] }, "properties":
+    { 
+        "location":"Workshop; Ames; Iowa","img": "/objects/thumbs/workshop-crop_th.jpg",
+        "template": "building","title": "Workshop",
+        "id": "buildingprofile0039" 
+    } }, 
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[-93.64184063,42.02800498] }, "properties":
+    { 
+        "location":"Experimental Barn; Ames; Iowa","img": "https://isuu00001library102stg.blob.core.windows.net/digital-objects/universityphotographs/thumbs/4-8-i_barns_224-3-1_th.jpg",
+        "template": "building","title": "Experimental Barn",
+        "id": "buildingprofile0040" 
+    } }, 
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[-93.64742791,42.02823588] }, "properties":
+    { 
+        "location":"Margaret Hall; Ames; Iowa","img": "/objects/thumbs/margaret-hall_011_th.jpg",
+        "template": "building","title": "Margaret Hall",
+        "id": "buildingprofile0041" 
+    } }, 
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[-93.64492194,42.02772783] }, "properties":
+    { 
+        "location":"Greenhouse; Ames; Iowa","img": "/objects/thumbs/greenhouse-crop_th.jpg",
+        "template": "building","title": "Greenhouse",
+        "id": "buildingprofile0042" 
+    } }, 
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[-93.6505225,42.02611299] }, "properties":
+    { 
+        "location":"Building &quot;A&quot;; Ames; Iowa","img": "https://isuu00001library102stg.blob.core.windows.net/digital-objects/universityphotographs/thumbs/04-08-j_campusscenes_0332-04-003_th.jpg",
+        "template": "building","title": "Building &quot;A&quot;",
+        "id": "buildingprofile0043" 
+    } }, 
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[-93.6460783,42.02546004] }, "properties":
+    { 
+        "location":"Campanile; Ames; Iowa","img": "https://isuu00001library102stg.blob.core.windows.net/digital-objects/universityphotographs/thumbs/4-8-i_campanile_230-1-2_th.jpg",
+        "template": "building","title": "Campanile",
+        "id": "buildingprofile0044" 
+    } }, 
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[-93.64430779,42.02537863] }, "properties":
+    { 
+        "location":"Osborn Cottage; Ames; Iowa","img": "/objects/thumbs/osborn-cottage_001_th.jpg",
+        "template": "building","title": "Osborn Cottage",
+        "id": "buildingprofile0045" 
+    } }, 
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[-93.65082714,42.02629406] }, "properties":
+    { 
+        "location":"Aerospace Laboratory; Ames; Iowa","img": "https://isuu00001library102stg.blob.core.windows.net/digital-objects/universityphotographs/thumbs/04-08-j_campusscenes_0332-06-006_th.jpg",
+        "template": "building","title": "Aerospace Laboratory",
+        "id": "buildingprofile0046" 
+    } }, 
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[-93.64487789,42.02804189] }, "properties":
+    { 
+        "location":"Engineer&#39;s Cottage; Ames; Iowa","img": "/objects/thumbs/engineers-crop_th.jpg",
+        "template": "building","title": "Engineer&#39;s Cottage",
+        "id": "buildingprofile0047" 
+    } }, 
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[-93.64232264,42.0232781] }, "properties":
+    { 
+        "location":"Kildee Cottage; Ames; Iowa",
+        "template": "building","title": "Kildee Cottage",
+        "id": "buildingprofile0048" 
+    } }, 
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[-93.6436632,42.0237305] }, "properties":
+    { 
+        "location":"The Knoll; Ames; Iowa","img": "https://isuu00001library102stg.blob.core.windows.net/digital-objects/universityphotographsthumbs/4-8-i_knoll_195-6-5_th.jpg",
+        "template": "building","title": "The Knoll",
+        "id": "buildingprofile0049" 
+    } }, 
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[-93.64316749,42.02760857] }, "properties":
+    { 
+        "location":"Landscape Architecture; Ames; Iowa","img": "https://isuu00001library102stg.blob.core.windows.net/digital-objects/universityphotographs/thumbsl/cornerstones021_001_th.jpg",
+        "template": "building","title": "Landscape Architecture",
+        "id": "buildingprofile0050" 
+    } }, 
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[-93.6499852,42.02710223] }, "properties":
+    { 
+        "location":"Marston Hall; Ames; Iowa","img": "https://isuu00001library102stg.blob.core.windows.net/digital-objects/universityphotographs/thumbs/04-08-j_campusscenes_0332-07-001_th.jpg",
+        "template": "building","title": "Marston Hall",
+        "id": "buildingprofile0051" 
+    } }, 
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[-93.64252996,42.02415203] }, "properties":
+    { 
+        "location":"Norton House; Ames; Iowa",
+        "template": "building","title": "Norton House",
+        "id": "buildingprofile0052" 
+    } }, 
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[-93.64259443,42.02765311] }, "properties":
+    { 
+        "location":"Theater-Workshop; Ames; Iowa","img": "https://isuu00001library102stg.blob.core.windows.net/digital-objects/universityphotographs/thumbs/cornerstones020_001_th.jpg",
+        "template": "building","title": "Theater-Workshop",
+        "id": "buildingprofile0053" 
+    } }
+    ]};
+
+    /* check for url parameters and set initial view options */ 
+    let url = new URL(window.location);
+    var mapCenter = url.searchParams.get('location') ? url.searchParams.get('location').split(',') : [42.026589984888936, -93.64591360401154];
+    var mapZoom = url.searchParams.get('location') ? 16 : 16;
+    var markerFilter = url.searchParams.get('marker') ? url.searchParams.get('marker') : "";
+
+    /* init map, set center and zoom */
+    var map = L.map('map').setView(mapCenter, mapZoom);
+
+    /* add map layer options */
+    var Esri_WorldStreetMap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+        attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012'
+    });
+    var Esri_NatGeoWorldMap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}', {
+        attribution: 'Tiles &copy; Esri &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC',
+        maxZoom: 28
+    });
+    var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+    });
+    var OpenStreetMap_Mapnik = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 28,
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    });
+    
+    var imageUrl1 = 'objects/GENL_26_1883.jpg';
+    var errorOverlayUrl = 'https://cdn-icons-png.flaticon.com/512/110/110686.png';
+    var altText = 'Historic Map of Iowa State University from 1883';
+    var latLngBounds = L.latLngBounds([[42.0352583,-93.6289306], [42.020825, -93.6557806]]);
+
+    var imageOverlay1 = L.imageOverlay(imageUrl1, latLngBounds, {
+        opacity: 0.5,
+        errorOverlayUrl: errorOverlayUrl,
+        alt: altText,
+        interactive: true
+    });
+    var imageUrl2 = 'objects/day-1875.jpg';
+    var errorOverlayUrl = 'https://cdn-icons-png.flaticon.com/512/110/110686.png';
+    var altText = 'Historic Map of Iowa State University from 1875';
+    var latLngBounds = L.latLngBounds([[42.032092,-93.637067], [42.022175,-93.654810]]);
+
+    var imageOverlay2 = L.imageOverlay(imageUrl2, latLngBounds, {
+        opacity: 0.7,
+        errorOverlayUrl: errorOverlayUrl,
+        alt: altText,
+        interactive: true
+    });
+    
+    var parkStyle = {
+        "color": "#ff7800",
+        "weight":3,
+        "opacity": 0.7
+    };
+
+    // H. Summerfield Day tiled historical map layers from the updated-tile-layers branch.
+    const sw = L.CRS.EPSG3857.unproject(L.point(-10425620.244789753, 5164290.700429559));
+    const ne = L.CRS.EPSG3857.unproject(L.point(-10423612.939286085, 5165803.027624668));
+    const historicBounds = L.latLngBounds(sw, ne);
+
+    const historicLayers = {
+        1875: L.tileLayer("/assets/tiles/1875/" + "{z}/{x}/{y}.png", {
+            minZoom: 14,
+            maxZoom: 19,
+            bounds: historicBounds,
+            noWrap: true,
+            opacity: 0.7
+        }),
+        1898: L.tileLayer("/assets/tiles/1898/" + "{z}/{x}/{y}.png", {
+            minZoom: 14,
+            maxZoom: 19,
+            bounds: historicBounds,
+            noWrap: true,
+            opacity: 0.7
+        }),
+        1915: L.tileLayer("/assets/tiles/1915/" + "{z}/{x}/{y}.png", {
+            minZoom: 14,
+            maxZoom: 19,
+            bounds: historicBounds,
+            noWrap: true,
+            opacity: 0.7
+        })
+    };
+    
+    
+    /* <!-- Remove_These_Lines />-->
+    
+    add opacity controls 
+    var higherOpacity = new L.Control.higherOpacity();
+    map.addControl(higherOpacity);
+    var lowerOpacity = new L.Control.lowerOpacity();
+    map.addControl(lowerOpacity);
+    var opacitySlider = new L.Control.opacitySlider();
+    map.addControl(opacitySlider);*/
+
+   
+
+    /*layer opacity slider
+    opacitySlider.setOpacityLayer(imageOverlay1);*/
+
+
+ /* <!-- Remove_These_Lines />--> */
+    /* Update the opacity of imageOverlay1 when the first slider is moved */
+   /* document.getElementById('slider1').addEventListener('input', function() {
+        var opacity = this.value;
+        imageOverlay1.setOpacity(opacity);
+    }); */
+
+    /* Update the opacity of imageOverlay2 when the second slider is moved */
+   /* document.getElementById('slider2').addEventListener('input', function() {
+        var opacity = this.value;
+        imageOverlay2.setOpacity(opacity);
+    }); */
+
+
+
+    /* add base maps */
+    var baseMaps = {
+        "Esri World StreetMap": Esri_WorldStreetMap,
+        "Esri Imagery": Esri_WorldImagery
+    };
+    /*add overlay layers */
+    
+    var buildingLayersByYear = {};
+var allBuildingYears = [];
+
+        
+function getBuildingStyle(feature, selectedYear) {
+    var dateBuilt = parseInt(feature.properties["Date Built"]);
+    var endDate = parseInt(feature.properties.End);
+
+    var stillExists = isNaN(endDate) || endDate === 0 || endDate === 9999;
+
+    var isActive =
+        dateBuilt <= selectedYear &&
+        (stillExists || endDate >= selectedYear);
+
+    if (isActive) {
+    return {
+        color: "#0078d7",
+        weight: 2,
+        fillColor: "#0078d7",
+        fillOpacity: 0.45,
+        opacity: 1,
+        dashArray: null
+    };
+}
+
+    return {
+    color: "#004f8f",
+    weight: 2,
+    fillColor: "#0078d7",
+    fillOpacity: 0.08,
+    opacity: 0.9,
+    dashArray: "4, 6"
+};
+}
+   function getBuildingFullVisibleStyle(feature) {
+    return {
+        color: "#0078d7",
+        weight: 2,
+        fillColor: "#0078d7",
+        fillOpacity: 0.45,
+        opacity: 1,
+        dashArray: null
+    };
+}     
+var buildings = L.geoJson(histbuildings, {style: function(feature) {
+    return getBuildingStyle(feature, 1850);
+},
+    filter: function(feature) {
+        return true;
+    },
+    onEachFeature: function (feature, layer) {
+        var buildingName = feature.properties.Name;
+        var dateBuilt = feature.properties["Date Built"];
+
+        var endDate = feature.properties.End;
+        var endText = (endDate == 9999 || endDate === "9999") ? "Still exists" : endDate;
+
+layer.bindPopup(
+    "Building Name: " + buildingName + 
+    '<br>' + 
+    "Date Built: " + dateBuilt +
+    '<br>' +
+    "Removed: " + endText
+);
+
+        var year = parseInt(dateBuilt);
+
+        if (!isNaN(year)) {
+            if (!buildingLayersByYear[year]) {
+                buildingLayersByYear[year] = [];
+                allBuildingYears.push(year);
+            }
+            buildingLayersByYear[year].push(layer);
+        }
+    }
+});
+
+allBuildingYears = allBuildingYears.sort(function(a, b) {
+    return a - b;
+});
+    
+    var buildingCountsByYear = {};
+var maxBuildingCount = 0;
+
+histbuildings.features.forEach(function(feature) {
+    var year = parseInt(feature.properties["Date Built"]);
+
+    if (!isNaN(year)) {
+        if (!buildingCountsByYear[year]) {
+            buildingCountsByYear[year] = 0;
+        }
+
+        buildingCountsByYear[year]++;
+
+        if (buildingCountsByYear[year] > maxBuildingCount) {
+            maxBuildingCount = buildingCountsByYear[year];
+        }
+    }
+});
+    
+    var overlays = {
+        "Iowa State College, 1883": imageOverlay1,
+        "Iowa State College, 1875": imageOverlay2,
+        "1875 Day Map": historicLayers[1875],
+        "1898 Day Map": historicLayers[1898],
+        "1915 Day Map": historicLayers[1915],
+        "ISU Building Footprints 1859-1900": buildings
+    };
+        
+    var buildingSliderControl = L.control({ position: 'bottomleft' });
+
+setTimeout(function() {
+    var style = document.createElement('style');
+
+    style.innerHTML = `
+    .leaflet-bottom.leaflet-left {
+        width: calc(100% - 20px);
+        pointer-events: none;
+    }
+
+    .leaflet-bottom.leaflet-left .leaflet-control {
+        width: 100%;
+        margin-left: 10px;
+        margin-bottom: 10px;
+        pointer-events: auto;
+    }
+
+    .building-year-slider-control {
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(5px);
+    padding: 10px 18px;
+    border-radius: 12px;
+    box-shadow: 0 3px 14px rgba(0,0,0,0.18);
+    width: calc(100vw - 110px);
+    font-size: 13px;
+    opacity: 1;
+}
+
+.building-year-slider-control:hover,
+.building-year-slider-control:focus-within {
+    background: rgba(255,255,255,0.92);
+    opacity: 1;
+}
+
+.year-axis-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #333;
+    margin-top: 4px;
+}
+
+    .building-year-header {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        margin-bottom: 8px;
+        white-space: nowrap;
+    }
+
+    .single-year-slider {
+        width: 100%;
+    }
+
+    .single-year-slider input[type="range"] {
+        width: 100%;
+        cursor: pointer;
+    }
+
+    .year-axis-labels {
+        display: flex;
+        justify-content: space-between;
+        font-size: 12px;
+        color: #333;
+        margin-top: 2px;
+    }
+    `;
+
+    document.head.appendChild(style);
+}, 50);
+
+buildingSliderControl.onAdd = function(map) {
+    var div = L.DomUtil.create('div', 'building-year-slider-control leaflet-control');
+
+    var minYear = 1850;
+    var maxYear = 2026;
+
+    div.innerHTML = `
+        <div class="building-year-header">
+    <strong>Building Year:</strong>
+    <strong id="selectedBuildingYear" style="display:none;">${minYear}</strong>
+
+    <label style="margin-left:18px; font-weight:normal;">
+        <input type="checkbox" id="viewAllFootprints" checked>
+        View All
+    </label>
+</div>
+
+        <div class="single-year-slider">
+            <input
+                type="range"
+                id="buildingYearSlider"
+                min="${minYear}"
+                max="${maxYear}"
+                value="${minYear}"
+                step="1">
+
+            <div class="year-axis-labels">
+    <span>1850</span>
+    <span>1860</span>
+    <span>1870</span>
+    <span>1880</span>
+    <span>1890</span>
+    <span>1900</span>
+    <span>1910</span>
+    <span>1920</span>
+    <span>1930</span>
+    <span>1940</span>
+    <span>1950</span>
+    <span>1960</span>
+    <span>1970</span>
+    <span>1980</span>
+    <span>1990</span>
+    <span>2000</span>
+    <span>2010</span>
+    <span>2020</span>
+    <span>2026</span>
+</div>
+        </div>
+    `;
+
+    L.DomEvent.disableClickPropagation(div);
+    L.DomEvent.disableScrollPropagation(div);
+
+    return div;
+};
+
+function getBuildingsExistingInYear(selectedYear) {
+    return histbuildings.features.filter(function(feature) {
+        var dateBuilt = parseInt(feature.properties["Date Built"]);
+        var endDate = parseInt(feature.properties.End);
+
+        if (isNaN(dateBuilt)) return false;
+
+        var stillExists = isNaN(endDate) || endDate === 0 || endDate === 9999;
+
+        return dateBuilt <= selectedYear && (stillExists || endDate >= selectedYear);
+    });
+}
+
+function showBuildingsExistingInYear(selectedYear) {
+    var viewAllCheckbox = document.getElementById('viewAllFootprints');
+    var viewAll = viewAllCheckbox ? viewAllCheckbox.checked : true;
+
+    buildings.eachLayer(function(layer) {
+        if (viewAll) {
+            layer.setStyle(getBuildingFullVisibleStyle(layer.feature));
+        } else {
+            layer.setStyle(getBuildingStyle(layer.feature, selectedYear));
+        }
+    });
+}
+function addBuildingSliderControl() {
+    if (!map.hasLayer(buildings)) return;
+
+    buildingSliderControl.addTo(map);
+
+    setTimeout(function() {
+        var yearSlider = document.getElementById('buildingYearSlider');
+        var yearLabel = document.getElementById('selectedBuildingYear');
+        var viewAllCheckbox = document.getElementById('viewAllFootprints');
+
+        if (!yearSlider || !yearLabel) {
+            console.warn("Building year slider elements not found.");
+            return;
+        }
+
+        function updateYear() {
+    var selectedYear = parseInt(yearSlider.value);
+    var viewAll = viewAllCheckbox ? viewAllCheckbox.checked : true;
+
+    if (viewAll) {
+        yearLabel.style.display = 'none';
+        buildings.eachLayer(function(layer) {
+            layer.setStyle(getBuildingFullVisibleStyle(layer.feature));
+        });
+    } else {
+        yearLabel.style.display = 'inline';
+        yearLabel.textContent = selectedYear;
+        showBuildingsExistingInYear(selectedYear);
+    }
+}
+
+yearSlider.addEventListener('input', function() {
+    if (viewAllCheckbox) {
+        viewAllCheckbox.checked = false;
+    }
+    updateYear();
+});
+        if (viewAllCheckbox) {
+    viewAllCheckbox.addEventListener('change', updateYear);
+}
+
+        updateYear();
+    }, 100);
+}  
+        
+    /* <!-- Add_These_Lines />--> */
+    function attachOpacitySlider(layersControl, labelText, layer, initialOpacity, sliderLabelText) {
+        var container = layersControl.getContainer();
+        var labels = container.querySelectorAll('.leaflet-control-layers-overlays label');
+        var targetLabelEl = null;
+        var targetInputEl = null;
+
+        labels.forEach(function(lbl) {
+            var inputEl = lbl.querySelector('input.leaflet-control-layers-selector');
+            var text = lbl.textContent.trim();
+            if (inputEl && text.includes(labelText)) {
+                targetLabelEl = lbl;
+                targetInputEl = inputEl;
+            }
+        });
+
+        if (!targetLabelEl || !targetInputEl) {
+            console.warn("Could not find overlay label:", labelText);
+            return;
+        }
+
+        var sliderWrap = document.createElement('div');
+        sliderWrap.className = 'opacity-slider-wrap';
+        sliderWrap.style.display = targetInputEl.checked ? 'block' : 'none';
+        sliderWrap.style.margin = '4px 0 8px 24px';
+
+        var labelDiv = document.createElement('div');
+        labelDiv.textContent = sliderLabelText;
+        labelDiv.style.fontSize = '12px';
+
+        var slider = document.createElement('input');
+        slider.type = 'range';
+        slider.min = '0';
+        slider.max = '1';
+        slider.step = '0.05';
+        slider.value = (typeof initialOpacity === 'number') ? initialOpacity : (layer.options.opacity || 1);
+        slider.style.width = '140px';
+
+        sliderWrap.appendChild(labelDiv);
+        sliderWrap.appendChild(slider);
+        targetLabelEl.insertAdjacentElement('afterend', sliderWrap);
+
+        slider.addEventListener('input', function () {
+            var v = parseFloat(this.value);
+            if (typeof layer.setOpacity === 'function') {
+                layer.setOpacity(v);
+            }
+        });
+
+        targetInputEl.addEventListener('change', function () {
+            sliderWrap.style.display = this.checked ? 'block' : 'none';
+        });
+
+        map.on('overlayadd', function (e) {
+            if (e.layer === layer) sliderWrap.style.display = 'block';
+        });
+
+        map.on('overlayremove', function (e) {
+            if (e.layer === layer) sliderWrap.style.display = 'none';
+        });
+    }    
+        
+        
+    
+   /* <!-- Remove_These_Lines />--> */
+    /*L.control.layers(baseMaps,overlays, { collapsed: false }).addTo(map); */
+    /* load base map */
+     
+    /* <!-- Add_These_Lines />--> */
+    var layersControl = L.control.layers(baseMaps, overlays, { collapsed: false }).addTo(map);
+        
+    map.on('overlayadd', function(e) {
+    if (e.layer === buildings) {
+        addBuildingSliderControl();
+    }
+});
+
+map.on('overlayremove', function(e) {
+    if (e.layer === buildings) {
+        map.removeControl(buildingSliderControl);
+        buildings.eachLayer(function(layer) {
+    layer.setStyle(getBuildingFullVisibleStyle(layer.feature));
+});
+    }
+});
+
+if (map.hasLayer(buildings)) {
+    addBuildingSliderControl();
+}
+        
+    /* <!-- Add_These_Lines />--> */
+    setTimeout(function() {
+        attachOpacitySlider(layersControl, 'Iowa State College, 1883', imageOverlay1, imageOverlay1.options.opacity, '1883 Map Opacity');
+        attachOpacitySlider(layersControl, 'Iowa State College, 1875', imageOverlay2, imageOverlay2.options.opacity, '1875 Map Opacity');
+        attachOpacitySlider(layersControl, '1875 Day Map', historicLayers[1875], historicLayers[1875].options.opacity, '1875 Day Map Opacity');
+        attachOpacitySlider(layersControl, '1898 Day Map', historicLayers[1898], historicLayers[1898].options.opacity, '1898 Day Map Opacity');
+        attachOpacitySlider(layersControl, '1915 Day Map', historicLayers[1915], historicLayers[1915].options.opacity, '1915 Day Map Opacity');
+    }, 100);
+        
+        
+    Esri_WorldStreetMap.addTo(map);
+
+    
+    /* add search, https://github.com/naomap/leaflet-fusesearch */
+    var options = {
+        title: 'Search Map Items',
+        placeholder: 'Search map items...',
+        threshold: 0.35,
+        showResultFct: function(feature, container) {
+            var result = `<strong>${feature.properties.title}</strong><br>`;
+            
+            if(feature.properties["date"]) { result += feature.properties["date"] + `<br>`; }
+            
+            if(feature.properties["creator"]) { result += feature.properties["creator"] + `<br>`; }
+            
+            if(feature.properties["subject"]) { result += feature.properties["subject"] + `<br>`; }
+            
+            if(feature.properties["location"]) { result += feature.properties["location"] + `<br>`; }
+            
+            container.innerHTML = result;
+        }
+    };
+    var searchCtrl = L.control.fuseSearch(options);
+    searchCtrl.addTo(map);
+    searchCtrl.indexFeatures(geodata.features, ["title","date","creator","subject","location"]);
+
+    /* add fullscreen control */ 
+    map.addControl(new L.Control.Fullscreen());
+
+    
+
+    /* get icons function */ 
+    /* 
+    get a theme icon based on display_template or format 
+    return svg sprite
+*/
+function getIcon(objectTemplate,objectFormat,svgType) {
+    var iconTemplate, iconId, iconTitle;
+    if (objectTemplate && objectTemplate != "") {
+        iconTemplate = objectTemplate;
+    } else if (objectFormat && objectFormat != "") {
+        iconTemplate = objectFormat;
+    } else {
+        iconTemplate = ""
+    }
+    // choose icon
+    if (iconTemplate.includes("image")) {
+        iconId = "icon-image";
+        iconTitle = "image file icon";
+    } else if (iconTemplate.includes("pdf")) {
+        iconId = "icon-pdf";
+        iconTitle = "pdf file icon";
+    } else if (iconTemplate.includes("video")) {
+        iconId = "icon-video";
+        iconTitle = "video file icon";
+    } else if (iconTemplate.includes("audio")) {
+        iconId = "icon-audio";
+        iconTitle = "audio file icon";
+    } else if (iconTemplate.includes("panorama")) {
+        iconId = "icon-panorama";
+        iconTitle = "panorama file icon";
+    } else if (iconTemplate.includes("compound")) {
+        iconId = "icon-compound-object";
+        iconTitle = "compound object icon";
+    } else if (iconTemplate.includes("multiple")) {
+        iconId = "icon-multiple";
+        iconTitle = "multiple object icon";
+    } else {
+        iconId = "icon-default";
+        iconTitle = "file icon";
+    }
+    if (svgType == "thumb") {
+        // svg sprite as thumb
+        return '<svg class="bi text-body img-fluid" fill="currentColor" role="img"><title>' + iconTitle + '</title><use xlink:href="/assets/lib/cb-icons.svg#' + iconId + '"/></svg>';
+    } else if (svgType == "hidden") {
+        // svg as sprite with aria-hidden
+        return '<svg class="bi icon-sprite" aria-hidden="true"><use xlink:href="/assets/lib/cb-icons.svg#' + iconId + '"/></svg>';
+    } else {
+        // svg as sprite
+        return '<svg class="bi icon-sprite" aria-label="' + iconTitle + '"><use xlink:href="/assets/lib/cb-icons.svg#' + iconId + '"/></svg>';
+    }
+}
+
+
+    /* object popup function */
+    function objectPopups(feature, layer) {
+        /* bind feature for search */
+        feature.layer = layer;
+        // find item link
+        var itemHref = `/items/${ feature.properties.parent ? feature.properties.parent + ".html#" + feature.properties.id : feature.properties.id + ".html"}`;
+        // find image
+        var imgAlt = feature.properties.alt ? feature.properties.alt : feature.properties.title;
+        var thumbImg;
+        if (feature.properties.img) {
+            thumbImg = '<img class="map-thumb" src="' + feature.properties.img + '" alt="' + imgAlt + '">';
+        } else {
+            thumbImg = getIcon(feature.properties.template,feature.properties.format,"thumb")
+        }
+        // set up popup content
+        var popupTemplate = '<h2 class="h4"><a class="text-dark" href="' + itemHref + '">' +
+            feature.properties.title + '</a></h2><div class="text-center"><a href="' + itemHref + 
+            '" >' + thumbImg + '</a></div><p>';
+        
+        if (feature.properties["date"]) {
+            popupTemplate += '<strong>Date:</strong> ' + feature.properties["date"] + '<br>'; 
+        }
+        
+        if (feature.properties["creator"]) {
+            popupTemplate += '<strong>Creator:</strong> ' + feature.properties["creator"] + '<br>'; 
+        }
+        
+        if (feature.properties["subject"]) {
+            popupTemplate += '<strong>Subjects:</strong> ' + feature.properties["subject"] + '<br>'; 
+        }
+        
+        if (feature.properties["location"]) {
+            popupTemplate += '<strong>Location:</strong> ' + feature.properties["location"] + '<br>'; 
+        }
+        
+        popupTemplate += '</p><div class="text-center"><a class="btn btn-light" href="' + itemHref + '" >View Item</a></div>';
+        layer.bindPopup(popupTemplate);
+    }
+    function objectMarkers(feature,latlng) {
+
+    var blueIcon = L.icon({
+        iconUrl: '/assets/img/blue-pin.png',
+        iconSize: [40, 40],
+        iconAnchor: [20, 40],
+        popupAnchor: [0, -35]
+    });
+
+    var marker = L.marker(latlng, {
+        icon: blueIcon,
+        alt: feature.properties.title
+    });
+
+    
+    return marker;
+}
+
+    /* add objects from geoJson features */
+    var mapFeatures = L.geoJson(geodata, {
+        onEachFeature: objectPopups,
+        pointToLayer: objectMarkers
+    }).addTo(map);
+    
+    
+    
+    /* show popup if id in URL query */ 
+    if (markerFilter != "") {
+        
+        mapFeatures.eachLayer(layer => {
+            if (layer.feature.properties.id === markerFilter) {
+                layer.openPopup();
+            }
+        });
+        
+    }
+
+})();
+
+</script>
+
+    <script>
+    // When the user scrolls down from the top of the document, show the button
+    window.onscroll = function () {
+        if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+            document.getElementById("scroll-to-top").style.display = "block";
+        } else {
+            document.getElementById("scroll-to-top").style.display = "none";
+        }
+    }
+    // scroll to top function
+    function scrollToTop() {
+        window.scroll({
+            top: 0, 
+            left: 0, 
+            behavior: 'smooth'
+        });
+    }
+</script>
+<button id="scroll-to-top" type="button" class="btn btn-link" onclick="scrollToTop();" title="Back to Top" aria-label="Back to Top">
+    <svg class="bi icon-sprite" role="img" aria-label="Up Arrow">
+        <use xlink:href="/assets/lib/cb-icons.svg#icon-back-to-top"/>
+    </svg>
+</button>
+  </body>
+</html>

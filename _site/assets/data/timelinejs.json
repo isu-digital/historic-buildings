@@ -1,0 +1,753 @@
+{
+    "title": {
+        "media": {
+          "url": "/objects/old-main_004-crop.jpg",
+          "caption": null,
+          "credit": "Campus Cornerstones"
+        },
+        "text": {
+          "headline": "Chronology of Iowa State University Buildings",
+          "text": "A timeline of buildings on the Iowa State University campus, from the founding of the university in 1858 to the present day. Click on the image to learn more about the featured building."
+        }
+    },
+    "events": [
+      {
+        "media": {
+          "url": "/objects/small/marston_003_sm.jpg",
+          "caption": "Marston Cottage",
+          "link": "/items/hist_01.html"
+        },
+        "start_date": { 
+          
+          "year": "1898"
+        },
+        "end_date": { 
+          
+          "year": "1958"
+        },
+        "text": {
+          "headline": "Marston Cottage",
+          "text": "Marston Cottage was built between 1868 and 1870. The third of the three original \"Professors' Houses\" was first occupied by Professor William A. Anthony until he resigned in 1884. Anthony shared the house with Albert E. Foote and E.R. Hutchins. General James Rush Lincoln was the next occupant from 1885 to 1891. From 1892 until his death in 1949, the cottage was home to Anson Marston, whom he shared with Samual W. Beyer. Mrs. Marston continued to live in the house until it was razed in 1958 to permit the construction of the Helser Hall addition. \nThe house was brick, with a basement, two full floors, and a large attic. The back stairs were added in 1874. Major repairs were undertaken in 1904. The front porch was screened in 1913, and in 1923, a garage was built into the basement.                                                                                                              Credit: The Iowa State University Campus and Its Buildings\n"
+        }
+      },{
+        "media": {
+          "url": "/objects/small/south-hall_002_sm.jpg",
+          "caption": "South Hall",
+          "link": "/items/hist_05.html"
+        },
+        "start_date": { 
+          
+          "year": "1868"
+        },
+        "end_date": { 
+          
+          "year": "1912"
+        },
+        "text": {
+          "headline": "South Hall",
+          "text": "The first college president's home, South Hall, stood on Union Drive, east of where the Memorial Union now stands. President Welch moved into South Hall in 1869, and an addition was built in 1871. In 1879, the Welches moved to the Gables, and the Botany and Veterinary Medicine departments moved in. The house was renovated for use by the Domestic Economy Department in 1880. The house was damaged by a tornado in 1882. Beginning in 1896, the building served as the Music Hall until it was destroyed by fire in 1912.\n\nCredit: The Iowa State University Campus and Its Buildings\n"
+        }
+      },{
+        "media": {
+          "url": "/objects/small/music-hall_002_sm.jpg",
+          "caption": "Music Hall",
+          "link": "/items/hist_10.html"
+        },
+        "start_date": { 
+          
+          "year": "1868"
+        },
+        "end_date": { 
+          
+          "year": "1978"
+        },
+        "text": {
+          "headline": "Music Hall",
+          "text": "The second professor's home built on campus was first occupied by mathematics Professor George W. Jones. Edgar W. Stanton lived with Jones's family while they lived in the house, and from 1879 to Stanton's death in 1920, the home was known as the Stanton House. The house was remodeled and enlarged in 1899. After her husband's death, Mrs. Stanton continued to live in the house, and when she started a tea room in 1922, the home became known as \"The Maples.\" Mrs. Stanton moved out in 1924, and the Home Economics Department continued the operation of the tea room. The east (front) porch was enclosed, and the kitchen was enlarged in 1926. The tearoom closed in 1928 with the opening of the Memorial Union, and the Music Department moved in. The name \"Music Hall\" became official in 1929. The house was torn down in 1978 for the new music building constructed on the site.\nCredit: The Iowa State University Campus and Its Buildings\n"
+        }
+      },{
+        "media": {
+          "url": "",
+          "caption": "Mortensen Cottage",
+          "link": "/items/hist_14.html"
+        },
+        "start_date": { 
+          
+          "year": "1877"
+        },
+        "end_date": { 
+          
+          "year": "1927"
+        },
+        "text": {
+          "headline": "Mortensen Cottage",
+          "text": "An acre of land was leased to Professor J.L Budd in May 1877, and he began building a home for his family. He sold the house to the College in 1884, when an addition was constructed from plans by Foster and Lieve. Tomlinson built the addition for $780. Budd received $2,000 for the house. The addition was two stories, 14 x 22 feet. The house's chimneys were blown down in the April 8, 1882 cyclone. \n\nSelection of the location where Budd's house stood as the site for Agricultural Hall(Botony Hall) resulted in the removal of the house in 1892 to an area now the southwest corner of the Dairy Industries Building. Moving, including a new foundation, costs approximately $1,000. The house was razed in 1927 to make room for the new Dairy Industries Building. \nCredit: The Iowa State University Campus and Its Buildings"
+        }
+      },{
+        "media": {
+          "url": "/objects/small/chemistry_001_sm.jpg",
+          "caption": "Chemical and Physical Laboratory ",
+          "link": "/items/hist_16.html"
+        },
+        "start_date": { 
+          
+          "year": "1870"
+        },
+        "end_date": { 
+          
+          "year": "1913"
+        },
+        "text": {
+          "headline": "Chemical and Physical Laboratory ",
+          "text": "The first unit of the Chemical and Physical Laboratory was built between 1870 and 1871. The second unit was built between 1872 and 1875. On the night of March 25, 1913, a fire of undetermined origin totally destroyed the laboratory.                                                                                                                      Credit: The Iowa State University Campus and Its Buildings"
+        }
+      },{
+        "media": {
+          "url": "/objects/small/old-main_007_sm.jpg",
+          "caption": "Old Main (Main)",
+          "link": "/items/hist_20.html"
+        },
+        "start_date": { 
+          
+          "year": "1864"
+        },
+        "end_date": { 
+          
+          "year": "1902"
+        },
+        "text": {
+          "headline": "Old Main (Main)",
+          "text": "Old Main, originally known as Main or the College, stood approximately where Beardshear Hall now stands for only 34 years. When it was built, and many years after, it held the entire college. It housed classrooms, the library, chapel, museums, and dining halls and was the residence of faculty and students. Plans for the College Building began as early as 1858, but construction couldn't start until after the Civil War financial strains had passed, in the spring of 1864.\n\nThe construction of the building was plagued with problems from the very start. The original architect was discharged after the first year of construction for incompetence. When the second architect was hired, he determined that the foundation done in the last year needed to be fixed, due to the poor bricks used. The work done in 1864 was ordered to be destroyed, and construction started in the spring of 1865. The new architect also found the plans in need of serious revisions. Despite these revisions, it was discovered once construction was completed that there were no water, lighting, heat, or drainage provisions in the structure.\n\nIn 1882, a tornado damaged the south tower. A fire in 1900 destroyed the entire north wing and much of the interior of the center section and damaged much of the remaining building. The damage was barely repaired in 1902 when another fire struck, this time in the south wing, destroying the building. Plans for constructing Beardshear Hall on the same site began shortly after. \n\nCredit: The Iowa State University Campus and Its Buildings"
+        }
+      },{
+        "media": {
+          "url": "/objects/small/cattle-barn_001_sm.jpg",
+          "caption": "Cattle Barn",
+          "link": "/items/hist_50.html"
+        },
+        "start_date": { 
+          
+          "year": "1860"
+        },
+        "end_date": { 
+          
+          "year": "1928"
+        },
+        "text": {
+          "headline": "Cattle Barn",
+          "text": "The Cattle Barn was built between 1924 and 1925. An appropriation of $10,000 was made in 1923, and bids were received in January 1924. The construction was completed in the late fall of 1926, including silos at the northeast and northwest corners of the building. On the night of October 6, 1931, lightning struck the building, causing a fire that destroyed the entire barn. Steps were taken immediately to replace it. The contract to rebuild was awarded to Fred Fisher later that month, and the new structure was occupied the following February. The silo which received the lightning blow was not rebuilt until 1935. Fire struck again on October 19, 1958, when the east wing roof was burned along with a large quantity of hay. The silos were razed in 1968. \nCredit: The Iowa State University Campus and Its Buildings"
+        }
+      },{
+        "media": {
+          "url": "/objects/small/farm-house_002_sm.jpg",
+          "caption": "Farm House",
+          "link": "/items/hist_56.html"
+        },
+        "start_date": { 
+          
+          "year": "1860"
+        },
+        "end_date": { 
+          
+          "year": "2025"
+        },
+        "text": {
+          "headline": "Farm House",
+          "text": "The first building started on the new college land was the Farm House. Plans for it and the barn,  prepared by Milen Burt, architect and builder of Muscatine, had been approved in 1859. The house was completed in 1865. The Farm House, or the Knapp-Wilson House, was designated in 1965 as a Registered National Historic Landmark by the National Park Service of the U.S. Department of the Interior. After Dean Andre moved out in 1970, the University administration determined that the house would no longer be a residence, classroom, or office. The house was preserved and restored as close to its appearance as it was when occupied by Dean Curtiss from 1900-1910.                                                                                                                                  Credit: The Iowa State University Campus and Its Buildings"
+        }
+      },{
+        "media": {
+          "url": "/objects/small/boarding-cottage-west_003_sm.jpg",
+          "caption": "Boarding Cottage West",
+          "link": "/items/hist_62.html"
+        },
+        "start_date": { 
+          
+          "year": "1880"
+        },
+        "end_date": { 
+          
+          "year": "1933"
+        },
+        "text": {
+          "headline": "Boarding Cottage West",
+          "text": "Enrollments at the College were increasing to the extent that Old Main could only accommodate some students. In 1870 it had been proposed that a dormitory building, harmonizing with the College Building, should be erected northwest of it and provide facilities to house 120 students. The legislature appropriated no funds for that structure. Ten years later, funds were made available for Boarding Cottages. Bids were taken on proposals for six-room and eight-room houses. The contract was awarded to F.S. Whiting to build a 16-room building. The final cost exceeded the $3,500 appropriation by $206.50.                                                                                                      Credit: The Iowa State University Campus and Its Buildings"
+        }
+      },{
+        "media": {
+          "url": "/objects/small/feeding-barn_001_sm.jpg",
+          "caption": "Feeding Barn",
+          "link": "/items/hist_67.html"
+        },
+        "start_date": { 
+          
+          "year": "1880"
+        },
+        "end_date": { 
+          
+          "year": "1901"
+        },
+        "text": {
+          "headline": "Feeding Barn",
+          "text": "The \"Feed Barn\" is shown on the 1883 map about 600 feet east of the F&RM Barn. This is at a location just at the southeast corner of the present Agronomy Greenhouse. This barn was built in 1880 under contract with F.S. Whiting for $725. Painting and other costs brought the total expenditure to $ 792.10. In 1890, Experimental Station Director Speer was authorized to use proceeds from the sale of Station products to repair the barn. A fire starting in this barn in October 1901 destroyed it and the Experiment Station Barn. \n\nCredit: The Iowa State University Campus and Its Buildings"
+        }
+      },{
+        "media": {
+          "url": "",
+          "caption": "Horticulture Barn (First)",
+          "link": "/items/hist_69.html"
+        },
+        "start_date": { 
+          
+          "year": "1880"
+        },
+        "end_date": { 
+          
+          "year": "1909"
+        },
+        "text": {
+          "headline": "Horticulture Barn (First)",
+          "text": "Horticulture Barn was built in 1904 and was located at what is now the southeast corner of Spedding Hall. When construction of Spedding Hall was about to start, it was essential to remove the Horticulture Barn and the Beye House (Nursery School Annex). The barn was removed in 1949.                                               Credit: The Iowa State University Campus and Its Buildings"
+        }
+      },{
+        "media": {
+          "url": "",
+          "caption": "Eastwood Cottage",
+          "link": "/items/hist_71.html"
+        },
+        "start_date": { 
+          
+          "year": "1878"
+        },
+        "end_date": { 
+          
+          "year": "1896"
+        },
+        "text": {
+          "headline": "Eastwood Cottage",
+          "text": "Built in 1878 located just northeast of the cemetery on open land. A one-acre farm site was allocated in November 1877 to L.L. Eastwood for a farm workman's house, which he would lease from the college. In the spring of 1879, he was furnished wire and posts to enclose the acre of land. At the end of that year, Eastwood was granted permission to remove his house from the college grounds, but he decided against that action because he offered to sell it to the college two years later. The sale was executed in the spring of 1882. Removal of the house was considered later, but in 1888, it was being used by the Experiment Station. No subsequent references to the home have been found. The house appears on an 1883 map but is not shown on an 1896 map. It was apparently razed or removed sometime between 1888 and 1896. \n\nCredit: The Iowa State University Campus and Its Buildings"
+        }
+      },{
+        "media": {
+          "url": "/objects/small/pope-cottage_001_sm.jpg",
+          "caption": "Pope Cottage",
+          "link": "/items/hist_73.html"
+        },
+        "start_date": { 
+          
+          "year": "1877"
+        },
+        "end_date": { 
+          
+          "year": "1981"
+        },
+        "text": {
+          "headline": "Pope Cottage",
+          "text": "Professor of Chemistry Thomas E. Pope built Pope Cottage on the south side of what is now Lincoln Way in 1877. When he was called to M.I.T., he offered the property to the College, and the purchase was agreed to in 1884. Professor Wynn had rented it from Professor Pope before the purchase was made and remained there through 1855. The frame house was typical of the residential design of its period, with two stories and a basement. Inside, plumbing and electricity were installed in 1902. The porch on the southeast corner was added in 1924.                          Credit: The Iowa State University Campus and Its Buildings"
+        }
+      },{
+        "media": {
+          "url": "/objects/small/north-hall_001_sm.jpg",
+          "caption": "North Hall",
+          "link": "/items/hist_75.html"
+        },
+        "start_date": { 
+          
+          "year": "1880"
+        },
+        "end_date": { 
+          
+          "year": "1926"
+        },
+        "text": {
+          "headline": "North Hall",
+          "text": "An appropriation was made in the spring of 1880 for \"a building to be occupied by the schools of Agriculture and Veterinary Science and the Botanical Department.\" The construction contract was awarded in May for $5752 to F.S. Whiting. \nThe building was completed for occupancy in 1881. On April 8, 1882, a tornado crossed the campus, causing damage to North Hall. Repairs were made the next month. A parch was added on the south side in 1886. Two years later, a water supply and coal stoves were provided. \nWhen Margaret Hall was built in 1894, North Hall became an attached wing of the new building. The lower floor was made into a kitchen; the second floor was remodeled for the Department of Domestic Economy and living rooms, while the was set up for servants' rooms. North Hall was taken down in 1926. \nCredit: The Iowa State University Campus and Its Buildings"
+        }
+      },{
+        "media": {
+          "url": "/objects/small/gables_001_sm.jpg",
+          "caption": "Gables",
+          "link": "/items/hist_84.html"
+        },
+        "start_date": { 
+          
+          "year": "1879"
+        },
+        "end_date": { 
+          
+          "year": "1963"
+        },
+        "text": {
+          "headline": "Gables",
+          "text": "President Welch purchased land and built a home just south of the College property in 1879. This is the present location of Buchanan Hall. The Welch family moved into the house in late 1880. The April 8, 1882 cyclone \"removed a few of the Chimneys\". Professor Millikan Stalker purchased \"The Gables,\" as it was called, in 1898 or 1899 and moved into it in 1899. He willed it to his sister, Sallie Stalker Smith, who, in turn, willed it to her sisters, Margaret Stalker and Julia Stalker Swearingen, during their lifetimes. After their deaths, the property was to go to Iowa State College in the name of Milliken Stalker and Sallie Stalker Smith to further the cause of international goodwill. Ownership of the property passed to the College in 1928. The Gables became International House as a residence for International male students in compliance with Mrs. Smith's will. A fire on January 7, 1951, resulted in extensive damage to the house. The house continued in use by International students until it was purposely burned down in 1963 to make way for Buchanan Hall, which continued as an International student residence.                                                                                                     Credit: The Iowa State University Campus and Its Buildings"
+        }
+      },{
+        "media": {
+          "url": "/objects/small/hub_001_sm.jpg",
+          "caption": "The Hub ",
+          "link": "/items/hist_92.html"
+        },
+        "start_date": { 
+          
+          "year": "1892"
+        },
+        "end_date": { 
+          
+          "year": "2025"
+        },
+        "text": {
+          "headline": "The Hub ",
+          "text": "In 1892, the Hub was built to fulfill the need for a college bookstore, post office, and waiting room for the Ames and College Railway, which had started a year previous. It was commonly called the \"Dinkey Station\" during the years it served as a depot for the steam railway that ran between downtown Ames and Iowa State College. When the steam railway was replaced with an electric streetcar in 1907, the building was moved further north, away from Beardshear, to its present location. In 1920, an addition was built on the north side to increase space for the bookstore and post office. It was in the 1920s that a group of men, the \"Sunshine Club,\" would assemble on the steps during sunny days for birdwatching and heavy discussion.\nIn 1946, another building was moved and attached to the west side, and in 1953, the east wing was built. The bookstore moved to the Memorial Union in 1953, and the post office moved out ten years later. In 1959, the building officially became \"the Hub\" when vending services were added. During the next 20 years, a copy center, ticket office, and the University Traffic Office moved into the Hub. By 1983, the traffic office and ticket office were relocated, and the outdoor seating area to the west was built. Credit: The Iowa State University Campus and Its Buildings"
+        }
+      },{
+        "media": {
+          "url": "/objects/small/botany-hall_001_sm.jpg",
+          "caption": "Botany Hall",
+          "link": "/items/hist_101.html"
+        },
+        "start_date": { 
+          
+          "year": "1892"
+        },
+        "end_date": { 
+          
+          "year": "2025"
+        },
+        "text": {
+          "headline": "Botany Hall",
+          "text": "The Agricultural Hall is composed of stone through the basement and second floor; the rest is brick. The basement was devoted to horticulture. The first floor hosted the department of agricultural chemistry and the horticulture department. There was also a livestock room for class purposes. The second and third floors held offices and recitation rooms. The fourth floor was employed for some of the literary and scientific societies of the college. In 1897, there had been noticeable floor settlement and a considerable amount of plaster cracking. A new Farm Mechanics and Soil Physics Building was constructed as an addition on the north side of Agricultural Hall in 1903. Various modifications and repairs were made over the years. After the Agricultural Engineering department moved to its new building in 19222, the old quarters were used primarily for storage. In 1929, the Botany department moved into the old Agricultural Hall, and the building was renamed Botany Hall. The Botany department remained in that location until 1967, when it moved to Bessey Hall. The Seed Laboratory remained until 1977, when it, too, moved to a new building. The Psychology department was moved from Beardshear Hall to Botany Hall in early 1968. Credit: The Iowa State University Campus and Its Buildings"
+        }
+      },{
+        "media": {
+          "url": "/objects/small/creamery-second_001_sm.jpg",
+          "caption": "Creamery (Second)",
+          "link": "/items/hist_121.html"
+        },
+        "start_date": { 
+          
+          "year": "1891"
+        },
+        "end_date": { 
+          
+          "year": "1905"
+        },
+        "text": {
+          "headline": "Creamery (Second)",
+          "text": "The Creamery was built in 1892 on the site of the Agricultural Annex."
+        }
+      },{
+        "media": {
+          "url": "",
+          "caption": "Teamster's Cottage ",
+          "link": "/items/hist_123.html"
+        },
+        "start_date": { 
+          
+          "year": "1890"
+        },
+        "end_date": { 
+          
+          "year": "1970"
+        },
+        "text": {
+          "headline": "Teamster's Cottage ",
+          "text": "The Teamster's Cottage was intended for station employees it was located on the Northwest corner of teh lot known as the calf-pasture. In 1915 the house was moved to a site across the road from the power plant. The Teamster's Cottage was razed in 1970. Credit: The Iowa State University Campus and Its Buildings"
+        }
+      },{
+        "media": {
+          "url": "/objects/small/morrill-hall_001_sm.jpg",
+          "caption": "Morrill Hall",
+          "link": "/items/hist_125.html"
+        },
+        "start_date": { 
+          
+          "year": "1890"
+        },
+        "end_date": { 
+          
+          "year": "2025"
+        },
+        "text": {
+          "headline": "Morrill Hall",
+          "text": "Morrill Hall was constructed to fill the need for a library and museum, as well as a chapel. Named to honor the Senator who had sponsored the Morrill bill, which had established the land-grant college system, Morrill Hall was built at a cost of less than $30,000. Since its construction, it has been home to zoology, entomology, and geology classes and labs, Agriculture Extension Offices, the Printing Office, Photo Service, and even a barber shop from 1905-1908. Morrill Hall has been vacant since 1996, when it was deemed unsafe. Renovation on Morrill Hall began in 2005 and is expected to be completed in 2007. The projected cost of the renovation is $9,000,000, most of which came from private donations. Morrill Hall will house the Center for Excellence in Learning and Teaching, the Center for Visual Learning in Textiles and Clothing, and the Christian Petersen Art Museum. Credit: The Iowa State University Campus and Its Buildings"
+        }
+      },{
+        "media": {
+          "url": "/objects/small/bevier-house_003_sm.jpg",
+          "caption": "Bevier House",
+          "link": "/items/hist_138.html"
+        },
+        "start_date": { 
+          
+          "year": "1888"
+        },
+        "end_date": { 
+          
+          "year": "1979"
+        },
+        "text": {
+          "headline": "Bevier House",
+          "text": "The Bevier House was constructed a little over one hundred feet east of Botany Hall. The building was two stories high, frame, with a propogating house attached. In December 1892 the Trustees ordered that the building be assigned to the Music department. That was a temporary home for that department because in May 1894 it was also assigned to the department of Botany, and underwent some repair, remodeling, and painting. The building was moved in 1896 to a location that is now the center of the west wing of MacKay Hll, just north of Margaret Hall. It became a home for employees of the boarding department in Margaret Hall, and was known as the Klatter Klub. It was moved again in 1910 to about the center of the east wing on MacKay Hall. During that time is was the residence of Thomas Sloss, Superintendent of Building and Grounds, who made it his family home un 1924. The house was again moved between December 1924 and March 1925 southwest of the southwest corner of teh Metallurgy Building where is became the Isabel Bevier Home Management House. The building was again moved to north of Pammel Drive, facing west on what is now called North Morrill Road. Bevier House continued as a home management house unitl 1953 and again served that function in 1955-1956. In 1953-1955 and 1956-1961 it was a home for graduate women. It then became office space for retired and emeritus faculty members. Credit: The Iowa State University Campus and Its Buildings"
+        }
+      },{
+        "media": {
+          "url": "/objects/small/coburn-house_001_sm.jpg",
+          "caption": "Coburn House",
+          "link": "/items/hist_142.html"
+        },
+        "start_date": { 
+          
+          "year": "1888"
+        },
+        "end_date": { 
+          
+          "year": "1975"
+        },
+        "text": {
+          "headline": "Coburn House",
+          "text": "The Coburn House was built in 1888 on Knoll Road, approximately at the west end of what is today Welch Hall. A water line to the house was authorized in 1898. In 1900, permission was granted to build an addition to the house. The Knapps lived in the house until 192o when it was sold to the College. In August 1920, the house was remodeled as a Home Economics Division practice cottage. Five years later, it was moved north of the Physics Building. The Coburn House was moved again in 1947. The house continued to serve the Home Management function until the fifties when new buildings were built on Richardson Court. It was condemned in the early seventies and razed in 1975. Credit: The Iowa State University Campus and Its Buildings"
+        }
+      },{
+        "media": {
+          "url": "/objects/small/bevier-greenhouse_001_sm.jpg",
+          "caption": "Greenhouse Attached to Bevier House",
+          "link": "/items/hist_144.html"
+        },
+        "start_date": { 
+          
+          "year": "1888"
+        },
+        "end_date": { 
+          
+          "year": "1897"
+        },
+        "text": {
+          "headline": "Greenhouse Attached to Bevier House",
+          "text": "The greenhouse proper was L-shaped at the east end of the greenhouse was a frame potting house. The greenhouse structure was built on a brick base. When the Horticulture Laboratory was built in 1901, it replaced the potting shack, which was moved to the north side of the greenhouse and there used for general construction work. In 1903, the greenhouses were built as an addition or extension to the north of the 1896 greenhouse. Credit: The Iowa State University Campus and Its Buildings"
+        }
+      },{
+        "media": {
+          "url": "/objects/small/veterinary-hospital_001_sm.jpg",
+          "caption": "Veterinary Hospital",
+          "link": "/items/hist_146.html"
+        },
+        "start_date": { 
+          
+          "year": "1884"
+        },
+        "end_date": { 
+          
+          "year": "1926"
+        },
+        "text": {
+          "headline": "Veterinary Hospital",
+          "text": "Located approximately where Pine Room is situated in Memorial Union. The building faced north, and the \"running water\" was College Creek. Within four or five years of its first use the building was in need of repairs and have become inadequate to serve the increasing number of students. In 1898 it was connected to the central water supply and the windmill that had served to pump water from a well was removed. In 1912 the Veterinary Department moved to teh new Quadrangle. The Superintendent of Buildings and Grounds took over the building at the time as a stroage area for supplies and equipment for maintenance functions. Sometime between then and 1921 a frame one-story shed was added for additional storage across the west side of the building. It was during this period it became known as the Carpenter Shop. In 1926 the building was razed to make room for the new Memorial Union Building.  "
+        }
+      },{
+        "media": {
+          "url": "/objects/small/sanitary-building_002_sm.jpg",
+          "caption": "Sanitary Building",
+          "link": "/items/hist_153.html"
+        },
+        "start_date": { 
+          
+          "year": "1884"
+        },
+        "end_date": { 
+          
+          "year": "1927"
+        },
+        "text": {
+          "headline": "Sanitary Building",
+          "text": "Located about 200 feet northwest of the northwest corner of Memorial Union. The hospital facilities were located on the second floor of the building, with the first floor allocated for use by the Veterinary Department for theoretical classwork. This use prevailed until 1893, when the Veterinary Department moved into Botany Hall (then Agricultural Hall), and the Sanitary Building was used exclusively as a hospital. Credit: The Iowa State University Campus and Its Buildings"
+        }
+      },{
+        "media": {
+          "url": "/objects/small/english-office_001_sm.jpg",
+          "caption": "English Office Building",
+          "link": "/items/hist_163.html"
+        },
+        "start_date": { 
+          
+          "year": "1884"
+        },
+        "end_date": { 
+          
+          "year": "2004"
+        },
+        "text": {
+          "headline": "English Office Building",
+          "text": "The English Office Building was originally designed to provide offices for the President, Secretary, and Treasurer. In 1905, the Public Grounds Committee recommended the removal of the building. The recommendation was never carried out for the Office Building. In 1908, the college bookstore used the first floor, and the custodian and Head of the Military Department occupied the second floor. The building was connected to the central heating system in 1914, at which time it was the headquarters for the Building and Grounds department, and two rooms were rented to the YMCA for their food service employees. In 1929, the second floor was converted into office space for the English Department, and in 1940, the name of the building was changed to English Office Building. In 1973, all English Speech offices were relocated to the other building, and the old Office Building became the headquarters for International Education Services. Credit: The Iowa State University Campus and Its Buildings"
+        }
+      },{
+        "media": {
+          "url": "",
+          "caption": "Veterinary Barn",
+          "link": "/items/hist_165.html"
+        },
+        "start_date": { 
+          
+          "year": "1883"
+        },
+        "end_date": { 
+          
+          "year": "1899"
+        },
+        "text": {
+          "headline": "Veterinary Barn",
+          "text": "On the map of the campus in the 1882-83 Biennial Report, the Veterinary Hospital is shown at a location at the northwest corner of today's Library. On later maps it is identified as a barn. In 1885, after the new Veterinary Hospital was completed, the barn was transferred to the use of the boarding department upon payment by that department of $300 to the College Treasurer. This is almost certainly the barn referred to in the Sept. 1892 action of the Board approving the transfer of the \"bus house and barn\" to the Agricultural department and approval of moving them to a new location. The following May, the Building Committee was instructed \"to act at one\" to remove the \"house and barn belonging to the steward's department from the grounds set aside for the Athletic Association.\" The Biennial Report for 1892-93 reports that the two buildings had been \"moved to a more suitable location and put in better repair condition.\" It is thought that the site selected for the new location of the house was on the south side of the road near west gate, but where the barn was moved is not known. Credit: The Iowa State University Campus and Its Buildings"
+        }
+      },{
+        "media": {
+          "url": "",
+          "caption": "Gymnasium",
+          "link": "/items/hist_167.html"
+        },
+        "start_date": { 
+          
+          "year": "1883"
+        },
+        "end_date": { 
+          
+          "year": "1886"
+        },
+        "text": {
+          "headline": "Gymnasium",
+          "text": "Construction of the gymnasium began in 1883. The Gymnasium Association never received enough funds to pay off the indebtness on the building and in March 1886 it was removed by Professor Mount to his property in payment of his aid in financy the construction. Credit: The Iowa State University Campus and Its Buildings"
+        }
+      },{
+        "media": {
+          "url": "/objects/small/sloss-house_001_sm.jpg",
+          "caption": "Sloss House",
+          "link": "/items/hist_169.html"
+        },
+        "start_date": { 
+          
+          "year": "1882"
+        },
+        "end_date": { 
+          
+          "year": "2025"
+        },
+        "text": {
+          "headline": "Sloss House",
+          "text": "Charles E. Bessey was the home's first resident from 1883-1884. The porch was built in 1884. The longest resident, Thomas Sloss, moved in in 1925. Sloss was superintendent of buildings, and during the 11 years that he lived in the home, he did various remodeling and additions, including extending the south porch, removing the west porch, and adding a garage to the northwest corner, sunroom, study, and bath. The Sloss House now is the home of the Margaret Sloss Women's Center, named after Thomas Sloss's daughter, who was the first woman to earn a Doctorate in Veterinary Medicine and a faculty member from 1923 to 1972. Credit: The Iowa State University Campus and Its Buildings"
+        }
+      },{
+        "media": {
+          "url": "/objects/small/osborn-cottage_001_sm.jpg",
+          "caption": "Osborn Cottage",
+          "link": "/items/hist_171.html"
+        },
+        "start_date": { 
+          
+          "year": "1882"
+        },
+        "end_date": { 
+          
+          "year": "2001"
+        },
+        "text": {
+          "headline": "Osborn Cottage",
+          "text": "Built as a residence for professors, the first resident was Herbert Osborn, an instructor in zoology and entomology. Osborn was not the intended first occupant, the house was built originally for a professor and his wife. When the wife arrived from Boston, she promptly refused to live in the home because of the remoteness, so they moved into a home in Ames.\nIn 1968, the Foreign Student Services, Student Alumni Association, and Landscape Architecture department began using the building. The Honors Program began using the building in 1976.\n\nCredit: The Iowa State University Campus and Its Buildings"
+        }
+      },{
+        "media": {
+          "url": "/objects/small/lab-mechanics_004_sm.jpg",
+          "caption": "Laboratory of Mechanics and Mechanical Engineering",
+          "link": "/items/hist_173.html"
+        },
+        "start_date": { 
+          
+          "year": "1882"
+        },
+        "end_date": { 
+          
+          "year": "2025"
+        },
+        "text": {
+          "headline": "Laboratory of Mechanics and Mechanical Engineering",
+          "text": "Before the building was even completed (as Engineering Hall), it was realized that it would be too small to accommodate the fast-growing Engineering Department. An addition to the south, extending west, was completed in 1885. 1907, the building underwent major remodeling, and in 1933, the concrete laboratory was built as an addition. Other renovations were completed in 1967 and 1998. Credit: The Iowa State University Campus and Its Buildings"
+        }
+      },{
+        "media": {
+          "url": "/objects/small/grounds-cottage_001_sm.jpg",
+          "caption": "Grounds Cottage",
+          "link": "/items/hist_178.html"
+        },
+        "start_date": { 
+          
+          "year": "1882"
+        },
+        "end_date": { 
+          
+          "year": "1970"
+        },
+        "text": {
+          "headline": "Grounds Cottage",
+          "text": "The Grounds Cottage was originally located where the Gilman Hall addition stands now. It was later moved twice. Credit: The Iowa State University Campus and Its Buildings"
+        }
+      },{
+        "media": {
+          "url": "/objects/small/farm-laborers-cottage_001_sm.jpg",
+          "caption": "Farm Laborer's Cottage",
+          "link": "/items/hist_180.html"
+        },
+        "start_date": { 
+          
+          "year": "1882"
+        },
+        "end_date": { 
+          
+          "year": "1914"
+        },
+        "text": {
+          "headline": "Farm Laborer's Cottage",
+          "text": "The Trustees acted to initiate the construction of two farm cottages at their May 1882 meeting. The first occupant of the house was William Pierce. Fred Leighton lived there from 1892-1894, and from 1894 to 1904, it was the home of Professor G.L. McKay. In 1904, the house had to be moved to permit the construction of the new creamery (East Hall). It was sold and removed from campus in 1904. Credit: The Iowa State University Campus and Its Buildings"
+        }
+      },{
+        "media": {
+          "url": "",
+          "caption": "Boarding Cottage East",
+          "link": "/items/hist_182.html"
+        },
+        "start_date": { 
+          
+          "year": "1882"
+        },
+        "end_date": { 
+          
+          "year": "1917"
+        },
+        "text": {
+          "headline": "Boarding Cottage East",
+          "text": "The success of Boarding Cottage West resulted in the decision to construct another one to care for additional students. Boarding Cottage East was affordable for students and in demand for students. 1905 East and West Cottages were repaired, and steam heat was piped to each room. East cottage was torn down in 1907.  "
+        }
+      },{
+        "media": {
+          "url": "",
+          "caption": "Farm Boarding Club ",
+          "link": "/items/hist_184.html"
+        },
+        "start_date": { 
+          
+          "year": "1879"
+        },
+        "end_date": { 
+          
+          "year": "1970"
+        },
+        "text": {
+          "headline": "Farm Boarding Club ",
+          "text": "The Farm Boarding Club was constructed the summer on 1878 after the Horticulture Department expressed the need for a \"garden-house\" in 1871. IN 1894 after the Horticulture department had moved to the new Agriculture Hall (Botany Hall), Horticulture Hall was remodeled as a residence. The building continued as a faculty or sub-faculty club until 1906, when it was reserved for contagious hospital purposes. The building remained in place until 1915 when it was moved to the south side of what is now called Wallace Road at the west end of the new addition to the Women's Gym. It was used as an employees' boarding house for some years therafter. Later it was an employees residence. It was razed in 1970 to make way for the Gymnasium addition. Credit: The Iowa State University Campus and Its Buildings"
+        }
+      },{
+        "media": {
+          "url": "",
+          "caption": "Fair Oaks Mansion",
+          "link": "/items/hist_186.html"
+        },
+        "start_date": { 
+          
+          "year": "1879"
+        },
+        "end_date": { 
+          
+          "year": "1899"
+        },
+        "text": {
+          "headline": "Fair Oaks Mansion",
+          "text": "The Fair Oaks Mansion was built by students in 1879. Although no record has been found relative to moving the building it seems safe to assume that such a move was made about 1884 or 1885. This is almost certainly the same building as the one referred to as the Bus House in 1892 and 1893. Credit: The Iowa State University Campus and Its Buildings"
+        }
+      },{
+        "media": {
+          "url": "/objects/small/power-station_001_sm.jpg",
+          "caption": "Power Station",
+          "link": "/items/hist_188.html"
+        },
+        "start_date": { 
+          
+          "year": "1891"
+        },
+        "end_date": { 
+          
+          "year": "1912"
+        },
+        "text": {
+          "headline": "Power Station",
+          "text": "Located just north of Laboratory of Mechanics, where east part of Mechanical Engineering Laboratory stands now. The Power Station housed the electrical generating plant as well as the pumping station and also served as a laboratory facility for Mechanical Engineer. The building was razed in 1912 to make room for the new Mechanical Engineering Building. Credit: The Iowa State University Campus and Its Buildings"
+        }
+      },{
+        "media": {
+          "url": "",
+          "caption": "Creamery (First)",
+          "link": "/items/hist_190.html"
+        },
+        "start_date": { 
+          
+          "year": "1879"
+        },
+        "end_date": { 
+          
+          "year": "1927"
+        },
+        "text": {
+          "headline": "Creamery (First)",
+          "text": "The decision to operate a creamery on the College farm was made in late 1878. 1882, a creamery, ice house, and cold storage building were built. In 1891, the Creamery was moved east a few yards and remodeled for the farm foreman's residence. It also served as a boarding house for farm workers. It was razed in 1927 to make way for the new Dairy Industries Building. "
+        }
+      },{
+        "media": {
+          "url": "",
+          "caption": "Horse Barn (First)",
+          "link": "/items/hist_192.html"
+        },
+        "start_date": { 
+          
+          "year": "1870"
+        },
+        "end_date": { 
+          
+          "year": "1900"
+        },
+        "text": {
+          "headline": "Horse Barn (First)",
+          "text": "The horse barn provided suitable stalls, a loft, a harness room, and a granary. It was put up with an appropriation granted by the legislature of 1886. In 1897, funds were requested to expand the horse barn. In 1900, the old horse barn was razed to be replaced by a new barn. Farm Laborer's Cottage with neighboring houses, farmland, and trees. Credit: The Iowa State University Campus and Its Buildings"
+        }
+      },{
+        "media": {
+          "url": "",
+          "caption": "Workshop",
+          "link": "/items/hist_194.html"
+        },
+        "start_date": { 
+          
+          "year": "1870"
+        },
+        "end_date": { 
+          
+          "year": "1898"
+        },
+        "text": {
+          "headline": "Workshop",
+          "text": "The Workshop was initially built at what is now the west wing of the Laboratory of Mechanics—subsequently moved around 50-60 feet north. President Welch expressed the need to build a workshop large enough to accommodate students who take the course in Mechanic Arts. A 30 x 50 feet frame workshop was constructed with an engine house containing two laundry rooms. When the Workshop was moved in 1885, the laundry room wing was torn down and rebuilt. The building was razed in 1898 after the completion of the new Foundry and the New Carpenter shop that year. Credit: The Iowa State University Campus and Its Buildings"
+        }
+      },{
+        "media": {
+          "url": "",
+          "caption": "Experimental Barn",
+          "link": "/items/hist_196.html"
+        },
+        "start_date": { 
+          
+          "year": "1894"
+        },
+        "end_date": { 
+          
+          "year": "1901"
+        },
+        "text": {
+          "headline": "Experimental Barn"
+        }
+      }
+    ]
+}
