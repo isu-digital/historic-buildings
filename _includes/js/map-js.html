@@ -150,49 +150,242 @@
     };
     /*add overlay layers */
     
-    // Helper to filter features by date range
-    function filterByDate(features, minYear, maxYear) {
-        return features.filter(f => {
-            const year = f.properties["Date Built"];
-            return year >= minYear && year <= maxYear;
-        });
+    function getBuildingStyle(feature, selectedYear) {
+        var dateBuilt = parseInt(feature.properties["Date Built"]);
+        var endDate = parseInt(feature.properties.End);
+        var stillExists = isNaN(endDate) || endDate === 0 || endDate === 9999;
+        var isActive = dateBuilt <= selectedYear && (stillExists || endDate >= selectedYear);
+
+        if (isActive) {
+            return {
+                color: "#0078d7",
+                weight: 2,
+                fillColor: "#0078d7",
+                fillOpacity: 0.45,
+                opacity: 1,
+                dashArray: null
+            };
+        }
+
+        return {
+            color: "#004f8f",
+            weight: 2,
+            fillColor: "#0078d7",
+            fillOpacity: 0.08,
+            opacity: 0.9,
+            dashArray: "4, 6"
+        };
+    }
+
+    function getBuildingFullVisibleStyle() {
+        return {
+            color: "#0078d7",
+            weight: 2,
+            fillColor: "#0078d7",
+            fillOpacity: 0.45,
+            opacity: 1,
+            dashArray: null
+        };
+    }
+
+    var buildings = L.geoJson(histbuildings, {
+        style: function(feature) {
+            return getBuildingStyle(feature, 1850);
+        },
+        filter: function() {
+            return true;
+        },
+        onEachFeature: function(feature, layer) {
+            var buildingName = feature.properties.Name;
+            var dateBuilt = feature.properties["Date Built"];
+            var endDate = feature.properties.End;
+            var endText = (endDate == 9999 || endDate === "9999") ? "Still exists" : endDate;
+
+            layer.bindPopup(
+                "Building Name: " + buildingName +
+                "<br>" +
+                "Date Built: " + dateBuilt +
+                "<br>" +
+                "Removed: " + endText
+            );
+        }
+    });
+
+    var buildingSliderControl = L.control({ position: 'bottomleft' });
+
+    setTimeout(function() {
+        var style = document.createElement('style');
+
+        style.innerHTML = `
+        .leaflet-bottom.leaflet-left {
+            width: calc(100% - 20px);
+            pointer-events: none;
+        }
+
+        .leaflet-bottom.leaflet-left .leaflet-control {
+            width: 100%;
+            margin-left: 10px;
+            margin-bottom: 10px;
+            pointer-events: auto;
+        }
+
+        .building-year-slider-control {
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(5px);
+            padding: 10px 18px;
+            border-radius: 12px;
+            box-shadow: 0 3px 14px rgba(0,0,0,0.18);
+            width: calc(100vw - 110px);
+            font-size: 13px;
+            opacity: 1;
+        }
+
+        .building-year-slider-control:hover,
+        .building-year-slider-control:focus-within {
+            background: rgba(255,255,255,0.92);
+            opacity: 1;
+        }
+
+        .building-year-header {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 8px;
+            white-space: nowrap;
+        }
+
+        .single-year-slider {
+            width: 100%;
+        }
+
+        .single-year-slider input[type="range"] {
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .year-axis-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: #333;
+            margin-top: 2px;
+        }
+        `;
+
+        document.head.appendChild(style);
+    }, 50);
+
+    buildingSliderControl.onAdd = function() {
+        var div = L.DomUtil.create('div', 'building-year-slider-control leaflet-control');
+        var minYear = 1850;
+        var maxYear = 2026;
+
+        div.innerHTML = `
+            <div class="building-year-header">
+                <strong>Building Year:</strong>
+                <strong id="selectedBuildingYear" style="display:none;">${minYear}</strong>
+                <label style="margin-left:18px; font-weight:normal;">
+                    <input type="checkbox" id="viewAllFootprints" checked>
+                    View All
+                </label>
+            </div>
+            <div class="single-year-slider">
+                <input
+                    type="range"
+                    id="buildingYearSlider"
+                    min="${minYear}"
+                    max="${maxYear}"
+                    value="${minYear}"
+                    step="1">
+                <div class="year-axis-labels">
+                    <span>1850</span>
+                    <span>1860</span>
+                    <span>1870</span>
+                    <span>1880</span>
+                    <span>1890</span>
+                    <span>1900</span>
+                    <span>1910</span>
+                    <span>1920</span>
+                    <span>1930</span>
+                    <span>1940</span>
+                    <span>1950</span>
+                    <span>1960</span>
+                    <span>1970</span>
+                    <span>1980</span>
+                    <span>1990</span>
+                    <span>2000</span>
+                    <span>2010</span>
+                    <span>2020</span>
+                    <span>2026</span>
+                </div>
+            </div>
+        `;
+
+        L.DomEvent.disableClickPropagation(div);
+        L.DomEvent.disableScrollPropagation(div);
+
+        return div;
     };
 
-    // Style functions for each range
-    function style1859_1870() { return { color: "#e41a1c", weight: 2, opacity: 0.8, fillOpacity: 0.5 }; }
-    function style1871_1880() { return { color: "#377eb8", weight: 2, opacity: 0.8, fillOpacity: 0.5 }; }
-    function style1881_1900() { return { color: "#4daf4a", weight: 2, opacity: 0.8, fillOpacity: 0.5 }; }
+    function showBuildingsExistingInYear(selectedYear) {
+        var viewAllCheckbox = document.getElementById('viewAllFootprints');
+        var viewAll = viewAllCheckbox ? viewAllCheckbox.checked : true;
 
-    // Create layers for each date range
-    var buildings_1859_1870 = L.geoJson({
-        type: "FeatureCollection",
-        features: filterByDate(histbuildings.features, 1859, 1870)
-    }, {
-        style: style1859_1870,
-        onEachFeature: function (feature, layer) {
-            layer.bindPopup("Building Name: " + feature.properties.Name + '<br>' + " Date Built: " + feature.properties["Date Built"]);
-        }
-    });
+        buildings.eachLayer(function(layer) {
+            if (viewAll) {
+                layer.setStyle(getBuildingFullVisibleStyle(layer.feature));
+            } else {
+                layer.setStyle(getBuildingStyle(layer.feature, selectedYear));
+            }
+        });
+    }
 
-    var buildings_1871_1880 = L.geoJson({
-        type: "FeatureCollection",
-        features: filterByDate(histbuildings.features, 1871, 1880)
-    }, {
-        style: style1871_1880,
-        onEachFeature: function (feature, layer) {
-            layer.bindPopup("Building Name: " + feature.properties.Name + '<br>' + " Date Built: " + feature.properties["Date Built"]);
+    function addBuildingSliderControl() {
+        if (!map.hasLayer(buildings)) return;
+        if (!buildingSliderControl._map) {
+            buildingSliderControl.addTo(map);
         }
-    });
 
-    var buildings_1881_1900 = L.geoJson({
-        type: "FeatureCollection",
-        features: filterByDate(histbuildings.features, 1881, 1900)
-    }, {
-        style: style1881_1900,
-        onEachFeature: function (feature, layer) {
-            layer.bindPopup("Building Name: " + feature.properties.Name + '<br>' + " Date Built: " + feature.properties["Date Built"]);
-        }
-    });
+        setTimeout(function() {
+            var yearSlider = document.getElementById('buildingYearSlider');
+            var yearLabel = document.getElementById('selectedBuildingYear');
+            var viewAllCheckbox = document.getElementById('viewAllFootprints');
+
+            if (!yearSlider || !yearLabel) {
+                console.warn("Building year slider elements not found.");
+                return;
+            }
+
+            function updateYear() {
+                var selectedYear = parseInt(yearSlider.value);
+                var viewAll = viewAllCheckbox ? viewAllCheckbox.checked : true;
+
+                if (viewAll) {
+                    yearLabel.style.display = 'none';
+                    buildings.eachLayer(function(layer) {
+                        layer.setStyle(getBuildingFullVisibleStyle(layer.feature));
+                    });
+                } else {
+                    yearLabel.style.display = 'inline';
+                    yearLabel.textContent = selectedYear;
+                    showBuildingsExistingInYear(selectedYear);
+                }
+            }
+
+            yearSlider.oninput = function() {
+                if (viewAllCheckbox) {
+                    viewAllCheckbox.checked = false;
+                }
+                updateYear();
+            };
+
+            if (viewAllCheckbox) {
+                viewAllCheckbox.onchange = updateYear;
+            }
+
+            updateYear();
+        }, 100);
+    }
     
         
     
@@ -275,9 +468,9 @@
             thumbImg = getIcon(feature.properties.template,feature.properties.format,"thumb")
         }
         // set up popup content
-        var popupTemplate = '<h2 class="h4"><a class="text-dark" href="' + itemHref + '">' +
+        var popupTemplate = '<h2 class="h4 text-center"><a class="text-dark" href="' + itemHref + '">' +
             feature.properties.title + '</a></h2><div class="text-center"><a href="' + itemHref + 
-            '" >' + thumbImg + '</a></div><p>';
+            '" >' + thumbImg + '</a></div><p class="text-center">';
         {% for f in fields %}{% if f.display_name %}
         if (feature.properties[{{ f.field | escape | jsonify }}]) {
             popupTemplate += '<strong>{{ f.display_name }}:</strong> ' + feature.properties[{{ f.field | escape | jsonify }}] + '<br>'; 
@@ -287,7 +480,17 @@
         layer.bindPopup(popupTemplate);
     }
     function objectMarkers(feature,latlng) {
-        var marker = L.marker(latlng, {alt: feature.properties.title});
+        var blueIcon = L.icon({
+            iconUrl: '{{ "/assets/img/blue-pin.png" | relative_url }}',
+            iconSize: [40, 40],
+            iconAnchor: [20, 40],
+            popupAnchor: [0, -35]
+        });
+
+        var marker = L.marker(latlng, {
+            icon: blueIcon,
+            alt: feature.properties.title
+        });
         {% if site.data.theme.map-cluster == true %}markers.addLayer(marker);{% endif %}
         return marker;
     }
@@ -333,13 +536,9 @@
 
     // Grouped layer control structure
     var groupedOverlays = {
-        "Map Pins": {
-            "ISU Buildings 1859-1900": mapFeatures
-        },
-        "Building Footprints": {
-            "Buildings 1859–1870 (red)": buildings_1859_1870,
-            "Buildings 1871–1880 (blue)": buildings_1871_1880,
-            "Buildings 1881–1900 (green)": buildings_1881_1900
+        "ISU Buildings 1859-1900": {
+            "Building Locations": mapFeatures,
+            "Building Footprints": buildings
         },
         "H. Summerfield Day Maps": {
             "1875 Day Map": historicLayers[1875],
@@ -423,6 +622,21 @@
     };
         
      var layersControl = L.control.groupedLayers(baseMaps, groupedOverlays, { collapsed: false }).addTo(map);
+
+    map.on('overlayadd', function(e) {
+        if (e.layer === buildings) {
+            addBuildingSliderControl();
+        }
+    });
+
+    map.on('overlayremove', function(e) {
+        if (e.layer === buildings && buildingSliderControl._map) {
+            map.removeControl(buildingSliderControl);
+            buildings.eachLayer(function(layer) {
+                layer.setStyle(getBuildingFullVisibleStyle(layer.feature));
+            });
+        }
+    });
 
 })();
 
