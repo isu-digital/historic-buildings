@@ -201,7 +201,17 @@
         layer.bindPopup(popupTemplate);
     }
     function objectMarkers(feature,latlng) {
-        var marker = L.marker(latlng, {alt: feature.properties.title});
+        var blueIcon = L.icon({
+            iconUrl: '{{ "/assets/img/blue-pin.png" | relative_url }}',
+            iconSize: [40, 40],
+            iconAnchor: [20, 40],
+            popupAnchor: [0, -35]
+        });
+
+        var marker = L.marker(latlng, {
+            icon: blueIcon,
+            alt: feature.properties.title
+        });
         {% if site.data.theme.map-cluster == true %}markers.addLayer(marker);{% endif %}
         return marker;
     }

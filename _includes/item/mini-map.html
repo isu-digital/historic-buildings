@@ -75,8 +75,14 @@
     /* add fullscreen control */ 
     map.addControl(new L.Control.Fullscreen());
     {% unless include.map-marker == false %}
+    var blueIcon = L.icon({
+        iconUrl: '{{ "/assets/img/blue-pin.png" | relative_url }}',
+        iconSize: [40, 40],
+        iconAnchor: [20, 40],
+        popupAnchor: [0, -35]
+    });
     /* add marker */ 
-    L.marker(mapCenter).addTo(map)
+    L.marker(mapCenter, { icon: blueIcon }).addTo(map)
     .bindPopup('{{ page.title | escape }}');{% endunless %}
 
 </script>
