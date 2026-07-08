@@ -9,8 +9,8 @@ body {
     @if $text-color != "" { color: $text-color; }
 }
 a {
-    /* remove link underline */ 
-    text-decoration: none;
+    /* link underline */ 
+    text-decoration: underline;
     @if $link-color != "" { 
         color: $link-color; 
         &:hover {
