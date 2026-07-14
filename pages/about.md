@@ -66,7 +66,7 @@ Once the maps were in digital format, care was taken to locate the maps into a k
 
 In the overlay and georeferencing process, care has been given to locate benchmarks on each map that can be compared over time and used to most accurately locate features on each map.  However, based on the detail and accuracy of each map used in the overlay, there will be slight differences (usually within feet) of benchmarks that have not moved over time.  These errors, while visible on the maps, are slight and inherent to the digitizing and georeferencing process using documents that have been prepared at different times using different technology and mapping standards.
 
-{% include feature/image.html objectid="/assets/img/campus-map-1896.jpg; /assets/img/six-maps-day.jpg" caption="1896 map georeferenced and overlayed on current map base layer; Six separate maps from 'The Iowa State University Campus and Its Buildings, 1859-1979,' by H.S. Day" %}
+{% include feature/image.html objectid="/assets/img/campus-map-1896.jpg;assets/img/six-maps-day.jpg" caption="1896 map georeferenced and overlayed on current map base layer; Six separate maps from 'The Iowa State University Campus and Its Buildings, 1859-1979,' by H.S. Day" %}
 
 ### Map Analysis
 
