@@ -158,9 +158,9 @@
 
         if (isActive) {
             return {
-                color: "#0078d7",
+                color: "#0960e8",
                 weight: 2,
-                fillColor: "#0078d7",
+                fillColor: "#0960e8",
                 fillOpacity: 0.45,
                 opacity: 1,
                 dashArray: null
@@ -168,9 +168,9 @@
         }
 
         return {
-            color: "#004f8f",
+            color: "#0849af",
             weight: 2,
-            fillColor: "#0078d7",
+            fillColor: "#0960e8",
             fillOpacity: 0.08,
             opacity: 0.9,
             dashArray: "4, 6"
@@ -179,9 +179,9 @@
 
     function getBuildingFullVisibleStyle() {
         return {
-            color: "#0078d7",
+            color: "#0960e8",
             weight: 2,
-            fillColor: "#0078d7",
+            fillColor: "#0960e8",
             fillOpacity: 0.45,
             opacity: 1,
             dashArray: null
@@ -198,15 +198,27 @@
         onEachFeature: function(feature, layer) {
             var buildingName = feature.properties.Name;
             var dateBuilt = feature.properties["Date Built"];
+            var aka = feature.properties.AKA == null ? "" : String(feature.properties.AKA).trim();
             var endDate = feature.properties.End;
-            var endText = (endDate == 9999 || endDate === "9999") ? "Still exists" : endDate;
+            var hasEndYear = /^\d{4}$/.test(String(endDate).trim());
+            var popupRows = [
+                '<div class="building-popup__row"><span class="building-popup__label">Date Built:</span><span class="building-popup__value">' + dateBuilt + '</span></div>'
+            ];
+
+            if (hasEndYear) {
+                popupRows.push(
+                    '<div class="building-popup__row"><span class="building-popup__label">Date Removed:</span><span class="building-popup__value">' + endDate + '</span></div>'
+                );
+            }
 
             layer.bindPopup(
-                "Building Name: " + buildingName +
-                "<br>" +
-                "Date Built: " + dateBuilt +
-                "<br>" +
-                "Removed: " + endText
+                '<div class="building-popup">' +
+                    '<h3 class="building-popup__title">' + buildingName + '</h3>' +
+                    (aka !== ""
+                        ? '<div class="building-popup__subtitle"><span class="building-popup__subtitle-label">Alternate Names:</span> ' + aka + '</div>'
+                        : '') +
+                    '<div class="building-popup__body">' + popupRows.join('') + '</div>' +
+                '</div>'
             );
         }
     });
@@ -269,6 +281,91 @@
             font-size: 12px;
             color: #333;
             margin-top: 2px;
+        }
+
+        .leaflet-popup-content-wrapper {
+            border-radius: 18px;
+            box-shadow: 0 18px 40px rgba(10, 37, 64, 0.18);
+        }
+
+        .leaflet-popup-content {
+            margin: 0;
+            min-width: 260px;
+        }
+
+        .leaflet-popup.object-popup .leaflet-popup-content {
+            min-width: 0;
+        }
+
+        .building-popup {
+            padding: 18px 18px 16px;
+            background: linear-gradient(145deg, #f8fbff 0%, #eef5ff 100%);
+            color: #16324f;
+            border-radius: 18px;
+            overflow: hidden;
+        }
+
+        .building-popup__title {
+            margin: 0 0 12px;
+            font-size: 20px;
+            line-height: 1.2;
+            color: #0f2740;
+        }
+
+        .building-popup__subtitle {
+            margin: -4px 0 12px;
+            font-size: 13px;
+            line-height: 1.45;
+            color: #35516e;
+        }
+
+        .building-popup__subtitle-label {
+            font-weight: 700;
+            color: #23415f;
+        }
+
+        .building-popup__body {
+            display: grid;
+            gap: 8px;
+        }
+
+        .building-popup__row {
+            padding: 9px 10px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.72);
+        }
+
+        .building-popup__label {
+            display: block;
+            margin-bottom: 2px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: #4a6a8a;
+        }
+
+        .building-popup__value {
+            display: block;
+            font-size: 14px;
+            line-height: 1.4;
+            color: #16324f;
+        }
+
+        .object-popup-card {
+            padding: 18px 18px 16px;
+            background: linear-gradient(145deg, #f8fbff 0%, #eef5ff 100%);
+            color: #16324f;
+            border-radius: 18px;
+            overflow: hidden;
+        }
+
+        .object-popup-card .map-thumb {
+            border-radius: 12px;
+        }
+
+        .object-popup-card .btn {
+            border-radius: 999px;
         }
         `;
 
@@ -468,7 +565,7 @@
             thumbImg = getIcon(feature.properties.template,feature.properties.format,"thumb")
         }
         // set up popup content
-        var popupTemplate = '<h2 class="h4 text-center"><a class="text-dark" href="' + itemHref + '">' +
+        var popupTemplate = '<div class="object-popup-card"><h2 class="h4 text-center"><a class="text-dark" href="' + itemHref + '">' +
             feature.properties.title + '</a></h2><div class="text-center"><a href="' + itemHref + 
             '" >' + thumbImg + '</a></div><p class="text-center">';
         {% for f in fields %}{% if f.display_name %}
@@ -476,8 +573,8 @@
             popupTemplate += '<strong>{{ f.display_name }}:</strong> ' + feature.properties[{{ f.field | escape | jsonify }}] + '<br>'; 
         }
         {% endif %}{% endfor %}
-        popupTemplate += '</p><div class="text-center"><a class="btn btn-light" href="' + itemHref + '" >View Item</a></div>';
-        layer.bindPopup(popupTemplate);
+        popupTemplate += '</p><div class="text-center"><a class="btn btn-light" href="' + itemHref + '" >View Item</a></div></div>';
+        layer.bindPopup(popupTemplate, { className: 'object-popup' });
     }
     function objectMarkers(feature,latlng) {
         var blueIcon = L.icon({
