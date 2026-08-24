@@ -44,7 +44,9 @@
     var markerFilter = url.searchParams.get('marker') ? url.searchParams.get('marker') : "";
 
     /* init map, set center and zoom */
-    var map = L.map('map').setView(mapCenter, mapZoom);
+    var map = L.map('map', {
+        touchZoom: true
+    }).setView(mapCenter, mapZoom);
 
     // Keep the live orthophoto beneath the historic raster overlays.
     map.createPane('orthoPane');
