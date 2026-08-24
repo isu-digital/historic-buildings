@@ -227,6 +227,13 @@
 
     var buildingSliderControl = L.control({ position: 'bottomleft' });
 
+    // Let a two-finger gesture reach the map even when it begins over a control.
+    function stopSingleTouchMapInteraction(event) {
+        if (!event.touches || event.touches.length === 1) {
+            L.DomEvent.stopPropagation(event);
+        }
+    }
+
     setTimeout(function() {
         var style = document.createElement('style');
 
@@ -487,8 +494,9 @@
             </div>
         `;
 
-        L.DomEvent.disableClickPropagation(div);
         L.DomEvent.disableScrollPropagation(div);
+        L.DomEvent.on(div, 'mousedown dblclick contextmenu', L.DomEvent.stopPropagation);
+        L.DomEvent.on(div, 'touchstart', stopSingleTouchMapInteraction);
 
         return div;
     };
@@ -760,9 +768,9 @@
         slider.value = (typeof initialOpacity === 'number') ? initialOpacity : (layer.options.opacity || 1);
         slider.style.width = '140px';
 
-        L.DomEvent.disableClickPropagation(sliderWrap);
         L.DomEvent.disableScrollPropagation(sliderWrap);
-        L.DomEvent.on(sliderWrap, 'mousedown touchstart pointerdown dblclick click', L.DomEvent.stopPropagation);
+        L.DomEvent.on(sliderWrap, 'mousedown dblclick click', L.DomEvent.stopPropagation);
+        L.DomEvent.on(sliderWrap, 'touchstart', stopSingleTouchMapInteraction);
 
         sliderWrap.appendChild(labelDiv);
         sliderWrap.appendChild(slider);
