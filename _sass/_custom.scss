@@ -6,10 +6,15 @@
     position: relative;
     overflow: hidden;
   }
-  #map2 {
+#map2 {
     height: 650px;
     width: 100%;
   }
+
+/* Keep Leaflet's bottom controls visible on shorter laptop screens. */
+#map {
+    height: clamp(420px, calc(100vh - 10rem), 900px);
+}
 
   .feature-timelinejs {
     margin-bottom: 100px; /* Adjust the value as needed */
@@ -20,4 +25,30 @@
 .building-title {
     font-size: 2.5rem;
     font-weight: bold;
+}
+
+.gis-feature-card {
+    border: 2px solid gray;
+    background: lightgray;
+    box-shadow: 0 10px 24px rgba(47, 93, 80, 0.12);
+    border-radius: 0.75rem;
+}
+
+.gis-feature-card .card-body {
+    padding: 1.5rem;
+}
+
+.gis-feature-card .card-title {
+    color: black;
+    font-weight: 700;
+}
+
+.gis-feature-card .card-text {
+    font-size: 1.05rem;
+}
+
+.gis-feature-card .btn {
+    font-weight: 600;
+    padding: 0.6rem 1rem;
+    border-radius: 999px;
 }

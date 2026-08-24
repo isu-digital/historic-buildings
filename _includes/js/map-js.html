@@ -283,6 +283,73 @@
             margin-top: 2px;
         }
 
+        @media (max-width: 576px) {
+            .building-year-slider-control {
+                padding: 10px 12px;
+                border-radius: 10px;
+                font-size: 14px;
+            }
+
+            .building-year-header {
+                gap: 10px;
+                justify-content: space-between;
+                margin-bottom: 6px;
+                white-space: normal;
+            }
+
+            .building-year-header label {
+                margin-left: 0 !important;
+            }
+
+            .single-year-slider input[type="range"] {
+                min-height: 32px;
+                touch-action: pan-y;
+            }
+
+            .year-axis-labels {
+                font-size: 11px;
+                margin-top: 0;
+            }
+
+            .year-axis-labels span {
+                display: none;
+            }
+
+            .year-axis-labels span:nth-child(1),
+            .year-axis-labels span:nth-child(6),
+            .year-axis-labels span:nth-child(11),
+            .year-axis-labels span:nth-child(16),
+            .year-axis-labels span:nth-child(19) {
+                display: inline;
+            }
+        }
+
+        .map-layers-close {
+            display: none;
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            z-index: 1;
+            width: 24px;
+            height: 24px;
+            padding: 0;
+            border: 0;
+            border-radius: 50%;
+            background: #f1f1f1;
+            color: #333;
+            cursor: pointer;
+            font-size: 20px;
+            line-height: 22px;
+        }
+
+        .leaflet-control-layers-expanded .map-layers-close {
+            display: block;
+        }
+
+        .map-layers-dismissible .leaflet-control-layers-list {
+            padding-right: 28px;
+        }
+
         .leaflet-popup-content-wrapper {
             border-radius: 18px;
             box-shadow: 0 18px 40px rgba(10, 37, 64, 0.18);
@@ -718,7 +785,35 @@
         attachOpacitySlider(layersControl, imageOverlay1, imageOverlay1.options.opacity, '1883 Map Opacity');
     };
         
-     var layersControl = L.control.groupedLayers(baseMaps, groupedOverlays, { collapsed: false }).addTo(map);
+    var isMobileMap = window.matchMedia('(max-width: 576px)').matches;
+    var layersControl = L.control.groupedLayers(baseMaps, groupedOverlays, {
+        collapsed: true
+    }).addTo(map);
+
+    // Keep the desktop default open and let the close button control when it closes.
+    if (!isMobileMap) {
+        L.DomEvent.off(layersControl._container, 'mouseover', layersControl._expand, layersControl);
+        L.DomEvent.off(layersControl._container, 'mouseout', layersControl._collapse, layersControl);
+        L.DomUtil.addClass(layersControl._container, 'map-layers-dismissible');
+        layersControl._expand();
+
+        L.DomEvent.on(layersControl._layersLink, 'click', function(event) {
+            L.DomEvent.stop(event);
+            layersControl._expand();
+        });
+
+        var layersCloseButton = L.DomUtil.create('button', 'map-layers-close', layersControl._container);
+        layersCloseButton.type = 'button';
+        layersCloseButton.setAttribute('aria-label', 'Close map layers');
+        layersCloseButton.setAttribute('title', 'Close layers');
+        layersCloseButton.innerHTML = '&times;';
+
+        layersCloseButton.addEventListener('click', function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            layersControl._collapse();
+        });
+    }
 
     map.on('overlayadd', function(e) {
         if (e.layer === buildings) {
