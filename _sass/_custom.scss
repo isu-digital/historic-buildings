@@ -16,13 +16,6 @@
     height: clamp(420px, calc(100vh - 10rem), 900px);
 }
 
-@media (max-width: 576px) {
-    /* Let Leaflet, rather than the browser, handle map pan and pinch gestures. */
-    #map {
-        touch-action: none;
-    }
-}
-
   .feature-timelinejs {
     margin-bottom: 100px; /* Adjust the value as needed */
 }
