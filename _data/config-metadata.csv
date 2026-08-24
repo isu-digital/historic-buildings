@@ -1,4 +1,4 @@
-field,display_name,browse_link,external_link,dc_map,schema_map
+field,display_name,browse_link,external_link,dc_map,schema_map,link_name
 title,Building Name,,,DCTERMS.title,headline
 alternate_names,Alternate Names,,,,
 creator,Creator,,,DCTERMS.creator,creator
@@ -9,6 +9,7 @@ year_started,Year Built,,,,
 year_gone,Year Removed,,,,
 architect,Architect,true,,,
 contractor,Contractor,true,,,
+day_edition_url,More Information,,true,,,Day Digital Edition Description
 source,Source,,,,
 identifier,Source Identifier,,,,
 type,Type,,,DCTERMS.type,
