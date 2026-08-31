@@ -718,7 +718,7 @@
             popupTemplate += '<strong>{{ f.display_name }}:</strong> ' + feature.properties[{{ f.field | escape | jsonify }}] + '<br>'; 
         }
         {% endif %}{% endfor %}
-        popupTemplate += '</p><div class="text-center"><a class="btn btn-light" href="' + itemHref + '" >View Item</a></div></div>';
+        popupTemplate += '</p><div class="text-center"><a class="btn btn-light" href="' + itemHref + '" >View Building Page</a></div></div>';
         layer.bindPopup(popupTemplate, { className: 'object-popup' });
     }
     function objectMarkers(feature,latlng) {
