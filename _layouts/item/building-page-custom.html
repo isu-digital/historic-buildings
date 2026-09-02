@@ -41,7 +41,7 @@ gallery: true
         </div>
 
         <div class="col-12 col-md-10">
-            <div id="photographs-containing" class="my-4 h5 small">Photographs Containing {{page.title}}: {% if page.display_template == "compound_object" or page.display_template == "multiple" %}{% assign children = site.data[site.metadata] | where_exp: 'item','item.buildings_present contains page.title' %} ({{ children | size }} Items){% endif %}</div>
+            <div id="photographs-containing" class="my-4 h5 small">Photographs Containing {{page.title}}: {% if page.display_template == "compound_object" or page.display_template == "multiple" %}{% include item/child/buildings-present-children.html %} ({{ children | size }} Items){% endif %}</div>
             {{ content }}
 
         </div>
