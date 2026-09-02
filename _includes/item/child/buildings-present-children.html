@@ -1,0 +1,27 @@
+{% comment %}
+  Sets `children` to the metadata items whose "buildings_present" text mentions
+  page.title as a distinct building, not merely as a substring.
+  Guards against other building names that contain page.title as a substring
+  (hyphenated like "Theater-Workshop" containing "Workshop", or space-separated
+  like "Marston Water Tower" containing "Water Tower") stealing the match.
+{% endcomment %}
+{% assign children = "" | split: "," %}
+{% assign conflicting_names = "" | split: "," %}
+{% for other in site.data[site.metadata] %}
+  {% if other.display_template == "building" and other.title != page.title and other.title contains page.title %}
+    {% assign conflicting_names = conflicting_names | push: other.title %}
+  {% endif %}
+{% endfor %}
+{% for item in site.data[site.metadata] %}
+  {% if item.buildings_present contains page.title %}
+    {% assign is_conflict = false %}
+    {% for name in conflicting_names %}
+      {% if item.buildings_present contains name %}
+        {% assign is_conflict = true %}
+      {% endif %}
+    {% endfor %}
+    {% unless is_conflict %}
+      {% assign children = children | push: item %}
+    {% endunless %}
+  {% endif %}
+{% endfor %}
