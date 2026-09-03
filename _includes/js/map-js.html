@@ -105,38 +105,7 @@
         opacity: 1,
         pane: 'orthoPane'
     });
-    
-    
-    var imageUrl1 = 'objects/GENL_26_1883.jpg';
-    var errorOverlayUrl = 'https://cdn-icons-png.flaticon.com/512/110/110686.png';
-    var altText = 'Historic Map of Iowa State University from 1883';
-    var latLngBounds = L.latLngBounds([[42.0352583,-93.6289306], [42.020825, -93.6557806]]);
-
-    var imageOverlay1 = L.imageOverlay(imageUrl1, latLngBounds, {
-        opacity: 0.5,
-        errorOverlayUrl: errorOverlayUrl,
-        alt: altText,
-        pane: 'historicPane'
-    });
-    var imageUrl2 = 'objects/day-1875.jpg';
-    var errorOverlayUrl = 'https://cdn-icons-png.flaticon.com/512/110/110686.png';
-    var altText = 'Historic Map of Iowa State University from 1875';
-    var latLngBounds = L.latLngBounds([[42.032092,-93.637067], [42.022175,-93.654810]]);
-
-    var imageOverlay2 = L.imageOverlay(imageUrl2, latLngBounds, {
-        opacity: 0.7,
-        errorOverlayUrl: errorOverlayUrl,
-        alt: altText,
-        pane: 'historicPane'
-    });
-    
-    var parkStyle = {
-        "color": "#ff7800",
-        "weight":3,
-        "opacity": 0.7
-    };
-    
-
+  
     // your EPSG:3857 meter coords converted to lat/lng
     const sw = L.CRS.EPSG3857.unproject(L.point(-10425620.244789753, 5164290.700429559));
     const ne = L.CRS.EPSG3857.unproject(L.point(-10423612.939286085, 5165803.027624668));
@@ -160,6 +129,14 @@
             pane: 'historicPane'
         }),
         1915: L.tileLayer("{{ '/assets/tiles/1915/' | relative_url }}" + "{z}/{x}/{y}.png", {
+            minZoom: 14,
+            maxZoom: 19,
+            bounds: historicBounds,
+            noWrap: true,
+            opacity: 0.7,
+            pane: 'historicPane'
+        }),
+        1883: L.tileLayer("{{ '/assets/tiles/1883/' | relative_url }}" + "{z}/{x}/{y}.png", {
             minZoom: 14,
             maxZoom: 19,
             bounds: historicBounds,
@@ -614,14 +591,6 @@
             updateYear();
         }, 100);
     }
-    
-        
-    
-  
-    /* load base map */
-     
-    /* <!-- Add_These_Lines />--> 
-    var layersControl = L.control.layers(baseMaps, overlays, { collapsed: false }).addTo(map);*/
         
     /* <!-- Add_These_Lines />--> */
     setTimeout(function() {
@@ -788,7 +757,7 @@
             "1915 Day Map": historicLayers[1915]
         },
         "Other Historical Maps": {
-            "1883 Map": imageOverlay1
+            "1883 Map": historicLayers[1883]
         }
     };
         
@@ -860,7 +829,7 @@
         attachOpacitySlider(layersControl, historicLayers[1875], historicLayers[1875].options.opacity, '1875 Map Opacity');
         attachOpacitySlider(layersControl, historicLayers[1915], historicLayers[1915].options.opacity, '1915 Map Opacity');
         attachOpacitySlider(layersControl, historicLayers[1898], historicLayers[1898].options.opacity, '1898 Map Opacity');
-        attachOpacitySlider(layersControl, imageOverlay1, imageOverlay1.options.opacity, '1883 Map Opacity');
+        attachOpacitySlider(layersControl, historicLayers[1883], historicLayers[1883].options.opacity, '1883 Map Opacity');
     };
         
     var isMobileMap = window.matchMedia('(max-width: 576px)').matches;
