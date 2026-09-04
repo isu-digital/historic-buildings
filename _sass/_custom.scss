@@ -16,13 +16,6 @@
     height: clamp(420px, calc(100vh - 10rem), 900px);
 }
 
-/* Laptop screens have room for a taller map and a more useful layer list. */
-@media (min-width: 768px) {
-    #map {
-        height: clamp(420px, calc(100vh - 6rem), 900px);
-    }
-}
-
   .feature-timelinejs {
     margin-bottom: 100px; /* Adjust the value as needed */
 }
