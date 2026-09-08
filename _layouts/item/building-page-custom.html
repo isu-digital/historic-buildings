@@ -6,6 +6,9 @@ layout: default
 item-meta: true
 gallery: true
 ---
+{% include item/child/buildings-present-children.html %}
+{% assign children_count = children | size %}
+
 <div class="container py-3">
 
     {% include item/breadcrumbs.html %}
@@ -41,8 +44,10 @@ gallery: true
         </div>
 
         <div class="col-12 col-md-10">
-            <div id="photographs-containing" class="my-4 h5 small">Photographs Containing {{page.title}}: {% if page.display_template == "compound_object" or page.display_template == "multiple" %}{% include item/child/buildings-present-children.html %} ({{ children | size }} Items){% endif %}</div>
+            {% if children_count > 0 %}
+            <div id="photographs-containing" class="my-4 h5 small">Photographs Containing {{ page.title }}: ({{ children_count }} Items)</div>
             {{ content }}
+            {% endif %}
 
         </div>
 
