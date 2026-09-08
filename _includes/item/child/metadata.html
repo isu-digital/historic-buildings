@@ -7,7 +7,7 @@
 {%- assign fields = site.data.config-metadata-child | where_exp: 'item', 'item.display_name != nil' -%}
 <div id="item-metadata">
     <dl>
-        {% for f in fields %}{% if child[f.field] %}
+        {% for f in fields %}{% if child[f.field] or f.field == "date" %}
         <dt class="field">{{ f.display_name }}:</dt>
         <dd class="field-value">
             {% if f.browse_link == "true" %}
@@ -18,7 +18,7 @@
             {% elsif f.external_link == "true" %}
             <a href="{{ child[f.field] }}" target="_blank" rel="noopener">{{ child[f.field] }}</a>
             {% else %}
-            {{ child[f.field] | replace: '""','"' }}{% endif %}
+            {% if f.field == "date" %}{{ child[f.field] | default: "undated" | replace: '""','"' }}{% else %}{{ child[f.field] | replace: '""','"' }}{% endif %}{% endif %}
         </dd>
         {% endif %}{% endfor %}
     </dl>
