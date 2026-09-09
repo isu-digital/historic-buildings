@@ -1,8 +1,8 @@
-# History of the Buildings of Iowa State University: A digital exploration of historic ISU
+# Campus Cornerstones: A mapped history of Iowa State University
 
-Initiated in 2024 and currently a work in progress, this site explores the history of the buildings of Iowa State University through historic photographs, maps, and modern GIS data.
+Campus Cornerstones is a collaborative digital scholarship project that explores the history of the buildings on Iowa State University’s campus through historical photographs, maps, and modern GIS data.
 
-This project is led by Kevin Kane, director emeritus of the Iowa State University GIS Support and Research Facility, and Erin Ridnour, digital scholarship librarian at Iowa State University Library.
+Beginning in 2023, this project proposed researching how an open source geographic information system (QGIS) could bring together historical maps, photos, and texts to study the planning and building of the Iowa State University campus. The development of this website to include library collections materials and to more easily share the research done in QGIS arose out of a partnership with ISU Library's Digital Scholarship and Initiatives department starting in 2024.
 
 ----------
 
