@@ -50,21 +50,25 @@ This project is led by [Kevin Kane, director emeritus](https://faculty.sites.ias
 
 [From Prairie Sod to Campus Cornerstones: Building Our Campus History](https://historicexhibits.lib.iastate.edu/buildings/), legacy digital exhibit
 
+## Note on Building Names
+
+Most campus buildings have been referred to by different names throughout their history. In an effort to standardize the site's terminology, we have chosen to refer to all buildings by the name used in H. Summerfield Day's *The Iowa State University Campus and Its Buildings, 1859-1979.* It is possible that some buildings' names have changed since the publication of Day's book in 1980; however we have used Day's naming conventions in order to remain consistent accross the site. 
+
 ---
 
 ## Using GIS for Research on the Historical Buildings and Grounds of Iowa State University
 
-This section describes in more detail the expansion of this project's GIS components from a primarily offline research effort utilizing desktop GIS and content management tools to a public-facing resource that now includes an online exploration tool leveraging ISU Library's special collections materials. The project team has made conscious decisions throughout this project to use open source GIS tools (QGIS, Leaflet) and open file formats (GeoTiff, geojson, etc.) so the data could be made available to a much larger audience.
+This section describes in more detail the expansion of this project's GIS components from a primarily offline research effort utilizing desktop GIS and content management tools to a public-facing resource that now includes an online exploration tool leveraging ISU Library's special collections materials. The project team has made conscious decisions throughout this project to use open source GIS tools (QGIS, Leaflet) and open file formats (GeoTIFF, geoJSON, etc.) so the data could be made available to a much larger audience.
 
 ### Locating and Compiling Historical maps of ISU
 
-The first task in the research process was to identify, locate, and compile the best versions possible of historic ISU maps.  Sources for these maps included online archives (including ISU Facilities and Planning Management and the Internet Archive) and Special Collections and University Archives at the Iowa State Library.  Maps that were paper copies were digitized by the ISU GIS Facility and ISU Library staff to make them available for georeferencing.
+The first task in the research process was to identify, locate, and compile the best versions possible of historic ISU maps.  Sources for these maps included online archives (including ISU Facilities and Planning Management and the Internet Archive) and Special Collections and University Archives at the Iowa State Library.  Physical paper maps were digitized by the ISU GIS Facility and ISU Library staff to make them available for georeferencing.
 
 {% include feature/image.html objectid="/assets/img/college-map-1868.jpg" caption="Portion of the 1868 College Map (University Archives)" alt="Black and white map titled Map of Agricultural College Farm, 1868" %}
 
 ### Georeferencing Digital Maps in QGIS
 
-Once the maps were in digital format, care was taken to locate the maps  into a known earth coordinate system using QGIS so maps from different time periods could be located as precisely as possible over one another for spatial-temporal analysis.  Digital map images were also processed at this point for readability and transparency (removal of background white and grayscale color).  
+Once the maps were in digital format, care was taken to locate the maps into a known earth coordinate system using QGIS so maps from different time periods could be located as precisely as possible over one another for spatial-temporal analysis.  Digital map images were also processed at this point for readability and transparency (removal of background white and grayscale color).  
 
 In the overlay and georeferencing process, care has been given to locate benchmarks on each map that can be compared over time and used to most accurately locate features on each map.  However, based on the detail and accuracy of each map used in the overlay, there will be slight differences (usually within feet) of benchmarks that have not moved over time.  These errors, while visible on the maps, are slight and inherent to the digitizing and georeferencing process using documents that have been prepared at different times using different technology and mapping standards.
 
@@ -72,7 +76,7 @@ In the overlay and georeferencing process, care has been given to locate benchma
 
 ### Map Analysis
 
-Once maps have been georeferenced, each map can be overlayed on every other map for spatial-temporal analysis.  Questions like “locate the original Dinky train line and map it on a map of current day campus” or “where is the building footprint of the first Chemical Laboratory in relation to present day Pearson Hall” can be researched and answered.  Twenty-size historic ISU maps, from 1868 to current maps, were georeferenced in QGIS for GIS analysis. 
+Once maps have been georeferenced, each map can be overlayed on every other map for spatial-temporal analysis.  Questions like “locate the original Dinky train line and map it on a map of current day campus” or “where is the building footprint of the first Chemical Laboratory in relation to present day Pearson Hall” can be researched and answered.  Twenty-six historic ISU maps, from 1868 to current maps, were georeferenced in QGIS for GIS analysis. 
 
 The georeferenced campus maps can then be overlaid with other GIS and historic photography data layers to research interrelated phenomena like landcover, topography, archeology, etc.
 
@@ -82,15 +86,14 @@ In addition to the map images, a polygon layer of building footprints was create
 
 ### Building the Web Map with Leaflet
 
-While detailed analysis of these maps and GIS data layers are currently limited to the QGIS application, a goal of this project was to provide access to some of these maps online through the development of the project website. The website allows for the exploration of maps, photos, and documentation of historic Iowa State University through one integrated platform. The project team selected four map layers from the QGIS collection that offer a clear representation of building locations from 1875-1915. Those layers were exported as GeoTiffs which are available for download on the site's Data tab and are compatible with most GIS platforms. 
+While detailed analysis of these maps and GIS data layers are currently limited to the QGIS application, a goal of this project was to provide access to some of these maps online through the development of the project website. The website allows for the exploration of maps, photos, and documentation of historic Iowa State University through one integrated platform. The project team selected four map layers from the QGIS collection that offer a clear representation of building locations from 1875-1915. Those layers were initially exported as GeoTiffs, a file format compatible with most GIS platforms. 
 
-The website is built using CollectionBuilder, an open source static web template for cultural heritage collections, which utilizes the JavaScript library Leaflet for its web map component. Leaflet does not easily display GeoTiffs, so an alternative format was necessary to build the web map. Leaflet has an image overlay function that allows placement of image files by defining the latitude and longitude of the images corner points; however, this method did not offer the precision the team was hoping for. Alternatively, Leaflet can display images as XYZ tile layers, a raster format made up of many tiny image files or "tiles." The project team chose this method for its precision and its ability to maintain the transparent backgrounds of the QGIS layers. Additionally, the building footprints polygon layer was exported as a geojson file for use in the web project and as a shapefile for download from the site's data tab.
+The website is built using [CollectionBuilder](https://collectionbuilder.github.io/), an open source static web template for cultural heritage collections, which utilizes the JavaScript library [Leaflet](https://leafletjs.com/) for its web map component. Leaflet does not easily display GeoTiffs, so an alternative format was necessary to build the web map. Leaflet has an image overlay function that allows placement of image files by defining the latitude and longitude of the images' corner points; however, this method did not offer the precision the team was hoping for. Alternatively, Leaflet can display images as XYZ tile layers, a raster format made up of many tiny image files or "tiles." The project team chose this method for its precision and its ability to maintain the transparent backgrounds of the QGIS layers. Additionally, the building footprints polygon layer and attribute data was exported as a geojson file for use in the web project and as a shapefile for download from the site's data tab.
 
-{% include feature/image.html objectid="/assets/img/cc-interactive-footprints.jpg" caption="Campus Cornerstones interactive mapping application showing 1883 map with building footprints through 1900" %}
+{% include feature/image.html objectid="/assets/img/cc-interactive-footprints.jpg" caption="An early version of the Campus Cornerstones interactive mapping application showing 1883 map with building footprints through 1900" %}
 
+### Sharing the Project Map Data
 
-
-
-In addition, the map collection contains maps which can be found both on the interactive map and in the QGIS implementation so that users can view map documentation and download these maps for their own use.
+GIS layers and metadata used throughout the project website are available for download by visiting the site’s [data tab](https://digital.lib.iastate.edu/projects/campuscornerstones/data.html). The zipped data folder contains the four GeoTiff map layers exported from QGIS as well as the building footprints polygon layer and the building locations point layer. In addition to the four georeferenced maps, seventeen historical map images are also available for download from the site's [browse page](https://digital.lib.iastate.edu/projects/campuscornerstones/historical-maps.html).
 
 {% include feature/image.html objectid="/assets/img/historical-map-browse.jpg" caption="The historical maps collection browser on Campus Cornerstones site" %}
